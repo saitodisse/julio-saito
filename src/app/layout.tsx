@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   title: "Julio Saito | Portfolio",
   description:
     "Portfólio simples de Julio Saito: produto, engenharia e projetos selecionados.",
-  metadataBase: new URL("https://saitodisse-portifolio-2.vercel.app"),
+  metadataBase: new URL("https://julio-saito.vercel.app"),
   openGraph: {
     title: "Julio Saito | Portfolio",
     description:
