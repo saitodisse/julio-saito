@@ -16,6 +16,7 @@ import { SiteHeader } from "@/components/site-header";
 import { PageIntro } from "@/components/page-intro";
 import { PageShell } from "@/components/page-shell";
 import { buttonVariants } from "@/components/ui/button";
+import { skillTagTone } from "@/lib/tag-tones";
 import { cn } from "@/lib/utils";
 
 const contactIcons = {
@@ -27,13 +28,8 @@ const contactIcons = {
 
 export default function CurriculoPage() {
   const { content, ui } = useLocale();
-  const {
-    contactLinks,
-    education,
-    person,
-    professionalSummary,
-    skillGroups,
-  } = content;
+  const { contactLinks, education, person, professionalSummary, skillGroups } =
+    content;
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -78,7 +74,9 @@ export default function CurriculoPage() {
                     href={item.href}
                     className="transition-transform hover:-translate-y-0.5"
                     target={item.href.startsWith("http") ? "_blank" : undefined}
-                    rel={item.href.startsWith("http") ? "noreferrer" : undefined}
+                    rel={
+                      item.href.startsWith("http") ? "noreferrer" : undefined
+                    }
                   >
                     {card}
                   </a>
@@ -100,7 +98,7 @@ export default function CurriculoPage() {
             </div>
 
             <div className="grid gap-4 lg:grid-cols-2">
-              {skillGroups.map((group) => (
+              {skillGroups.map((group, groupIndex) => (
                 <article
                   key={group.title}
                   className="rounded-[20px] border border-border bg-card px-4 py-4 shadow-[0_1px_0_rgba(0,0,0,0.02)] sm:px-5 sm:py-5"
@@ -109,10 +107,15 @@ export default function CurriculoPage() {
                     {group.title}
                   </h3>
                   <div className="mt-4 flex flex-wrap gap-2">
-                    {group.items.map((item) => (
+                    {group.items.map((item, itemIndex) => (
                       <span
                         key={item}
-                        className="rounded-full border border-border bg-secondary/30 px-3 py-1 text-[0.9rem] font-medium tracking-[-0.01em] text-secondary-foreground"
+                        className={cn(
+                          "rounded-full border px-3 py-1 text-[0.9rem] font-medium tracking-[-0.01em]",
+                          skillTagTone[
+                            (groupIndex + itemIndex) % skillTagTone.length
+                          ],
+                        )}
                       >
                         {item}
                       </span>
@@ -150,10 +153,13 @@ export default function CurriculoPage() {
                 {ui.resume.languagesTitle}
               </h2>
               <div className="mt-4 flex flex-wrap gap-2">
-                {person.languages.map((language) => (
+                {person.languages.map((language, index) => (
                   <span
                     key={language}
-                    className="rounded-full border border-border bg-secondary/30 px-3 py-1 text-[0.9rem] font-medium tracking-[-0.01em] text-secondary-foreground"
+                    className={cn(
+                      "rounded-full border px-3 py-1 text-[0.9rem] font-medium tracking-[-0.01em]",
+                      skillTagTone[index % skillTagTone.length],
+                    )}
                   >
                     {language}
                   </span>

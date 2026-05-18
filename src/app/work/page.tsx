@@ -8,6 +8,7 @@ import { SiteHeader } from "@/components/site-header";
 import { PageIntro } from "@/components/page-intro";
 import { PageShell } from "@/components/page-shell";
 import { buttonVariants } from "@/components/ui/button";
+import { skillTagTone } from "@/lib/tag-tones";
 import { cn } from "@/lib/utils";
 
 export default function WorkPage() {
@@ -40,7 +41,18 @@ export default function WorkPage() {
                     {experience.period}
                   </p>
                   <h2 className="mt-3 text-[1.16rem] font-semibold tracking-[-0.03em] text-foreground sm:text-[1.25rem]">
-                    {experience.company}
+                    {"companyLinkedin" in experience ? (
+                      <a
+                        href={experience.companyLinkedin}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="underline underline-offset-4 transition-colors hover:text-primary"
+                      >
+                        {experience.company}
+                      </a>
+                    ) : (
+                      experience.company
+                    )}
                   </h2>
                   <p className="mt-2 text-[0.96rem] font-medium tracking-[-0.02em] text-foreground/70 sm:text-[0.98rem]">
                     {experience.role}
@@ -67,7 +79,12 @@ export default function WorkPage() {
                   </ul>
 
                   {index === 0 || index === 1 ? (
-                    <div className="mt-5 inline-flex items-center gap-2 rounded-full border border-border bg-secondary/30 px-3 py-1 text-[0.8rem] font-medium tracking-[-0.01em] text-secondary-foreground">
+                    <div
+                      className={cn(
+                        "mt-5 inline-flex items-center gap-2 rounded-full border px-3 py-1 text-[0.8rem] font-medium tracking-[-0.01em]",
+                        skillTagTone[index % skillTagTone.length],
+                      )}
+                    >
                       {ui.work.highlight}
                     </div>
                   ) : null}

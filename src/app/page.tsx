@@ -18,6 +18,7 @@ import { useLocale } from "@/components/locale-provider";
 import { SiteHeader } from "@/components/site-header";
 import { PageShell } from "@/components/page-shell";
 import { buttonVariants } from "@/components/ui/button";
+import { skillTagTone } from "@/lib/tag-tones";
 import { cn } from "@/lib/utils";
 import type { FeaturedProject } from "@/resources/site-content";
 
@@ -30,13 +31,6 @@ const projectIcons = {
 
 const projectLinkClassName =
   "inline-flex items-center gap-2 text-[0.96rem] font-medium tracking-[-0.01em] text-foreground/84 transition-colors hover:text-foreground";
-
-const tagTone = [
-  "border-border bg-secondary/20 text-secondary-foreground",
-  "border-border bg-primary/12 text-foreground",
-  "border-border bg-accent/20 text-accent-foreground",
-  "border-border bg-muted/80 text-foreground/80",
-];
 
 export default function Home() {
   const { content, ui } = useLocale();
@@ -214,7 +208,9 @@ export default function Home() {
                           key={tag}
                           className={cn(
                             "rounded-full border px-3 py-1 text-[0.85rem] font-medium tracking-[-0.01em]",
-                            tagTone[(index + tagIndex) % tagTone.length],
+                            skillTagTone[
+                              (index + tagIndex) % skillTagTone.length
+                            ],
                           )}
                         >
                           {tag}

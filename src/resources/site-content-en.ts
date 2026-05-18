@@ -90,6 +90,7 @@ export const featuredProjects = [
 export const experiences = [
   {
     company: "Soma Deals",
+    companyLinkedin: "https://br.linkedin.com/company/soma-deals",
     role: "Senior Software Engineer",
     period: "Aug 2025 - Present",
     location: "São Paulo, Brazil · Remote",
@@ -103,6 +104,7 @@ export const experiences = [
   },
   {
     company: "Linx Commerce",
+    companyLinkedin: "https://br.linkedin.com/company/linx-commerce",
     role: "Solutions Architect",
     period: "Dec 2021 - Jun 2024",
     location: "Brazil",
@@ -117,6 +119,7 @@ export const experiences = [
   },
   {
     company: "Semantix",
+    companyLinkedin: "https://www.linkedin.com/company/semantix",
     role: "Web Developer",
     period: "Nov 2020 - Dec 2021",
     location: "Brazil",
@@ -143,6 +146,7 @@ export const experiences = [
   },
   {
     company: "Azuki",
+    companyLinkedin: "https://www.linkedin.com/company/azuki-azukiapp-com-/",
     role: "Developer",
     period: "Oct 2014 - Nov 2016",
     location: "Brazil",
@@ -168,6 +172,7 @@ export const experiences = [
   },
   {
     company: "Grupo SHC",
+    companyLinkedin: "https://www.linkedin.com/company/grupo-shc",
     role: "Developer & Instructor",
     period: "Mar 2006 - Sep 2012",
     location: "Brazil",
@@ -181,6 +186,7 @@ export const experiences = [
   },
   {
     company: "everis",
+    companyLinkedin: "https://www.linkedin.com/company/everis-is-nttdata",
     role: "Programmer Analyst",
     period: "May 2005 - Feb 2006",
     location: "Brazil",
@@ -196,7 +202,8 @@ export const experiences = [
     role: "Developer",
     period: "Aug 2003 - Apr 2005",
     location: "Brazil",
-    summary: "First professional deliveries on projects for Embratel and Telemar.",
+    summary:
+      "First professional deliveries on projects for Embratel and Telemar.",
     bullets: [
       "Worked on project management, database migration, and web development.",
       "Delivered routines with Oracle and integration with operational needs of the time.",
@@ -241,13 +248,7 @@ export const skillGroups = [
   },
   {
     title: "Architecture and quality",
-    items: [
-      "TDD",
-      "Serverless",
-      "DDD/OOP",
-      "Scalability",
-      "Maintainability",
-    ],
+    items: ["TDD", "Serverless", "DDD/OOP", "Scalability", "Maintainability"],
   },
   {
     title: "Applied AI",

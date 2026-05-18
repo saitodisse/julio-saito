@@ -91,6 +91,7 @@ export const featuredProjects = [
 export const experiences = [
   {
     company: "Soma Deals",
+    companyLinkedin: "https://br.linkedin.com/company/soma-deals",
     role: "Senior Software Engineer",
     period: "Ago 2025 - o momento",
     location: "São Paulo, Brasil · Remoto",
@@ -104,6 +105,7 @@ export const experiences = [
   },
   {
     company: "Linx Commerce",
+    companyLinkedin: "https://br.linkedin.com/company/linx-commerce",
     role: "Arquiteto de Soluções",
     period: "Dez 2021 - Jun 2024",
     location: "Brasil",
@@ -118,6 +120,7 @@ export const experiences = [
   },
   {
     company: "Semantix",
+    companyLinkedin: "https://www.linkedin.com/company/semantix",
     role: "Desenvolvedor Web",
     period: "Nov 2020 - Dez 2021",
     location: "Brasil",
@@ -144,6 +147,7 @@ export const experiences = [
   },
   {
     company: "Azuki",
+    companyLinkedin: "https://www.linkedin.com/company/azuki-azukiapp-com-/",
     role: "Desenvolvedor",
     period: "Out 2014 - Nov 2016",
     location: "Brasil",
@@ -169,6 +173,7 @@ export const experiences = [
   },
   {
     company: "Grupo SHC",
+    companyLinkedin: "https://www.linkedin.com/company/grupo-shc",
     role: "Desenvolvedor & Instrutor",
     period: "Mar 2006 - Set 2012",
     location: "Brasil",
@@ -182,6 +187,7 @@ export const experiences = [
   },
   {
     company: "everis",
+    companyLinkedin: "https://www.linkedin.com/company/everis-is-nttdata",
     role: "Analista Programador",
     period: "Mai 2005 - Fev 2006",
     location: "Brasil",
