@@ -12,8 +12,11 @@ export const person = {
   languages: ["Português", "Inglês"],
 } as const;
 
-export const professionalSummary =
-  "Engenheiro de software sênior especializado em TypeScript, React, Node.js e cloud, com mais de 20 anos criando produtos úteis, arquiteturas previsíveis e soluções com IA aplicada.";
+export const professionalSummary = `Sou engenheiro de software sênior com mais de 20 anos de experiência criando produtos digitais, arquiteturas previsíveis e soluções técnicas para problemas reais de negócio.
+
+  Meu trabalho vai além da programação: ajudo a entender o problema certo, propor caminhos viáveis, organizar a execução e transformar ideias em sistemas confiáveis. Uso TypeScript, React, Node.js, cloud e agentes de IA para acelerar o desenvolvimento sem abrir mão de testes, qualidade e escalabilidade.
+
+  Tenho forte experiência em orquestrar LLMs de programação, workflows técnicos e times/ferramentas para transformar problemas complexos em entregas claras, sustentáveis e bem documentadas.`;
 
 export const credentials = [
   { label: "Experiência", value: "20+ anos" },
@@ -22,40 +25,68 @@ export const credentials = [
   { label: "Interesse", value: "IA aplicada e open source" },
 ] as const;
 
+export type FeaturedProject = {
+  name: string;
+  description: string;
+  github?: string;
+  site?: string;
+  icon: "leaf" | "music" | "handshake" | "terminal";
+  tags: readonly string[];
+  image?: string;
+  imageAlt?: string;
+  imageFit?: "cover" | "contain";
+  imageBackground?: string;
+};
+
 export const featuredProjects = [
   {
     name: "Grana Clara",
     description:
       "Aplicação offline-first para importar, categorizar e analisar faturas e extratos do Nubank com privacidade local.",
-    href: "https://github.com/saitodisse/grana-clara",
+    github: "https://github.com/saitodisse/grana-clara",
+    site: "https://grana-clara.vercel.app/",
     icon: "leaf",
+    image: "/images/projects/grana-clara.png",
+    imageAlt:
+      "Ilustração de carteira com moedas e gráfico ascendente, representando organização e crescimento financeiro",
     tags: ["React", "Tailwind", "Offline-first"],
   },
   {
     name: "svguitar-react",
     description:
       "Biblioteca React para renderização de diagramas de acordes em SVG, com API enxuta e foco em personalização.",
-    href: "https://github.com/saitodisse/svguitar-react",
+    github: "https://github.com/saitodisse/svguitar-react",
+    site: "https://svguitar-react.vercel.app/",
     icon: "music",
+    image: "/images/projects/svguitar-react.png",
+    imageAlt: "Diagrama de acordes em SVG do svguitar-react",
     tags: ["TypeScript", "React", "SVG"],
   },
   {
     name: "SoM&A Deals",
     description:
       "Plataforma digital de M&A para PMEs, conectando análise, relacionamento comercial e fluxo de negociação.",
-    href: "https://www.somadeals.com/",
+    site: "https://www.somadeals.com/",
     icon: "handshake",
+    image: "/images/projects/soma-deals.webp",
+    imageAlt:
+      "Logo da Soma Deals com símbolo de aperto de mãos e tipografia em verde",
+    imageFit: "contain",
+    imageBackground: "#ffffff",
     tags: ["Next.js", "Cloud", "Produto"],
   },
   {
     name: "achordex",
     description:
       "Aplicação para gerenciar, buscar e visualizar cifras, com organização de repertório e modos de leitura.",
-    href: "https://github.com/saitodisse/achordex",
+    site: "https://achordex.vercel.app/",
     icon: "terminal",
+    image: "/images/projects/achordex.png",
+    imageAlt:
+      "Visual do achordex com cifras, repertório e interface de leitura musical",
     tags: ["Next.js", "Convex", "Busca"],
   },
-] as const;
+] as const satisfies readonly FeaturedProject[];
 
 export const experiences = [
   {
@@ -189,15 +220,36 @@ export const skillGroups = [
   },
   {
     title: "Back-end e dados",
-    items: ["Node.js", "GraphQL", "Hasura", "PostgreSQL", "SQL Server", "Oracle"],
+    items: [
+      "Node.js",
+      "GraphQL",
+      "Hasura",
+      "PostgreSQL",
+      "SQL Server",
+      "Oracle",
+    ],
   },
   {
     title: "Cloud e DevOps",
-    items: ["AWS", "Vercel", "Google Cloud", "Heroku", "Docker", "Kubernetes", "CI/CD"],
+    items: [
+      "AWS",
+      "Vercel",
+      "Google Cloud",
+      "Heroku",
+      "Docker",
+      "Kubernetes",
+      "CI/CD",
+    ],
   },
   {
     title: "Arquitetura e qualidade",
-    items: ["TDD", "Serverless", "DDD/OOP", "Escalabilidade", "Manutenibilidade"],
+    items: [
+      "TDD",
+      "Serverless",
+      "DDD/OOP",
+      "Escalabilidade",
+      "Manutenibilidade",
+    ],
   },
   {
     title: "IA aplicada",

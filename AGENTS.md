@@ -73,7 +73,7 @@ Não duplique listas de experiências, projetos, competências ou contatos diret
 ## Arquivos Públicos
 
 - `public/curriculo.pdf` é o currículo público baixável.
-- Imagens de perfil ficam em `public/`.
+- Imagens de perfil ficam em `public/images/` (artefatos de projeto em `public/images/projects/` quando aplicável).
 - Antes de trocar ou remover arquivos públicos, procure referências nas páginas e no módulo de conteúdo.
 
 ## Documentação

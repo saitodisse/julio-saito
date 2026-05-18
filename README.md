@@ -52,7 +52,10 @@ src/
 
 public/
   curriculo.pdf           PDF público do currículo
-  perfil*.png             Imagens de perfil
+  images/
+    perfil*.png           Imagens de perfil
+    projects/             Screenshots ou arte para projetos em destaque
+  svgs/                   Assets SVG de exemplo (template Next.js)
 
 docs/
   IMPLEMENTATION_PLAN.md
