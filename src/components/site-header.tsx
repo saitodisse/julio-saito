@@ -1,22 +1,26 @@
+"use client";
+
 import Link from "next/link";
 import { Download } from "lucide-react";
 
+import { useLocale } from "@/components/locale-provider";
 import { buttonVariants } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { cn } from "@/lib/utils";
-import { publicName } from "@/resources/site-content";
-
-const navItems = [
-  { label: "Home", href: "/" },
-  { label: "Work", href: "/work" },
-  { label: "Currículo", href: "/curriculo" },
-] as const;
 
 type SiteHeaderProps = {
   activePath: "/" | "/work" | "/curriculo";
 };
 
 export function SiteHeader({ activePath }: SiteHeaderProps) {
+  const { content, ui } = useLocale();
+
+  const navItems = [
+    { label: ui.nav.home, href: "/" as const },
+    { label: ui.nav.work, href: "/work" as const },
+    { label: ui.nav.resume, href: "/curriculo" as const },
+  ];
+
   return (
     <header className="sticky top-0 z-20 border-b border-border/70 bg-background/72 backdrop-blur-xl">
       <div className="mx-auto flex w-full max-w-[1280px] flex-col gap-3 px-4 py-3 sm:px-6 lg:px-12">
@@ -26,7 +30,7 @@ export function SiteHeader({ activePath }: SiteHeaderProps) {
               j
             </span>
             <span className="text-[0.98rem] font-medium tracking-[-0.03em] text-foreground sm:text-[1.05rem]">
-              {publicName}
+              {content.publicName}
             </span>
           </Link>
 
@@ -36,11 +40,11 @@ export function SiteHeader({ activePath }: SiteHeaderProps) {
               href="/curriculo.pdf"
               className={cn(
                 buttonVariants({ variant: "outline", size: "lg" }),
-                "h-10 rounded-full border-border bg-card px-4 text-[0.9rem] font-medium text-foreground/90 shadow-[0_1px_0_rgba(0,0,0,0.02)] transition-transform hover:-translate-y-px hover:bg-muted sm:h-11 sm:px-5 sm:text-[0.95rem]"
+                "h-10 rounded-full border-border bg-card px-4 text-[0.9rem] font-medium text-foreground/90 shadow-[0_1px_0_rgba(0,0,0,0.02)] transition-transform hover:-translate-y-px hover:bg-muted sm:h-11 sm:px-5 sm:text-[0.95rem]",
               )}
             >
               <Download className="mr-2 size-4" />
-              Baixar PDF
+              {ui.nav.downloadPdf}
             </Link>
           </div>
         </div>
@@ -60,7 +64,7 @@ export function SiteHeader({ activePath }: SiteHeaderProps) {
                   "shrink-0 rounded-full border px-4 py-2 text-sm font-medium tracking-[-0.01em] transition-colors",
                   isActive
                     ? "border-primary bg-primary text-primary-foreground"
-                    : "border-border bg-card text-foreground/72 hover:border-primary/40 hover:text-foreground"
+                    : "border-border bg-card text-foreground/72 hover:border-primary/40 hover:text-foreground",
                 )}
               >
                 {item.label}

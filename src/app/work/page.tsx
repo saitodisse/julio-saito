@@ -1,14 +1,19 @@
+"use client";
+
 import Link from "next/link";
 import { ArrowRight, BriefcaseBusiness, CheckCircle2 } from "lucide-react";
 
+import { useLocale } from "@/components/locale-provider";
 import { SiteHeader } from "@/components/site-header";
 import { PageIntro } from "@/components/page-intro";
 import { PageShell } from "@/components/page-shell";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { experiences, professionalSummary } from "@/resources/site-content";
 
 export default function WorkPage() {
+  const { content, ui } = useLocale();
+  const { experiences, professionalSummary } = content;
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       <SiteHeader activePath="/work" />
@@ -17,9 +22,9 @@ export default function WorkPage() {
         <section className="max-w-5xl">
           <PageIntro
             backHref="/"
-            backLabel="Voltar para Home"
-            eyebrow="Work"
-            title="Trajet&oacute;ria profissional"
+            backLabel={ui.work.backLabel}
+            eyebrow={ui.work.eyebrow}
+            title={ui.work.title}
             summary={professionalSummary}
             icon={BriefcaseBusiness}
           />
@@ -63,7 +68,7 @@ export default function WorkPage() {
 
                   {index === 0 || index === 1 ? (
                     <div className="mt-5 inline-flex items-center gap-2 rounded-full border border-border bg-secondary/30 px-3 py-1 text-[0.8rem] font-medium tracking-[-0.01em] text-secondary-foreground">
-                      Destaque principal
+                      {ui.work.highlight}
                     </div>
                   ) : null}
                 </div>
@@ -74,10 +79,10 @@ export default function WorkPage() {
           <div className="mt-10 flex flex-col gap-4 rounded-[24px] border border-border bg-card px-5 py-5 shadow-[0_1px_0_rgba(0,0,0,0.02)] sm:flex-row sm:items-center sm:justify-between sm:px-6 sm:py-6">
             <div>
               <h2 className="text-[1.2rem] font-semibold tracking-[-0.03em] text-foreground">
-                Quer ver o resumo curto?
+                {ui.work.ctaTitle}
               </h2>
               <p className="mt-1 text-[0.98rem] leading-7 tracking-[-0.01em] text-foreground/62">
-                O curr&iacute;culo organiza contato, compet&ecirc;ncias principais e o PDF para download.
+                {ui.work.ctaBody}
               </p>
             </div>
 
@@ -85,10 +90,10 @@ export default function WorkPage() {
               href="/curriculo"
               className={cn(
                 buttonVariants({ size: "lg" }),
-                "h-12 w-full justify-center rounded-xl px-5 text-[0.98rem] font-medium shadow-[0_12px_30px_rgba(175,144,11,0.18)] transition-transform hover:-translate-y-0.5 sm:w-auto"
+                "h-12 w-full justify-center rounded-xl px-5 text-[0.98rem] font-medium shadow-[0_12px_30px_rgba(175,144,11,0.18)] transition-transform hover:-translate-y-0.5 sm:w-auto",
               )}
             >
-              Ver curr&iacute;culo
+              {ui.work.viewResume}
               <ArrowRight className="ml-3 size-5" />
             </Link>
           </div>

@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import {
   Download,
@@ -9,18 +11,12 @@ import {
   Sparkles,
 } from "lucide-react";
 
+import { useLocale } from "@/components/locale-provider";
 import { SiteHeader } from "@/components/site-header";
 import { PageIntro } from "@/components/page-intro";
 import { PageShell } from "@/components/page-shell";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import {
-  contactLinks,
-  education,
-  person,
-  professionalSummary,
-  skillGroups,
-} from "@/resources/site-content";
 
 const contactIcons = {
   mail: Mail,
@@ -30,6 +26,15 @@ const contactIcons = {
 } as const;
 
 export default function CurriculoPage() {
+  const { content, ui } = useLocale();
+  const {
+    contactLinks,
+    education,
+    person,
+    professionalSummary,
+    skillGroups,
+  } = content;
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       <SiteHeader activePath="/curriculo" />
@@ -38,9 +43,9 @@ export default function CurriculoPage() {
         <section className="max-w-5xl">
           <PageIntro
             backHref="/"
-            backLabel="Voltar para Home"
-            eyebrow="Currículo"
-            title="Resumo profissional"
+            backLabel={ui.resume.backLabel}
+            eyebrow={ui.resume.eyebrow}
+            title={ui.resume.title}
             summary={professionalSummary}
             icon={FileText}
           />
@@ -80,11 +85,7 @@ export default function CurriculoPage() {
                 );
               }
 
-              return (
-                <div key={item.label}>
-                  {card}
-                </div>
-              );
+              return <div key={item.label}>{card}</div>;
             })}
           </div>
 
@@ -94,7 +95,7 @@ export default function CurriculoPage() {
                 <Sparkles className="size-5" />
               </span>
               <h2 className="text-[1.45rem] font-semibold tracking-[-0.04em] text-foreground sm:text-[1.75rem]">
-                Compet&ecirc;ncias principais
+                {ui.resume.skillsTitle}
               </h2>
             </div>
 
@@ -125,7 +126,7 @@ export default function CurriculoPage() {
           <div className="mt-10 grid gap-4 lg:grid-cols-[1.1fr_0.9fr]">
             <article className="rounded-[24px] border border-border bg-card px-5 py-5 shadow-[0_1px_0_rgba(0,0,0,0.02)] sm:px-6 sm:py-6">
               <h2 className="text-[1.2rem] font-semibold tracking-[-0.03em] text-foreground">
-                Formação
+                {ui.resume.educationTitle}
               </h2>
               <div className="mt-4 grid gap-4">
                 {education.map((item) => (
@@ -146,7 +147,7 @@ export default function CurriculoPage() {
 
             <article className="rounded-[24px] border border-border bg-card px-5 py-5 shadow-[0_1px_0_rgba(0,0,0,0.02)] sm:px-6 sm:py-6">
               <h2 className="text-[1.2rem] font-semibold tracking-[-0.03em] text-foreground">
-                Idiomas
+                {ui.resume.languagesTitle}
               </h2>
               <div className="mt-4 flex flex-wrap gap-2">
                 {person.languages.map((language) => (
@@ -160,7 +161,7 @@ export default function CurriculoPage() {
               </div>
 
               <p className="mt-5 text-[0.98rem] leading-7 tracking-[-0.01em] text-foreground/62">
-                Esta p&aacute;gina concentra o contato direto e os grupos de compet&ecirc;ncias que costumam interessar primeiro em uma triagem.
+                {ui.resume.languagesNote}
               </p>
             </article>
           </div>
@@ -170,20 +171,20 @@ export default function CurriculoPage() {
               href="/curriculo.pdf"
               className={cn(
                 buttonVariants({ size: "lg" }),
-                "h-14 w-full justify-center rounded-xl px-6 text-[1rem] font-medium shadow-[0_12px_30px_rgba(175,144,11,0.18)] transition-transform hover:-translate-y-0.5 sm:w-auto"
+                "h-14 w-full justify-center rounded-xl px-6 text-[1rem] font-medium shadow-[0_12px_30px_rgba(175,144,11,0.18)] transition-transform hover:-translate-y-0.5 sm:w-auto",
               )}
             >
               <Download className="mr-3 size-5" />
-              Baixar PDF
+              {ui.resume.downloadPdf}
             </a>
             <Link
               href="/work"
               className={cn(
                 buttonVariants({ variant: "outline", size: "lg" }),
-                "h-14 w-full justify-center rounded-xl border-border bg-card px-6 text-[1rem] font-medium text-foreground shadow-[0_1px_0_rgba(0,0,0,0.03)] transition-transform hover:-translate-y-0.5 hover:bg-muted sm:w-auto"
+                "h-14 w-full justify-center rounded-xl border-border bg-card px-6 text-[1rem] font-medium text-foreground shadow-[0_1px_0_rgba(0,0,0,0.03)] transition-transform hover:-translate-y-0.5 hover:bg-muted sm:w-auto",
               )}
             >
-              Ver trajet&oacute;ria completa
+              {ui.resume.viewWork}
             </Link>
           </div>
         </section>

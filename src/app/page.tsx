@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -12,17 +14,12 @@ import {
   Terminal,
 } from "lucide-react";
 
+import { useLocale } from "@/components/locale-provider";
 import { SiteHeader } from "@/components/site-header";
 import { PageShell } from "@/components/page-shell";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import {
-  credentials,
-  featuredProjects,
-  publicName,
-  professionalSummary,
-  type FeaturedProject,
-} from "@/resources/site-content";
+import type { FeaturedProject } from "@/resources/site-content";
 
 const projectIcons = {
   leaf: Leaf,
@@ -42,6 +39,10 @@ const tagTone = [
 ];
 
 export default function Home() {
+  const { content, ui } = useLocale();
+  const { credentials, featuredProjects, professionalSummary, publicName } =
+    content;
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       <SiteHeader activePath="/" />
@@ -55,7 +56,7 @@ export default function Home() {
             </div>
 
             <h1 className="mt-6 max-w-3xl text-balance text-[clamp(3.2rem,10vw,5rem)] font-semibold leading-[0.98] tracking-[-0.06em] text-foreground sm:mt-8 sm:text-[clamp(3.6rem,6.8vw,5.4rem)]">
-              Engenhario de software
+              {ui.home.heroTitle}
             </h1>
 
             <p className="mt-5 max-w-2xl text-pretty text-[1rem] leading-7 tracking-[-0.01em] text-foreground/62 sm:mt-8 sm:text-[1.08rem] sm:leading-8">
@@ -71,7 +72,7 @@ export default function Home() {
                 )}
               >
                 <ArrowRight className="mr-3 size-5" />
-                Ver projetos
+                {ui.home.viewProjects}
               </Link>
               <Link
                 href="/curriculo"
@@ -84,7 +85,7 @@ export default function Home() {
                 )}
               >
                 <BriefcaseBusiness className="mr-3 size-5" />
-                Ver currículo
+                {ui.home.viewResume}
               </Link>
             </div>
 
@@ -111,7 +112,7 @@ export default function Home() {
               <div className="relative aspect-[0.92/1] w-full sm:aspect-[1.02/1] lg:min-h-[420px]">
                 <Image
                   src="/images/perfil2.png"
-                  alt="Retrato de Julio Saito"
+                  alt={ui.home.profileAlt}
                   fill
                   priority
                   sizes="(min-width: 1024px) 560px, 100vw"
@@ -128,7 +129,7 @@ export default function Home() {
             <div className="flex items-center gap-4">
               <div>
                 <h2 className="text-[1.45rem] font-semibold tracking-[-0.04em] text-foreground sm:text-[1.85rem]">
-                  Projetos em destaque
+                  {ui.home.featuredProjects}
                 </h2>
               </div>
             </div>
@@ -243,7 +244,7 @@ export default function Home() {
                           className={projectLinkClassName}
                         >
                           <ExternalLink className="size-4" />
-                          Ver site
+                          {ui.home.viewSite}
                         </a>
                       ) : null}
                     </div>
@@ -262,12 +263,10 @@ export default function Home() {
               </span>
               <div>
                 <h2 className="text-[1.2rem] font-semibold tracking-[-0.03em] text-foreground">
-                  Quer ver a trajet&oacute;ria completa?
+                  {ui.home.ctaTitle}
                 </h2>
                 <p className="mt-1 max-w-2xl text-[0.98rem] leading-7 tracking-[-0.01em] text-foreground/62">
-                  A p&aacute;gina de work concentra o hist&oacute;rico
-                  profissional, e o curr&iacute;culo traz os contatos e o PDF
-                  para download.
+                  {ui.home.ctaBody}
                 </p>
               </div>
             </div>
@@ -283,7 +282,7 @@ export default function Home() {
                   "h-12 w-full justify-center rounded-xl border-border bg-card px-5 text-[0.98rem] font-medium text-foreground shadow-[0_1px_0_rgba(0,0,0,0.03)] transition-transform hover:-translate-y-0.5 hover:bg-muted sm:w-auto",
                 )}
               >
-                Ver work
+                {ui.home.viewWork}
               </Link>
               <Link
                 href="/curriculo"
@@ -292,7 +291,7 @@ export default function Home() {
                   "h-12 w-full justify-center rounded-xl px-5 text-[0.98rem] font-medium shadow-[0_12px_30px_rgba(175,144,11,0.18)] transition-transform hover:-translate-y-0.5 sm:w-auto",
                 )}
               >
-                Ver curr&iacute;culo
+                {ui.home.viewResume}
               </Link>
             </div>
           </div>

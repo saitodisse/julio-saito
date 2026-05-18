@@ -3,7 +3,12 @@
 import type { ReactNode } from "react";
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
 
-type ThemeMode = "light" | "dark" | "system";
+import {
+  readStoredTheme,
+  THEME_STORAGE_KEY,
+  type ThemeMode,
+} from "@/lib/site-preferences";
+
 type ResolvedTheme = "light" | "dark";
 
 type ThemeContextValue = {
@@ -13,8 +18,6 @@ type ThemeContextValue = {
   setTheme: (theme: ThemeMode) => void;
   toggleTheme: () => void;
 };
-
-const THEME_STORAGE_KEY = "theme";
 
 const ThemeContext = createContext<ThemeContextValue | undefined>(undefined);
 
@@ -34,11 +37,11 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
     const frame = window.requestAnimationFrame(() => {
-      const storedTheme = window.localStorage.getItem(THEME_STORAGE_KEY);
+      const storedTheme = readStoredTheme();
 
       setSystemTheme(mediaQuery.matches ? "dark" : "light");
 
-      if (storedTheme === "light" || storedTheme === "dark" || storedTheme === "system") {
+      if (storedTheme) {
         setThemeState(storedTheme);
       }
 
