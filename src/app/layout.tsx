@@ -1,26 +1,26 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "@/components/theme-provider";
+import { publicName } from "@/resources/site-content";
 
-const inter = Inter({
+const geist = Geist({
   variable: "--font-sans",
   subsets: ["latin"],
 });
 
-const jetbrainsMono = JetBrains_Mono({
-  variable: "--font-mono",
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
   subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
-  title: "Julio Saito | Portfolio",
-  description:
-    "Portfólio simples de Julio Saito: produto, engenharia e projetos selecionados.",
+  title: `${publicName} | Engenheiro de Software Sênior`,
+  description: `Portfólio de ${publicName} com trajetória profissional, competências, projetos selecionados e currículo.`,
   metadataBase: new URL("https://julio-saito.vercel.app"),
   openGraph: {
-    title: "Julio Saito | Portfolio",
-    description:
-      "Portfólio simples de Julio Saito: produto, engenharia e projetos selecionados.",
+    title: `${publicName} | Engenheiro de Software Sênior`,
+    description: `Portfólio de ${publicName} com trajetória profissional, competências, projetos selecionados e currículo.`,
     type: "website",
   },
 };
@@ -33,9 +33,12 @@ export default function RootLayout({
   return (
     <html
       lang="pt-BR"
-      className={`${inter.variable} ${jetbrainsMono.variable} h-full antialiased`}
+      suppressHydrationWarning
+      className={`${geist.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full bg-background text-foreground">{children}</body>
+      <body className="min-h-full bg-background text-foreground">
+        <ThemeProvider>{children}</ThemeProvider>
+      </body>
     </html>
   );
 }
