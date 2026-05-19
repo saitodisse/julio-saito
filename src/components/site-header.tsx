@@ -25,14 +25,11 @@ export function SiteHeader({ activePath }: SiteHeaderProps) {
     <header className="sticky top-0 z-20 border-b border-border/70 bg-background/72 backdrop-blur-xl">
       <div className="mx-auto flex w-full max-w-[1280px] flex-col gap-3 px-4 py-3 sm:px-6 lg:px-12">
         <div className="flex items-center justify-between gap-3">
-          <Link href="/" className="flex items-center gap-3">
-            <span className="flex h-9 w-9 items-center justify-center rounded-full border border-border bg-primary text-[1.45rem] font-semibold tracking-[-0.08em] text-primary-foreground shadow-[0_1px_0_rgba(0,0,0,0.03)] sm:h-10 sm:w-10 sm:text-[1.65rem]">
-              j
-            </span>
-            <span className="text-[0.98rem] font-medium tracking-[-0.03em] text-foreground sm:text-[1.05rem]">
-              {content.publicName}
-            </span>
-          </Link>
+           <Link href="/" className="flex items-center">
+             <span className="text-[0.98rem] font-medium tracking-[-0.03em] text-foreground sm:text-[1.05rem]">
+               {content.publicName}
+             </span>
+           </Link>
 
           <div className="flex items-center gap-2">
             <ThemeToggle />

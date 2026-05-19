@@ -29,7 +29,7 @@ Há alterações não commitadas no repositório atual. Este plano considera ess
 - Papel profissional:
   - PT-BR: Engenheiro de Software Sênior & Arquiteto de Soluções.
   - EN: Senior Software Engineer & Solutions Architect.
-- Localização: São Bernardo do Campo, São Paulo, Brasil.
+- Localização: Ubatuba, São Paulo, Brasil.
 - Idiomas: Português e Inglês.
 - E-mail: `saitodisse@gmail.com`.
 - Telefone: `+55 11 96569-7834`.

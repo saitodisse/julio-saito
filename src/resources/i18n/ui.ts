@@ -16,8 +16,8 @@ const ui = {
       confirm: "Salvar preferências",
     },
     nav: {
-      home: "Home",
-      work: "Work",
+      home: "Início",
+      work: "Trabalhos",
       resume: "Currículo",
       downloadPdf: "Baixar PDF",
       toggleTheme: "Alternar tema",
@@ -43,6 +43,8 @@ const ui = {
       backLabel: "Voltar para Home",
       eyebrow: "Work",
       title: "Trajetória profissional",
+      summary:
+        "Trajetória profissional em ordem cronológica, com contexto de cada empresa, responsabilidades e principais entregas técnicas.",
       highlight: "Destaque principal",
       ctaTitle: "Quer ver o resumo curto?",
       ctaBody:
@@ -53,6 +55,8 @@ const ui = {
       backLabel: "Voltar para Home",
       eyebrow: "Currículo",
       title: "Resumo profissional",
+      summary:
+        "Resumo executivo do meu perfil, contatos, competências centrais, formação e acesso ao currículo em PDF para compartilhamento rápido.",
       skillsTitle: "Competências principais",
       educationTitle: "Formação",
       languagesTitle: "Idiomas",
@@ -104,6 +108,8 @@ const ui = {
       backLabel: "Back to Home",
       eyebrow: "Work",
       title: "Professional journey",
+      summary:
+        "Professional journey in chronological order, including context for each company, responsibilities, and key technical deliveries.",
       highlight: "Main highlight",
       ctaTitle: "Want the short summary?",
       ctaBody:
@@ -114,6 +120,8 @@ const ui = {
       backLabel: "Back to Home",
       eyebrow: "Resume",
       title: "Professional summary",
+      summary:
+        "Executive summary of my profile, contact details, core skills, education, and quick access to the resume PDF for sharing.",
       skillsTitle: "Core skills",
       educationTitle: "Education",
       languagesTitle: "Languages",

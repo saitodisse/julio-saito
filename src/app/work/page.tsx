@@ -13,7 +13,7 @@ import { cn } from "@/lib/utils";
 
 export default function WorkPage() {
   const { content, ui } = useLocale();
-  const { experiences, professionalSummary } = content;
+  const { experiences } = content;
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -26,7 +26,7 @@ export default function WorkPage() {
             backLabel={ui.work.backLabel}
             eyebrow={ui.work.eyebrow}
             title={ui.work.title}
-            summary={professionalSummary}
+            summary={ui.work.summary}
             icon={BriefcaseBusiness}
           />
 

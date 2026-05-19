@@ -28,8 +28,7 @@ const contactIcons = {
 
 export default function CurriculoPage() {
   const { content, ui } = useLocale();
-  const { contactLinks, education, person, professionalSummary, skillGroups } =
-    content;
+  const { contactLinks, education, person, skillGroups } = content;
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -42,7 +41,7 @@ export default function CurriculoPage() {
             backLabel={ui.resume.backLabel}
             eyebrow={ui.resume.eyebrow}
             title={ui.resume.title}
-            summary={professionalSummary}
+            summary={ui.resume.summary}
             icon={FileText}
           />
 

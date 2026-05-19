@@ -1,12 +1,13 @@
+import { skillGroups as sharedSkillGroups } from "@/resources/skill-groups";
+
 export const publicName = "Julio Saito";
 
 export const person = {
   fullName: "Julio Makdisse Saito",
   firstName: "Julio",
   role: "Senior Software Engineer & Solutions Architect",
-  location: "São Bernardo do Campo, São Paulo, Brazil",
+  location: "Ubatuba, São Paulo, Brazil",
   email: "saitodisse@gmail.com",
-  phone: "+55 11 96569-7834",
   github: "https://github.com/saitodisse",
   linkedin: "https://www.linkedin.com/in/julio-makdisse-saito-868707a",
   languages: ["Portuguese", "English"],
@@ -218,43 +219,7 @@ export const education = [
   },
 ] as const;
 
-export const skillGroups = [
-  {
-    title: "Front-end",
-    items: ["TypeScript", "JavaScript", "React", "Next.js", "Tailwind CSS"],
-  },
-  {
-    title: "Back-end and data",
-    items: [
-      "Node.js",
-      "GraphQL",
-      "Hasura",
-      "PostgreSQL",
-      "SQL Server",
-      "Oracle",
-    ],
-  },
-  {
-    title: "Cloud and DevOps",
-    items: [
-      "AWS",
-      "Vercel",
-      "Google Cloud",
-      "Heroku",
-      "Docker",
-      "Kubernetes",
-      "CI/CD",
-    ],
-  },
-  {
-    title: "Architecture and quality",
-    items: ["TDD", "Serverless", "DDD/OOP", "Scalability", "Maintainability"],
-  },
-  {
-    title: "Applied AI",
-    items: ["Strategic AI", "RAG", "automation", "problem solving"],
-  },
-] as const;
+export const skillGroups = sharedSkillGroups;
 
 export const contactLinks = [
   {

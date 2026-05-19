@@ -1,12 +1,13 @@
+import { skillGroups as sharedSkillGroups } from "@/resources/skill-groups";
+
 export const publicName = "Julio Saito";
 
 export const person = {
   fullName: "Julio Makdisse Saito",
   firstName: "Julio",
   role: "Engenheiro de Software Sênior & Arquiteto de Soluções",
-  location: "São Bernardo do Campo, São Paulo, Brasil",
+  location: "Ubatuba, São Paulo, Brasil",
   email: "saitodisse@gmail.com",
-  phone: "+55 11 96569-7834",
   github: "https://github.com/saitodisse",
   linkedin: "https://www.linkedin.com/in/julio-makdisse-saito-868707a",
   languages: ["Português", "Inglês"],
@@ -92,8 +93,8 @@ export const experiences = [
   {
     company: "Soma Deals",
     companyLinkedin: "https://br.linkedin.com/company/soma-deals",
-    role: "Senior Software Engineer",
-    period: "Ago 2025 - o momento",
+    role: "Engenheiro de Software Sênior",
+    period: "Ago 2025 - Presente",
     location: "São Paulo, Brasil · Remoto",
     summary:
       "Atuação no desenvolvimento de uma plataforma digital de M&A para PMEs, cobrindo front-end, backend e infraestrutura em AWS.",
@@ -219,49 +220,7 @@ export const education = [
   },
 ] as const;
 
-export const skillGroups = [
-  {
-    title: "Front-end",
-    items: ["TypeScript", "JavaScript", "React", "Next.js", "Tailwind CSS"],
-  },
-  {
-    title: "Back-end e dados",
-    items: [
-      "Node.js",
-      "GraphQL",
-      "Hasura",
-      "PostgreSQL",
-      "SQL Server",
-      "Oracle",
-    ],
-  },
-  {
-    title: "Cloud e DevOps",
-    items: [
-      "AWS",
-      "Vercel",
-      "Google Cloud",
-      "Heroku",
-      "Docker",
-      "Kubernetes",
-      "CI/CD",
-    ],
-  },
-  {
-    title: "Arquitetura e qualidade",
-    items: [
-      "TDD",
-      "Serverless",
-      "DDD/OOP",
-      "Escalabilidade",
-      "Manutenibilidade",
-    ],
-  },
-  {
-    title: "IA aplicada",
-    items: ["IA estratégica", "RAG", "automação", "resolução de problemas"],
-  },
-] as const;
+export const skillGroups = sharedSkillGroups;
 
 export const contactLinks = [
   {

@@ -12,7 +12,7 @@ Este plano complementa `docs/IMPLEMENTATION_PLAN.md` e deve orientar uma impleme
 - LinkedIn canônico: `https://www.linkedin.com/in/julio-saito-868707a/`.
 - E-mail: `saitodisse@gmail.com`.
 - Telefone: `+5511 96569-7834`.
-- Localização de contato: São Bernardo do Campo, São Paulo, Brasil.
+- Localização de contato: Ubatuba, São Paulo, Brasil.
 - Localização profissional atual informada no resumo: Ubatuba, São Paulo, Brasil.
 
 ## Correções em Relação ao Plano Anterior
@@ -122,7 +122,7 @@ export const person = {
   title: "Senior Software Engineer",
   email: "saitodisse@gmail.com",
   phone: "+5511 96569-7834",
-  contactLocation: "São Bernardo do Campo, São Paulo, Brasil",
+  contactLocation: "Ubatuba, São Paulo, Brasil",
   currentLocation: "Ubatuba, São Paulo, Brasil",
   linkedin: "https://www.linkedin.com/in/julio-saito-868707a/",
   github: "https://github.com/saitodisse",
@@ -408,7 +408,7 @@ Checar manualmente:
 - LinkedIn usa exatamente `https://www.linkedin.com/in/julio-saito-868707a/`.
 - `/curriculo.pdf` abre o PDF correto.
 - Telefone está formatado de forma consistente.
-- Localização não conflita entre São Bernardo do Campo e Ubatuba.
+- Localização não conflita entre Ubatuba e Ubatuba.
 - Datas e "Present" fazem sentido para o momento da publicação.
 - Links de projetos abrem corretamente.
 - Descrições de projetos não prometem mais do que o projeto entrega.

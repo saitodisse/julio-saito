@@ -41,7 +41,7 @@ export function PageIntro({
           <p className="text-[0.78rem] font-medium uppercase tracking-[0.2em] text-foreground/45 sm:text-sm">
             {eyebrow}
           </p>
-          <h1 className="mt-2 text-[clamp(2.2rem,9vw,4.5rem)] font-semibold leading-[0.95] tracking-[-0.07em] text-foreground">
+          <h1 className="mt-2 text-[clamp(2.2rem,9vw,4.5rem)] font-semibold leading-[0.95] tracking-[-0.04em] text-foreground">
             {title}
           </h1>
         </div>

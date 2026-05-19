@@ -44,12 +44,7 @@ export default function Home() {
       <PageShell className="pt-8 sm:pt-10 lg:pt-12">
         <section className="grid items-center gap-10 pb-14 lg:grid-cols-[1.04fr_0.96fr] lg:gap-20 lg:pb-24">
           <div className="max-w-2xl">
-            <div className="inline-flex items-center rounded-full border border-border bg-card px-3.5 py-2 text-sm text-foreground/70 shadow-[0_1px_0_rgba(0,0,0,0.03)] sm:px-4">
-              <Sparkles className="mr-2 size-4" />
-              {publicName}
-            </div>
-
-            <h1 className="mt-6 max-w-3xl text-balance text-[clamp(3.2rem,10vw,5rem)] font-semibold leading-[0.98] tracking-[-0.06em] text-foreground sm:mt-8 sm:text-[clamp(3.6rem,6.8vw,5.4rem)]">
+            <h1 className="mt-3 max-w-3xl text-balance text-[clamp(3.2rem,10vw,5rem)] font-semibold leading-[0.98] tracking-[-0.06em] text-foreground sm:mt-4 sm:text-[clamp(3.6rem,6.8vw,5.4rem)]">
               {ui.home.heroTitle}
             </h1>
 
