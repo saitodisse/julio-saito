@@ -15,8 +15,8 @@ import { useLocale } from "@/components/locale-provider";
 import { SiteHeader } from "@/components/site-header";
 import { PageIntro } from "@/components/page-intro";
 import { PageShell } from "@/components/page-shell";
+import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
-import { skillTagTone } from "@/lib/tag-tones";
 import { cn } from "@/lib/utils";
 
 const contactIcons = {
@@ -25,6 +25,26 @@ const contactIcons = {
   github: GitBranch,
   map: MapPin,
 } as const;
+
+const featuredSkills = new Set([
+  "TypeScript",
+  "React",
+  "Next.js",
+  "Node.js",
+  "PostgreSQL",
+  "System Design",
+  "Spec-Driven Development",
+  "LLM Orchestration",
+  "AI Coding Agents",
+]);
+
+const mutedSkills = new Set([
+  "Progressive Web Apps",
+  "Technical Documentation",
+  "Technical Specifications",
+  "AGENTS.md",
+  "Sub-agents",
+]);
 
 export default function CurriculoPage() {
   const { content, ui } = useLocale();
@@ -45,6 +65,28 @@ export default function CurriculoPage() {
             icon={FileText}
           />
 
+          <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:gap-4">
+            <a
+              href="/curriculo.pdf"
+              className={cn(
+                buttonVariants({ size: "lg" }),
+                "h-14 w-full justify-center rounded-xl px-6 text-[1rem] font-medium shadow-[0_12px_30px_rgba(175,144,11,0.18)] transition-transform hover:-translate-y-0.5 sm:w-auto",
+              )}
+            >
+              <Download className="mr-3 size-5" />
+              {ui.resume.downloadPdf}
+            </a>
+            <Link
+              href="/work"
+              className={cn(
+                buttonVariants({ variant: "outline", size: "lg" }),
+                "h-14 w-full justify-center rounded-xl border-border bg-card px-6 text-[1rem] font-medium text-foreground shadow-[0_1px_0_rgba(0,0,0,0.03)] transition-transform hover:-translate-y-0.5 hover:bg-muted sm:w-auto",
+              )}
+            >
+              {ui.resume.viewWork}
+            </Link>
+          </div>
+
           <div className="mt-8 grid gap-4 sm:mt-10 sm:grid-cols-2 xl:grid-cols-4">
             {contactLinks.map((item) => {
               const Icon = contactIcons[item.icon];
@@ -54,11 +96,11 @@ export default function CurriculoPage() {
                     <span className="flex size-11 items-center justify-center rounded-xl border border-border bg-primary/15 text-primary">
                       <Icon className="size-5" />
                     </span>
-                    <div>
+                    <div className="min-w-0">
                       <p className="text-[0.78rem] font-medium uppercase tracking-[0.18em] text-foreground/42">
                         {item.label}
                       </p>
-                      <p className="mt-1 text-[0.98rem] font-medium tracking-[-0.02em] text-foreground">
+                      <p className="mt-1 break-words text-[0.98rem] font-medium tracking-[-0.02em] text-foreground">
                         {item.value}
                       </p>
                     </div>
@@ -97,7 +139,7 @@ export default function CurriculoPage() {
             </div>
 
             <div className="grid gap-4 lg:grid-cols-2">
-              {skillGroups.map((group, groupIndex) => (
+              {skillGroups.map((group) => (
                 <article
                   key={group.title}
                   className="rounded-[20px] border border-border bg-card px-4 py-4 shadow-[0_1px_0_rgba(0,0,0,0.02)] sm:px-5 sm:py-5"
@@ -106,18 +148,20 @@ export default function CurriculoPage() {
                     {group.title}
                   </h3>
                   <div className="mt-4 flex flex-wrap gap-2">
-                    {group.items.map((item, itemIndex) => (
-                      <span
+                    {group.items.map((item) => (
+                      <Badge
                         key={item}
-                        className={cn(
-                          "rounded-full border px-3 py-1 text-[0.9rem] font-medium tracking-[-0.01em]",
-                          skillTagTone[
-                            (groupIndex + itemIndex) % skillTagTone.length
-                          ],
-                        )}
+                        variant={
+                          featuredSkills.has(item)
+                            ? "featured"
+                            : mutedSkills.has(item)
+                              ? "muted"
+                              : "secondary"
+                        }
+                        className="px-3 py-1.5 text-[0.82rem] font-medium"
                       >
                         {item}
-                      </span>
+                      </Badge>
                     ))}
                   </div>
                 </article>
@@ -151,17 +195,19 @@ export default function CurriculoPage() {
               <h2 className="text-[1.2rem] font-semibold tracking-[-0.03em] text-foreground">
                 {ui.resume.languagesTitle}
               </h2>
-              <div className="mt-4 flex flex-wrap gap-2">
-                {person.languages.map((language, index) => (
-                  <span
-                    key={language}
-                    className={cn(
-                      "rounded-full border px-3 py-1 text-[0.9rem] font-medium tracking-[-0.01em]",
-                      skillTagTone[index % skillTagTone.length],
-                    )}
+              <div className="mt-4 grid gap-3">
+                {person.languages.map((language) => (
+                  <div
+                    key={language.name}
+                    className="rounded-[18px] border border-border bg-muted px-4 py-3"
                   >
-                    {language}
-                  </span>
+                    <p className="text-[0.98rem] font-medium tracking-[-0.02em] text-foreground">
+                      {language.name}
+                    </p>
+                    <p className="mt-1 text-[0.92rem] leading-6 text-foreground/68">
+                      {language.level}
+                    </p>
+                  </div>
                 ))}
               </div>
 
@@ -171,27 +217,6 @@ export default function CurriculoPage() {
             </article>
           </div>
 
-          <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:gap-4">
-            <a
-              href="/curriculo.pdf"
-              className={cn(
-                buttonVariants({ size: "lg" }),
-                "h-14 w-full justify-center rounded-xl px-6 text-[1rem] font-medium shadow-[0_12px_30px_rgba(175,144,11,0.18)] transition-transform hover:-translate-y-0.5 sm:w-auto",
-              )}
-            >
-              <Download className="mr-3 size-5" />
-              {ui.resume.downloadPdf}
-            </a>
-            <Link
-              href="/work"
-              className={cn(
-                buttonVariants({ variant: "outline", size: "lg" }),
-                "h-14 w-full justify-center rounded-xl border-border bg-card px-6 text-[1rem] font-medium text-foreground shadow-[0_1px_0_rgba(0,0,0,0.03)] transition-transform hover:-translate-y-0.5 hover:bg-muted sm:w-auto",
-              )}
-            >
-              {ui.resume.viewWork}
-            </Link>
-          </div>
         </section>
       </PageShell>
     </div>

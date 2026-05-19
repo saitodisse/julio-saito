@@ -10,7 +10,10 @@ export const person = {
   email: "saitodisse@gmail.com",
   github: "https://github.com/saitodisse",
   linkedin: "https://www.linkedin.com/in/julio-makdisse-saito-868707a",
-  languages: ["Português", "Inglês"],
+  languages: [
+    { name: "Português", level: "Nativo" },
+    { name: "Inglês", level: "Proficiência profissional de trabalho" },
+  ],
 } as const;
 
 export const professionalSummary = `Sou engenheiro de software sênior com mais de 20 anos de experiência criando produtos digitais, arquiteturas previsíveis e soluções técnicas para problemas reais de negócio.
@@ -215,8 +218,8 @@ export const experiences = [
 
 export const education = [
   {
-    name: "FATEC-SP - Faculdade de Tecnologia de São Paulo",
-    description: "Tecnólogo em Tecnologia da Informação, 2001-2006",
+    name: "FATEC-SP — Faculdade de Tecnologia de São Paulo",
+    description: "Tecnólogo em Tecnologia da Informação, 2001–2006",
   },
 ] as const;
 
@@ -231,7 +234,7 @@ export const contactLinks = [
   },
   {
     label: "LinkedIn",
-    value: "julio-makdisse-saito-868707a",
+    value: "linkedin.com/in/julio-saito",
     href: person.linkedin,
     icon: "linkedin",
   },

@@ -54,14 +54,14 @@ const ui = {
     resume: {
       backLabel: "Voltar para Home",
       eyebrow: "Currículo",
-      title: "Resumo profissional",
+      title: "Engenheiro de Software Sênior",
       summary:
-        "Resumo executivo do meu perfil, contatos, competências centrais, formação e acesso ao currículo em PDF para compartilhamento rápido.",
+        "Engenheiro de software orientado a produto, com 20+ anos de experiência construindo produtos web escaláveis, desenhando arquiteturas confiáveis e orquestrando workflows de desenvolvimento assistido por IA com práticas fortes de testes e documentação.",
       skillsTitle: "Competências principais",
       educationTitle: "Formação",
       languagesTitle: "Idiomas",
       languagesNote:
-        "Esta página concentra o contato direto e os grupos de competências que costumam interessar primeiro em uma triagem.",
+        "Esta página concentra contato direto, competências centrais e informações essenciais para uma primeira triagem profissional.",
       downloadPdf: "Baixar PDF",
       viewWork: "Ver trajetória completa",
     },
@@ -119,16 +119,16 @@ const ui = {
     resume: {
       backLabel: "Back to Home",
       eyebrow: "Resume",
-      title: "Professional summary",
+      title: "Senior Software Engineer",
       summary:
-        "Executive summary of my profile, contact details, core skills, education, and quick access to the resume PDF for sharing.",
+        "Product-focused software engineer with 20+ years of experience building scalable web products, designing reliable architectures, and orchestrating AI-assisted development workflows with strong testing and documentation practices.",
       skillsTitle: "Core skills",
       educationTitle: "Education",
       languagesTitle: "Languages",
       languagesNote:
-        "This page focuses on direct contact details and skill groups that usually matter first in a screening.",
+        "This page focuses on direct contact, core skills, and essential details for a first professional screening.",
       downloadPdf: "Download PDF",
-      viewWork: "View full journey",
+      viewWork: "View Work History",
     },
   },
 } as const;

@@ -13,7 +13,7 @@ export const skillGroups = [
     ],
   },
   {
-    title: "Back-end Engineering",
+    title: "Backend Engineering",
     items: [
       "Node.js",
       "REST APIs",
