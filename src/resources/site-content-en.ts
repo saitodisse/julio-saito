@@ -65,6 +65,26 @@ export const featuredProjects = [
 		],
 	},
 	{
+		name: "matter-js-experiments",
+		description:
+			"Physics game and simulation built with Matter.js, with a TypeScript typing layer for the engine and one of my first experiences with AI and coding agents.",
+		github: "https://github.com/saitodisse/matter-js-experiments",
+		site: "https://saitodisse.github.io/matter-js-experiments/",
+		icon: "terminal",
+		image: "/images/projects/matter-js-experiments.png",
+		imageAlt:
+			"Matter.js Experiments logo with yellow typography on a dark blue background",
+		imageFit: "contain",
+		imageBackground: "#060a19",
+		tags: [
+			"Open Source",
+			"Game",
+			"Physics",
+			"Matter.js",
+			"TypeScript",
+		],
+	},
+	{
 		name: "svguitar-react",
 		description:
 			"React library for rendering chord diagrams in SVG, with a lean API and a focus on customization.",
