@@ -50,7 +50,7 @@ export function PageIntro({
       <p
         className={cn(
           "mt-6 max-w-3xl text-[1rem] leading-7 tracking-[-0.01em] text-foreground/62 sm:text-[1.08rem] sm:leading-8",
-          summaryClassName
+          summaryClassName,
         )}
       >
         {summary}

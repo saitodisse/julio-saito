@@ -374,4 +374,3 @@ Next.js production build completes successfully.
 1. Spec coverage: the plan covers the requested font swap, hero scale reduction, extra breathing room, premium photo frame, softer gold palette, quieter secondary cards, more consistent project cards, stronger CTA hierarchy, frosted header, and name consistency.
 2. Placeholder scan: no `TBD`, `TODO`, or "write tests" placeholders are used. Every code-changing task includes the target snippet or exact class shape.
 3. Type consistency: the plan keeps the existing file boundaries and does not introduce new helpers or undefined names. The only content rename is the public-facing short name `Julio Saito`, which is reflected consistently in the hero and header.
-

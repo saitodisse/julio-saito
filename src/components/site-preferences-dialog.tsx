@@ -25,24 +25,32 @@ import { getUi } from "@/resources/i18n/ui";
 
 export function SitePreferencesDialog() {
   const { mounted: themeMounted, setTheme } = useTheme();
-  const { mounted: localeMounted, setLocale } = useLocale();
+  const { locale, mounted: localeMounted, setLocale } = useLocale();
   const [completed, setCompleted] = useState(false);
   const [draftTheme, setDraftTheme] = useState<ThemeMode>("system");
-  const [draftLocale, setDraftLocale] = useState<Locale>("pt");
+  const [draftLocale, setDraftLocale] = useState<Locale | null>(null);
 
   const ready = themeMounted && localeMounted;
   const open = ready && !completed && !hasConfiguredPreferences();
-  const copy = getUi(draftLocale).preferences;
+  const selectedLocale = draftLocale ?? locale;
+  const copy = getUi(selectedLocale).preferences;
 
   function handleConfirm() {
-    saveSitePreferences({ theme: draftTheme, locale: draftLocale });
+    saveSitePreferences({ theme: draftTheme, locale: selectedLocale });
     setTheme(draftTheme);
-    setLocale(draftLocale);
+    setLocale(selectedLocale);
     setCompleted(true);
   }
 
   return (
-    <Dialog open={open} onOpenChange={() => undefined}>
+    <Dialog
+      open={open}
+      onOpenChange={(nextOpen) => {
+        if (!nextOpen) {
+          handleConfirm();
+        }
+      }}
+    >
       <DialogContent showCloseButton={false} className="sm:max-w-md">
         <DialogHeader>
           <DialogTitle>{copy.title}</DialogTitle>
@@ -78,7 +86,7 @@ export function SitePreferencesDialog() {
           <div className="grid gap-3">
             <Label>{copy.languageLabel}</Label>
             <RadioGroup
-              value={draftLocale}
+              value={selectedLocale}
               onValueChange={(value) => setDraftLocale(value as Locale)}
               className="gap-2"
             >

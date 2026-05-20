@@ -11,6 +11,7 @@ Este repositório concentra a presença pública de Julio Saito na web. A propos
 O conteúdo principal cobre:
 
 - apresentação profissional em PT-BR;
+- idioma inicial ajustado ao idioma do navegador na primeira visita;
 - projetos selecionados;
 - histórico de trabalho em formato de linha do tempo;
 - competências técnicas agrupadas por área;
@@ -28,6 +29,8 @@ O conteúdo principal cobre:
 - **next-themes** para alternância de tema.
 - **Prettier** com `semi: true` e `useTabs: true` para padronização de formato.
 - **pnpm** como gerenciador de pacotes.
+
+As preferências de tema e idioma são persistidas no `localStorage` do navegador.
 
 ## Estrutura do Projeto
 

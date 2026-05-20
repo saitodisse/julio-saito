@@ -8,6 +8,8 @@ Este repositório contém o site pessoal de Julio Makdisse Saito.
 
 O produto é um portfólio profissional em PT-BR construído com Next.js, React, TypeScript, Tailwind CSS e shadcn/ui. O site deve permanecer direto, rápido, legível e fácil de atualizar.
 
+Na primeira visita, o idioma inicial deve seguir a preferência do navegador. Depois disso, as escolhas de tema e idioma ficam salvas no `localStorage`.
+
 Rotas principais:
 
 - `/`: home com apresentação, credenciais e projetos em destaque.

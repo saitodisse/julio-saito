@@ -33,6 +33,17 @@ export function readStoredLocale(): Locale | null {
   return null;
 }
 
+export function detectBrowserLocale(): Locale {
+  if (typeof window === "undefined") {
+    return "pt";
+  }
+
+  const browserLocale =
+    window.navigator.languages?.[0] ?? window.navigator.language;
+
+  return browserLocale?.toLowerCase() === "pt-br" ? "pt" : "en";
+}
+
 export function hasConfiguredPreferences(): boolean {
   if (typeof window === "undefined") {
     return false;
@@ -49,6 +60,11 @@ export function saveSitePreferences({
   locale: Locale;
 }) {
   window.localStorage.setItem(THEME_STORAGE_KEY, theme);
+  window.localStorage.setItem(LOCALE_STORAGE_KEY, locale);
+  window.localStorage.setItem(PREFERENCES_CONFIGURED_KEY, "true");
+}
+
+export function saveLocalePreference(locale: Locale) {
   window.localStorage.setItem(LOCALE_STORAGE_KEY, locale);
   window.localStorage.setItem(PREFERENCES_CONFIGURED_KEY, "true");
 }

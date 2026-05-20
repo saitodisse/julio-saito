@@ -5,6 +5,7 @@ import { createContext, useContext, useEffect, useMemo, useState } from "react";
 
 import {
   LOCALE_STORAGE_KEY,
+  detectBrowserLocale,
   type Locale,
   readStoredLocale,
 } from "@/lib/site-preferences";
@@ -29,9 +30,7 @@ export function LocaleProvider({ children }: { children: ReactNode }) {
     const frame = window.requestAnimationFrame(() => {
       const storedLocale = readStoredLocale();
 
-      if (storedLocale) {
-        setLocaleState(storedLocale);
-      }
+      setLocaleState(storedLocale ?? detectBrowserLocale());
 
       setMounted(true);
     });

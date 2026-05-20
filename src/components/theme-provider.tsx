@@ -21,7 +21,10 @@ type ThemeContextValue = {
 
 const ThemeContext = createContext<ThemeContextValue | undefined>(undefined);
 
-function resolveTheme(theme: ThemeMode, systemTheme: ResolvedTheme): ResolvedTheme {
+function resolveTheme(
+  theme: ThemeMode,
+  systemTheme: ResolvedTheme,
+): ResolvedTheme {
   return theme === "system" ? systemTheme : theme;
 }
 
@@ -31,7 +34,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   const [mounted, setMounted] = useState(false);
   const resolvedTheme = useMemo(
     () => resolveTheme(theme, systemTheme),
-    [systemTheme, theme]
+    [systemTheme, theme],
   );
 
   useEffect(() => {
@@ -65,8 +68,13 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
 
     root.classList.toggle("dark", resolvedTheme === "dark");
     root.style.colorScheme = resolvedTheme;
+
+    if (!mounted) {
+      return;
+    }
+
     window.localStorage.setItem(THEME_STORAGE_KEY, theme);
-  }, [resolvedTheme, theme]);
+  }, [mounted, resolvedTheme, theme]);
 
   const value = useMemo<ThemeContextValue>(
     () => ({
@@ -78,10 +86,12 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
         setThemeState(resolvedTheme === "dark" ? "light" : "dark");
       },
     }),
-    [mounted, resolvedTheme, theme]
+    [mounted, resolvedTheme, theme],
   );
 
-  return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;
+  return (
+    <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
+  );
 }
 
 export function useTheme() {

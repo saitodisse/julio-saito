@@ -23,9 +23,13 @@ const ui = {
       toggleTheme: "Alternar tema",
     },
     footer: {
+      projectRepository: "Código no GitHub",
       resetPreferences: "Redefinir preferências",
       resetPreferencesLabel:
         "Limpar preferências salvas e abrir novamente a escolha de tema e idioma",
+      languageSwitchLabel: "Trocar idioma do site",
+      switchToPortuguese: "Trocar para português",
+      switchToEnglish: "Trocar para inglês",
     },
     home: {
       heroTitle: "Engenheiro de software",
@@ -88,9 +92,13 @@ const ui = {
       toggleTheme: "Toggle theme",
     },
     footer: {
+      projectRepository: "Source on GitHub",
       resetPreferences: "Reset preferences",
       resetPreferencesLabel:
         "Clear saved preferences and open theme and language selection again",
+      languageSwitchLabel: "Change site language",
+      switchToPortuguese: "Switch to Portuguese",
+      switchToEnglish: "Switch to English",
     },
     home: {
       heroTitle: "Software engineer",
