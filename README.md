@@ -26,6 +26,7 @@ O conteúdo principal cobre:
 - **shadcn/ui** e utilitários de composição de classes.
 - **lucide-react** para ícones.
 - **next-themes** para alternância de tema.
+- **Prettier** com `semi: true` e `useTabs: true` para padronização de formato.
 - **pnpm** como gerenciador de pacotes.
 
 ## Estrutura do Projeto
@@ -107,6 +108,7 @@ pnpm build
 pnpm start
 pnpm lint
 pnpm check-types
+pnpm format
 ```
 
 - `pnpm dev`: inicia o ambiente local.
@@ -114,6 +116,7 @@ pnpm check-types
 - `pnpm start`: serve a build gerada.
 - `pnpm lint`: executa ESLint.
 - `pnpm check-types`: executa `tsc --noEmit`.
+- `pnpm format`: executa Prettier com a configuração do repositório.
 
 ## Validação Recomendada
 
@@ -122,10 +125,11 @@ Antes de publicar ou abrir um pull request, rode:
 ```bash
 pnpm check-types
 pnpm lint
+pnpm format
 pnpm build
 ```
 
-Para mudanças pequenas de texto, `pnpm check-types` e `pnpm lint` normalmente são suficientes. Para alterações em rotas, metadados, imagens ou configuração do Next.js, rode também `pnpm build`.
+Para mudanças pequenas de texto, `pnpm check-types`, `pnpm lint` e `pnpm format` normalmente são suficientes. Para alterações em rotas, metadados, imagens ou configuração do Next.js, rode também `pnpm build`.
 
 ## Estilo de Implementação
 

@@ -21,6 +21,7 @@ Rotas principais:
 - Faça alterações pequenas, revisáveis e alinhadas ao estilo visual existente.
 - Evite transformar o projeto em landing page genérica de produto.
 - Não invente experiências, empresas, datas, credenciais ou links.
+- Sempre responda em pt-br com acentuação e gramáticas corretas.
 
 ## Stack e Convenções
 
@@ -31,6 +32,7 @@ Rotas principais:
 - shadcn/ui para padrões de componentes.
 - lucide-react para ícones.
 - pnpm para scripts e dependências.
+- Prettier com `semi: true` e `useTabs: true` para manter o formato consistente.
 
 Prefira:
 
@@ -98,6 +100,7 @@ Comandos comuns:
 ```bash
 pnpm check-types
 pnpm lint
+pnpm format
 pnpm build
 ```
 
@@ -106,6 +109,7 @@ Para mudanças de texto ou documentação:
 ```bash
 pnpm check-types
 pnpm lint
+pnpm format
 ```
 
 Para mudanças em rotas, layout, metadados, imagens ou configuração:
