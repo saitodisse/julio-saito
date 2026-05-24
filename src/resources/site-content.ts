@@ -104,6 +104,26 @@ export const featuredProjects = [
 		],
 	},
 	{
+		name: "tab-renderer",
+		description:
+			"Biblioteca open source para parsing e renderização de cifras com core headless, adapter React e viewer estilizado.",
+		github: "https://github.com/saitodisse/tab-renderer",
+		site: "https://tab-renderer-react.vercel.app/",
+		icon: "music",
+		image: "/images/projects/tab-renderer.svg",
+		imageAlt:
+			"Diagrama estilizado de cifra e acordes representando o tab-renderer",
+		tags: [
+			"TypeScript",
+			"React",
+			"SVG",
+			"Música",
+			"Cifras",
+			"Open Source",
+			"Storybook",
+		],
+	},
+	{
 		name: "SoM&A Deals",
 		description:
 			"Plataforma digital de M&A para PMEs, conectando análise, relacionamento comercial e fluxo de negociação.",
