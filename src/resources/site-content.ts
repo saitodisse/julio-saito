@@ -110,7 +110,7 @@ export const featuredProjects = [
 		github: "https://github.com/saitodisse/tab-renderer",
 		site: "https://tab-renderer-react.vercel.app/",
 		icon: "music",
-		image: "/images/projects/tab-renderer.svg",
+		image: "/images/projects/tab-renderer.png",
 		imageAlt:
 			"Diagrama estilizado de cifra e acordes representando o tab-renderer",
 		tags: [
