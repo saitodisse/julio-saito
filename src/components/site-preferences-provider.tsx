@@ -10,7 +10,10 @@ import {
 } from "react";
 
 import { SitePreferencesDialog } from "@/components/site-preferences-dialog";
-import { clearSitePreferences } from "@/lib/site-preferences";
+import {
+	clearSitePreferences,
+	SITE_PREFERENCES_RESET_EVENT,
+} from "@/lib/site-preferences";
 
 type SitePreferencesContextValue = {
   resetPreferences: () => void;
@@ -25,6 +28,7 @@ export function SitePreferencesProvider({ children }: { children: ReactNode }) {
 
   const resetPreferences = useCallback(() => {
     clearSitePreferences();
+    window.dispatchEvent(new Event(SITE_PREFERENCES_RESET_EVENT));
     setDialogKey((current) => current + 1);
   }, []);
 

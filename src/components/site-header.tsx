@@ -6,6 +6,7 @@ import { Download } from "lucide-react";
 import { useLocale } from "@/components/locale-provider";
 import { buttonVariants } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { useSiteHref } from "@/lib/site-routing";
 import { cn } from "@/lib/utils";
 
 type SiteHeaderProps = {
@@ -14,18 +15,19 @@ type SiteHeaderProps = {
 
 export function SiteHeader({ activePath }: SiteHeaderProps) {
   const { content, ui } = useLocale();
+  const href = useSiteHref();
 
   const navItems = [
-    { label: ui.nav.home, href: "/" as const },
-    { label: ui.nav.work, href: "/work" as const },
-    { label: ui.nav.resume, href: "/curriculo" as const },
+    { label: ui.nav.home, path: "/" as const },
+    { label: ui.nav.work, path: "/work" as const },
+    { label: ui.nav.resume, path: "/curriculo" as const },
   ];
 
   return (
     <header className="sticky top-0 z-20 border-b border-border/70 bg-background/72 backdrop-blur-xl">
       <div className="mx-auto flex w-full max-w-[1280px] flex-col gap-3 px-4 py-3 sm:px-6 lg:px-12">
         <div className="flex items-center justify-between gap-3">
-          <Link href="/" className="flex items-center">
+          <Link href={href("/")} className="flex items-center">
             <span className="text-[0.98rem] font-medium tracking-[-0.03em] text-foreground sm:text-[1.05rem]">
               {content.publicName}
             </span>
@@ -51,12 +53,12 @@ export function SiteHeader({ activePath }: SiteHeaderProps) {
           className="flex items-center gap-2 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         >
           {navItems.map((item) => {
-            const isActive = activePath === item.href;
+            const isActive = activePath === item.path;
 
             return (
               <Link
-                key={item.href}
-                href={item.href}
+                key={item.path}
+                href={href(item.path)}
                 className={cn(
                   "shrink-0 rounded-full border px-4 py-2 text-sm font-medium tracking-[-0.01em] transition-colors",
                   isActive

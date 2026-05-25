@@ -45,9 +45,51 @@ export type FeaturedProject = {
 
 export const featuredProjects = [
 	{
+		name: "svguitar-react",
+		description:
+			"React library for rendering chord diagrams in SVG, with a lean API and a focus on customization.",
+		github: "https://github.com/saitodisse/svguitar-react",
+		site: "https://svguitar-react.vercel.app/",
+		icon: "music",
+		image: "/images/projects/svguitar-react.png",
+		category: "achorde",
+		imageAlt: "SVG chord diagram from svguitar-react",
+		tags: [
+			"TypeScript",
+			"React",
+			"SVG",
+			"Music",
+			"Chord Sheets",
+			"Chords",
+			"Diagrams",
+			"Open Source",
+		],
+	},
+	{
+		name: "tab-renderer",
+		description:
+			"Open source library for parsing and rendering chord sheets with a headless core, React adapter, and styled viewer.",
+		github: "https://github.com/saitodisse/tab-renderer",
+		site: "https://tab-renderer-react.vercel.app/",
+		icon: "music",
+		image: "/images/projects/tab-renderer.png",
+		category: "achorde",
+		imageAlt:
+			"Stylized chord sheet diagram representing tab-renderer",
+		tags: [
+			"TypeScript",
+			"React",
+			"SVG",
+			"Music",
+			"Chord Sheets",
+			"Open Source",
+			"Storybook",
+		],
+	},
+	{
 		name: "Grana Clara",
 		description:
-			"Offline-first app to import, categorize, and analyze Nubank statements and transactions with local privacy.",
+			"Offline-first app to import, categorize, and analyze Nubank statements with local privacy.",
 		github: "https://github.com/saitodisse/grana-clara",
 		site: "https://grana-clara.vercel.app/",
 		icon: "leaf",
@@ -58,24 +100,12 @@ export const featuredProjects = [
 			"React",
 			"Tailwind",
 			"OfflineFirst",
-			"OpenSource",
+			"Open Source",
 			"Finance",
 			"Nubank",
 			"Bills",
 			"Charts",
 		],
-	},
-	{
-		name: "ac15",
-		description:
-			"Private offline-first platform that integrates contracts, parsing, rendering, persistence, and sync for the musical ecosystem.",
-		icon: "terminal",
-		image: "/images/projects/ac15.svg",
-		category: "achorde",
-		imageAlt:
-			"Square composition for ac15 with product layers, sync, and a local-first base",
-		site: "https://ac15.vercel.app/",
-		tags: ["Next.js", "React", "OfflineFirst", "Sync", "Architecture", "Music"],
 	},
 	{
 		name: "achorde-musical-domain",
@@ -104,27 +134,6 @@ export const featuredProjects = [
 		tags: ["Open Source", "Game", "Physics", "Matter.js", "TypeScript"],
 	},
 	{
-		name: "svguitar-react",
-		description:
-			"React library for rendering chord diagrams in SVG, with a lean API and a focus on customization.",
-		github: "https://github.com/saitodisse/svguitar-react",
-		site: "https://svguitar-react.vercel.app/",
-		icon: "music",
-		image: "/images/projects/svguitar-react.png",
-		category: "achorde",
-		imageAlt: "SVG chord diagram from svguitar-react",
-		tags: [
-			"TypeScript",
-			"React",
-			"SVG",
-			"Music",
-			"Chords",
-			"Fretboards",
-			"Diagrams",
-			"Open Source",
-		],
-	},
-	{
 		name: "SoM&A Deals",
 		description:
 			"Digital M&A platform for SMBs, connecting analysis, commercial relationships, and negotiation flow.",
@@ -135,12 +144,12 @@ export const featuredProjects = [
 		imageFit: "contain",
 		imageBackground: "#ffffff",
 		tags: [
-			"NextJs",
+			"Next.js",
 			"Cloud",
 			"Product",
-			"MA",
+			"M&A",
 			"Subscription",
-			"Payment",
+			"Payments",
 			"Companies",
 			"Franchises",
 			"Negotiations",
@@ -157,16 +166,28 @@ export const featuredProjects = [
 		imageAlt:
 			"Achorde interface with chord charts, repertoire, and musical reading UI",
 		tags: [
-			"NextJs",
+			"Next.js",
 			"Convex",
 			"Search",
 			"Music",
-			"ChordCharts",
+			"Chord Sheet",
 			"Playlists",
 			"Presentation",
 			"Screen",
 			"Sync",
 		],
+	},
+	{
+		name: "ac15",
+		description:
+			"Private offline-first platform that integrates contracts, parsing, rendering, persistence, and sync for the musical ecosystem.",
+		icon: "terminal",
+		image: "/images/projects/ac15.svg",
+		category: "achorde",
+		imageAlt:
+			"Square composition for ac15 with product layers, sync, and a local-first base",
+		site: "https://ac15.vercel.app/",
+		tags: ["Next.js", "React", "OfflineFirst", "Sync", "Architecture", "Music"],
 	},
 	{
 		name: "BOM Recipe Calculator",

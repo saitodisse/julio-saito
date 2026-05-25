@@ -4,6 +4,7 @@ export type ThemeMode = "light" | "dark" | "system";
 export const THEME_STORAGE_KEY = "theme";
 export const LOCALE_STORAGE_KEY = "locale";
 export const PREFERENCES_CONFIGURED_KEY = "site-preferences-configured";
+export const SITE_PREFERENCES_RESET_EVENT = "site-preferences-reset";
 
 export function readStoredTheme(): ThemeMode | null {
   if (typeof window === "undefined") {

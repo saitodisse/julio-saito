@@ -8,11 +8,13 @@ import { SiteHeader } from "@/components/site-header";
 import { PageIntro } from "@/components/page-intro";
 import { PageShell } from "@/components/page-shell";
 import { buttonVariants } from "@/components/ui/button";
-import { skillTagTone } from "@/lib/tag-tones";
+import { useSiteHref } from "@/lib/site-routing";
+import { getSkillTagTone } from "@/lib/tag-tones";
 import { cn } from "@/lib/utils";
 
 export default function WorkPage() {
   const { content, ui } = useLocale();
+  const href = useSiteHref();
   const { experiences } = content;
 
   return (
@@ -22,7 +24,7 @@ export default function WorkPage() {
       <PageShell className="pt-8 sm:pt-10 lg:pt-12">
         <section className="max-w-5xl">
           <PageIntro
-            backHref="/"
+            backHref={href("/")}
             backLabel={ui.work.backLabel}
             eyebrow={ui.work.eyebrow}
             title={ui.work.title}
@@ -82,7 +84,7 @@ export default function WorkPage() {
                     <div
                       className={cn(
                         "mt-5 inline-flex items-center gap-2 rounded-full border px-3 py-1 text-[0.8rem] font-medium tracking-[-0.01em]",
-                        skillTagTone[index % skillTagTone.length],
+                        getSkillTagTone(ui.work.highlight, index),
                       )}
                     >
                       {ui.work.highlight}
@@ -104,7 +106,7 @@ export default function WorkPage() {
             </div>
 
             <Link
-              href="/curriculo"
+              href={href("/curriculo")}
               className={cn(
                 buttonVariants({ size: "lg" }),
                 "h-12 w-full justify-center rounded-xl px-5 text-[0.98rem] font-medium shadow-[0_12px_30px_rgba(175,144,11,0.18)] transition-transform hover:-translate-y-0.5 sm:w-auto",

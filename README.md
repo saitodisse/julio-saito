@@ -17,6 +17,7 @@ O conteúdo principal cobre:
 - competências técnicas agrupadas por área;
 - contatos públicos;
 - currículo em PDF servido a partir de `public/curriculo.pdf`.
+- idioma e tema sincronizados na URL via querystring, usando `locale` e `theme`.
 
 ## Stack
 
@@ -26,11 +27,12 @@ O conteúdo principal cobre:
 - **Tailwind CSS 4**.
 - **shadcn/ui** e utilitários de composição de classes.
 - **lucide-react** para ícones.
+- **nuqs** para sincronização de estado de URL.
 - **next-themes** para alternância de tema.
 - **Prettier** com `semi: true` e `useTabs: true` para padronização de formato.
 - **pnpm** como gerenciador de pacotes.
 
-As preferências de tema e idioma são persistidas no `localStorage` do navegador.
+As preferências de tema e idioma são persistidas no `localStorage` do navegador e refletidas na querystring da URL.
 
 ## Estrutura do Projeto
 
@@ -44,8 +46,10 @@ src/
     globals.css           Tokens visuais e estilos globais
   components/
     site-header.tsx       Navegação principal
+    site-footer.tsx       Alternância de idioma e reset de preferências
     page-shell.tsx        Contêiner de página
     page-intro.tsx        Cabeçalhos internos
+    locale-provider.tsx   Estado de idioma + querystring
     theme-provider.tsx    Provider de tema
     theme-toggle.tsx      Controle de tema
     ui/button.tsx         Botão compartilhado
@@ -80,6 +84,8 @@ Use esse arquivo para alterar:
 - formação;
 - grupos de competências;
 - links de contato.
+
+A navegação interna preserva `?locale=pt|en&theme=light|dark` ao trocar entre `Home`, `Work` e `Currículo`.
 
 Evite duplicar arrays de conteúdo diretamente nas páginas. As rotas devem consumir o módulo de conteúdo para manter home, work e currículo consistentes.
 

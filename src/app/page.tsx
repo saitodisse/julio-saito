@@ -17,7 +17,8 @@ import { useLocale } from "@/components/locale-provider";
 import { SiteHeader } from "@/components/site-header";
 import { PageShell } from "@/components/page-shell";
 import { buttonVariants } from "@/components/ui/button";
-import { skillTagTone } from "@/lib/tag-tones";
+import { useSiteHref } from "@/lib/site-routing";
+import { getSkillTagTone, orderProjectTags } from "@/lib/tag-tones";
 import { cn } from "@/lib/utils";
 import type { FeaturedProject } from "@/resources/site-content";
 
@@ -33,6 +34,7 @@ const projectLinkClassName =
 
 export default function Home() {
 	const { content, ui } = useLocale();
+	const href = useSiteHref();
 	const { credentials, featuredProjects, professionalSummary } = content;
 	const achordeProjectNames = new Set([
 		"ac15",
@@ -65,7 +67,7 @@ export default function Home() {
 
 						<div className="mt-8 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:gap-4">
 							<Link
-								href="#projects"
+								href={href("/#projects")}
 								className={cn(
 									buttonVariants({ size: "lg" }),
 									"h-14 w-full justify-center rounded-xl px-6 text-[1rem] font-medium shadow-[0_12px_32px_rgba(232,200,74,0.22)] transition-transform hover:-translate-y-0.5 sm:w-auto",
@@ -75,7 +77,7 @@ export default function Home() {
 								{ui.home.viewProjects}
 							</Link>
 							<Link
-								href="/curriculo"
+								href={href("/curriculo")}
 								className={cn(
 									buttonVariants({
 										variant: "outline",
@@ -226,14 +228,12 @@ export default function Home() {
 													{project.description}
 												</p>
 												<div className="mt-6 flex flex-wrap gap-2">
-													{project.tags.map((tag, tagIndex) => (
+													{orderProjectTags(project.tags).map((tag, tagIndex) => (
 														<span
 															key={tag}
 															className={cn(
 																"rounded-full border px-3 py-1 text-[0.85rem] font-medium tracking-[-0.01em]",
-																skillTagTone[
-																	(index + tagIndex) % skillTagTone.length
-																],
+																getSkillTagTone(tag, index + tagIndex),
 															)}
 														>
 															{tag}
@@ -364,17 +364,15 @@ export default function Home() {
 														{project.description}
 													</p>
 													<div className="mt-6 flex flex-wrap gap-2">
-														{project.tags.map((tag, tagIndex) => (
+														{orderProjectTags(project.tags).map((tag, tagIndex) => (
 															<span
 																key={tag}
 																className={cn(
 																	"rounded-full border px-3 py-1 text-[0.85rem] font-medium tracking-[-0.01em]",
-																	skillTagTone[
-																		(index + tagIndex) % skillTagTone.length
-																	],
-																)}
-															>
-																{tag}
+																	getSkillTagTone(tag, index + tagIndex),
+															)}
+														>
+															{tag}
 															</span>
 														))}
 													</div>
@@ -431,7 +429,7 @@ export default function Home() {
 
 						<div className="flex flex-col gap-3 sm:flex-row">
 							<Link
-								href="/work"
+								href={href("/work")}
 								className={cn(
 									buttonVariants({
 										variant: "outline",
@@ -443,7 +441,7 @@ export default function Home() {
 								{ui.home.viewWork}
 							</Link>
 							<Link
-								href="/curriculo"
+								href={href("/curriculo")}
 								className={cn(
 									buttonVariants({ size: "lg" }),
 									"h-12 w-full justify-center rounded-xl px-5 text-[0.98rem] font-medium shadow-[0_12px_30px_rgba(175,144,11,0.18)] transition-transform hover:-translate-y-0.5 sm:w-auto",

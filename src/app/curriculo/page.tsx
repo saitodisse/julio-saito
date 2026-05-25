@@ -17,6 +17,7 @@ import { PageIntro } from "@/components/page-intro";
 import { PageShell } from "@/components/page-shell";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
+import { useSiteHref } from "@/lib/site-routing";
 import { cn } from "@/lib/utils";
 
 const contactIcons = {
@@ -48,6 +49,7 @@ const mutedSkills = new Set([
 
 export default function CurriculoPage() {
 	const { content, ui } = useLocale();
+	const href = useSiteHref();
 	const { contactLinks, education, person, skillGroups } = content;
 
 	return (
@@ -57,7 +59,7 @@ export default function CurriculoPage() {
 			<PageShell className="pt-8 sm:pt-10 lg:pt-12">
 				<section className="max-w-5xl">
 					<PageIntro
-						backHref="/"
+						backHref={href("/")}
 						backLabel={ui.resume.backLabel}
 						eyebrow={ui.resume.eyebrow}
 						title={ui.resume.title}
@@ -77,7 +79,7 @@ export default function CurriculoPage() {
 							{ui.resume.downloadPdf}
 						</a>
 						<Link
-							href="/work"
+							href={href("/work")}
 							className={cn(
 								buttonVariants({
 									variant: "outline",

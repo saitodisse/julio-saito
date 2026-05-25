@@ -100,24 +100,12 @@ export const featuredProjects = [
 			"React",
 			"Tailwind",
 			"OfflineFirst",
-			"OpenSource",
+			"Open Source",
 			"Finanças",
 			"Nubank",
 			"Faturas",
 			"Gráficos",
 		],
-	},
-	{
-		name: "ac15",
-		description:
-			"Plataforma privada offline-first que integra contratos, parser, renderização, persistência e sync para o ecossistema musical.",
-		icon: "terminal",
-		image: "/images/projects/ac15.svg",
-		category: "achorde",
-		imageAlt:
-			"Composição quadrada do ac15 com camadas de produto, sync e base local",
-		site: "https://ac15.vercel.app/",
-		tags: ["Next.js", "React", "OfflineFirst", "Sync", "Arquitetura", "Música"],
 	},
 	{
 		name: "achorde-musical-domain",
@@ -168,6 +156,7 @@ export const featuredProjects = [
 			"Negociações",
 		],
 	},
+
 	{
 		name: "Achorde",
 		description:
@@ -190,6 +179,20 @@ export const featuredProjects = [
 			"Sincronização",
 		],
 	},
+
+	{
+		name: "ac15",
+		description:
+			"Plataforma privada offline-first que integra contratos, parser, renderização, persistência e sync para o ecossistema musical.",
+		icon: "terminal",
+		image: "/images/projects/ac15.svg",
+		category: "achorde",
+		imageAlt:
+			"Composição quadrada do ac15 com camadas de produto, sync e base local",
+		site: "https://ac15.vercel.app/",
+		tags: ["Next.js", "React", "OfflineFirst", "Sync", "Arquitetura", "Música"],
+	},
+
 	{
 		name: "BOM Recipe Calculator",
 		description:
