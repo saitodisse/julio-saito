@@ -35,6 +35,7 @@ export type FeaturedProject = {
 	github?: string;
 	site?: string;
 	icon: "leaf" | "music" | "handshake" | "terminal";
+	category?: "achorde" | "other";
 	tags: readonly string[];
 	image?: string;
 	imageAlt?: string;
@@ -65,6 +66,30 @@ export const featuredProjects = [
 		],
 	},
 	{
+		name: "ac15",
+		description:
+			"Private offline-first platform that integrates contracts, parsing, rendering, persistence, and sync for the musical ecosystem.",
+		icon: "terminal",
+		image: "/images/projects/ac15.svg",
+		category: "achorde",
+		imageAlt:
+			"Square composition for ac15 with product layers, sync, and a local-first base",
+		site: "https://ac15.vercel.app/",
+		tags: ["Next.js", "React", "OfflineFirst", "Sync", "Architecture", "Music"],
+	},
+	{
+		name: "achorde-musical-domain",
+		description:
+			"Public package of shared musical contracts for chord sheets, parsed tabs, diagnostics, and voicings.",
+		github: "https://github.com/saitodisse/achorde-musical-domain",
+		icon: "music",
+		image: "/images/projects/achorde-musical-domain.svg",
+		category: "achorde",
+		imageAlt:
+			"Square artwork for achorde-musical-domain with musical contracts and shared abstraction lines",
+		tags: ["TypeScript", "Contracts", "Domain", "Music", "Open Source"],
+	},
+	{
 		name: "matter-js-experiments",
 		description:
 			"Physics game and simulation built with Matter.js, with a TypeScript typing layer for the engine and one of my first experiences with AI and coding agents.",
@@ -76,13 +101,7 @@ export const featuredProjects = [
 			"Matter.js Experiments logo with yellow typography on a dark blue background",
 		imageFit: "contain",
 		imageBackground: "#060a19",
-		tags: [
-			"Open Source",
-			"Game",
-			"Physics",
-			"Matter.js",
-			"TypeScript",
-		],
+		tags: ["Open Source", "Game", "Physics", "Matter.js", "TypeScript"],
 	},
 	{
 		name: "svguitar-react",
@@ -92,6 +111,7 @@ export const featuredProjects = [
 		site: "https://svguitar-react.vercel.app/",
 		icon: "music",
 		image: "/images/projects/svguitar-react.png",
+		category: "achorde",
 		imageAlt: "SVG chord diagram from svguitar-react",
 		tags: [
 			"TypeScript",
@@ -101,6 +121,7 @@ export const featuredProjects = [
 			"Chords",
 			"Fretboards",
 			"Diagrams",
+			"Open Source",
 		],
 	},
 	{
@@ -132,6 +153,7 @@ export const featuredProjects = [
 		site: "https://achordex.vercel.app/",
 		icon: "terminal",
 		image: "/images/projects/achordex.png",
+		category: "achorde",
 		imageAlt:
 			"Achorde interface with chord charts, repertoire, and musical reading UI",
 		tags: [

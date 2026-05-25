@@ -1,0 +1,66 @@
+<svg
+	width="1254"
+	height="1254"
+	viewBox="0 0 1254 1254"
+	fill="none"
+	xmlns="http://www.w3.org/2000/svg"
+>
+	<rect width="1254" height="1254" rx="120" fill="#08111F" />
+	<circle cx="340" cy="350" r="180" fill="#0F172A" />
+	<circle cx="914" cy="378" r="150" fill="#12233E" />
+	<rect
+		x="182"
+		y="708"
+		width="890"
+		height="270"
+		rx="54"
+		fill="#0F172A"
+		stroke="#22314F"
+		stroke-width="10"
+	/>
+	<path
+		d="M265 792H988"
+		stroke="#5B7CFF"
+		stroke-width="18"
+		stroke-linecap="round"
+		stroke-dasharray="1 36"
+	/>
+	<path
+		d="M258 852H735"
+		stroke="#7C3AED"
+		stroke-width="18"
+		stroke-linecap="round"
+		stroke-dasharray="1 28"
+	/>
+	<path
+		d="M792 852H956"
+		stroke="#22C55E"
+		stroke-width="18"
+		stroke-linecap="round"
+		stroke-dasharray="1 28"
+	/>
+	<text
+		x="630"
+		y="515"
+		text-anchor="middle"
+		font-family="Inter, Arial, sans-serif"
+		font-size="210"
+		font-weight="800"
+		letter-spacing="8"
+		fill="#F8FAFC"
+	>
+		ac15
+	</text>
+	<text
+		x="630"
+		y="610"
+		text-anchor="middle"
+		font-family="Inter, Arial, sans-serif"
+		font-size="42"
+		font-weight="600"
+		letter-spacing="6"
+		fill="#94A3B8"
+	>
+		offline-first · sync · música
+	</text>
+</svg>

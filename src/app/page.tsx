@@ -34,6 +34,19 @@ const projectLinkClassName =
 export default function Home() {
 	const { content, ui } = useLocale();
 	const { credentials, featuredProjects, professionalSummary } = content;
+	const achordeProjectNames = new Set([
+		"ac15",
+		"achorde-musical-domain",
+		"tab-renderer",
+		"svguitar-react",
+		"Achorde",
+	]);
+	const achordeProjects = featuredProjects.filter((project) =>
+		achordeProjectNames.has(project.name),
+	);
+	const otherProjects = featuredProjects.filter(
+		(project) => !achordeProjectNames.has(project.name),
+	);
 
 	return (
 		<div className="min-h-screen bg-background text-foreground">
@@ -122,133 +135,284 @@ export default function Home() {
 						</div>
 					</div>
 
-					<div className="mt-10 grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
-						{featuredProjects.map((project: FeaturedProject, index) => {
-							const Icon = projectIcons[project.icon];
+					<div className="mt-10 space-y-10">
+						<section className="space-y-5">
+							<div className="flex items-end justify-between gap-4">
+								<div>
+									<h3 className="text-[1.2rem] font-semibold tracking-[-0.03em] text-foreground sm:text-[1.45rem]">
+										achorde
+									</h3>
+									<p className="mt-1 text-[0.95rem] leading-6 tracking-[-0.01em] text-foreground/60">
+										Projetos musicais relacionados.
+									</p>
+								</div>
+								<span className="rounded-full border border-border bg-muted/40 px-3 py-1 text-[0.78rem] font-medium uppercase tracking-[0.14em] text-foreground/60">
+									{achordeProjects.length} projetos
+								</span>
+							</div>
 
-							return (
-								<article
-									key={project.name}
-									className="flex min-h-[320px] flex-col rounded-t-none rounded-b-[24px] border border-border bg-card/90 shadow-[0_1px_0_rgba(0,0,0,0.02)] backdrop-blur-sm"
-								>
-									{project.image ? (
-										<div
-											className={cn(
-												"relative aspect-square w-full shrink-0 overflow-hidden rounded-none bg-card",
-												!project.imageBackground &&
-													project.imageFit === "contain" &&
-													"bg-muted/45",
-											)}
-											style={
-												project.imageBackground
-													? {
-															backgroundColor: project.imageBackground,
-														}
-													: undefined
-											}
+							<div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
+								{achordeProjects.map((project: FeaturedProject, index) => {
+									const Icon = projectIcons[project.icon];
+
+									return (
+										<article
+											key={project.name}
+											className="flex min-h-[320px] flex-col rounded-t-none rounded-b-[24px] border border-border bg-card/90 shadow-[0_1px_0_rgba(0,0,0,0.02)] backdrop-blur-sm"
 										>
-											<div
-												className={cn(
-													"absolute rounded-none",
-													project.imageFit === "contain"
-														? "inset-[14%]"
-														: "inset-0",
-												)}
-											>
-												<Link
-													href={project.site ?? project.github ?? "#"}
-													className="absolute inset-0"
-												>
-													<Image
-														src={project.image}
-														alt={project.imageAlt ?? project.name}
-														fill
-														sizes="(min-width: 1280px) 320px, (min-width: 640px) 50vw, 100vw"
-														className={cn(
-															"rounded-none",
-															project.imageFit === "contain"
-																? "object-contain"
-																: "object-cover",
-														)}
-													/>
-												</Link>
-											</div>
-										</div>
-									) : (
-										<div
-											className={cn(
-												"relative flex h-28 w-full shrink-0 items-center justify-center",
-												index % 4 === 0
-													? "bg-primary text-primary-foreground"
-													: index % 4 === 1
-														? "bg-secondary text-secondary-foreground"
-														: index % 4 === 2
-															? "bg-accent text-accent-foreground"
-															: "bg-muted text-foreground",
-											)}
-										>
-											<Icon className="size-8" />
-										</div>
-									)}
-
-									<div className="flex flex-1 flex-col p-5 sm:p-6">
-										<h3 className="text-[1.25rem] font-semibold tracking-[-0.04em] text-foreground sm:text-[1.35rem]">
-											{project.name}
-										</h3>
-
-										<p className="mt-3 text-[0.98rem] leading-[1.65] tracking-[-0.01em] text-foreground/64">
-											{project.description}
-										</p>
-
-										<div className="mt-6 flex flex-wrap gap-2">
-											{project.tags.map((tag, tagIndex) => (
-												<span
-													key={tag}
+											{project.image ? (
+												<div
 													className={cn(
-														"rounded-full border px-3 py-1 text-[0.85rem] font-medium tracking-[-0.01em]",
-														skillTagTone[
-															(index + tagIndex) % skillTagTone.length
-														],
+														"relative aspect-square w-full shrink-0 overflow-hidden rounded-none bg-card",
+														!project.imageBackground &&
+															project.imageFit === "contain" &&
+															"bg-muted/45",
+													)}
+													style={
+														project.imageBackground
+															? { backgroundColor: project.imageBackground }
+															: undefined
+													}
+												>
+													<div
+														className={cn(
+															"absolute rounded-none",
+															project.imageFit === "contain"
+																? "inset-[14%]"
+																: "inset-0",
+														)}
+													>
+														<Link
+															href={project.site ?? project.github ?? "#"}
+															className="absolute inset-0"
+														>
+															<Image
+																src={project.image}
+																alt={project.imageAlt ?? project.name}
+																fill
+																sizes="(min-width: 1280px) 320px, (min-width: 640px) 50vw, 100vw"
+																className={cn(
+																	"rounded-none",
+																	project.imageFit === "contain"
+																		? "object-contain"
+																		: "object-cover",
+																)}
+															/>
+														</Link>
+													</div>
+												</div>
+											) : (
+												<div
+													className={cn(
+														"relative flex h-28 w-full shrink-0 items-center justify-center",
+														index % 4 === 0
+															? "bg-primary text-primary-foreground"
+															: index % 4 === 1
+																? "bg-secondary text-secondary-foreground"
+																: index % 4 === 2
+																	? "bg-accent text-accent-foreground"
+																	: "bg-muted text-foreground",
 													)}
 												>
-													{tag}
-												</span>
-											))}
-										</div>
-
-										<div className="mt-auto flex items-center justify-between gap-3 pt-7">
-											{project.github ? (
-												<a
-													href={project.github}
-													target="_blank"
-													rel="noreferrer"
-													className={projectLinkClassName}
-												>
-													<GitBranch className="size-4" />
-													GitHub
-												</a>
-											) : (
-												<span aria-hidden="true" />
+													<Icon className="size-8" />
+												</div>
 											)}
-											{project.site ? (
-												<a
-													href={project.site}
-													target="_blank"
-													rel="noreferrer"
-													className={projectLinkClassName}
-												>
-													<ExternalLink className="size-4" />
-													{ui.home.viewSite}
-												</a>
-											) : null}
-										</div>
+
+											<div className="flex flex-1 flex-col p-5 sm:p-6">
+												<h4 className="text-[1.25rem] font-semibold tracking-[-0.04em] text-foreground sm:text-[1.35rem]">
+													{project.name}
+												</h4>
+												<p className="mt-3 text-[0.98rem] leading-[1.65] tracking-[-0.01em] text-foreground/64">
+													{project.description}
+												</p>
+												<div className="mt-6 flex flex-wrap gap-2">
+													{project.tags.map((tag, tagIndex) => (
+														<span
+															key={tag}
+															className={cn(
+																"rounded-full border px-3 py-1 text-[0.85rem] font-medium tracking-[-0.01em]",
+																skillTagTone[
+																	(index + tagIndex) % skillTagTone.length
+																],
+															)}
+														>
+															{tag}
+														</span>
+													))}
+												</div>
+												<div className="mt-auto flex items-center justify-between gap-3 pt-7">
+													{project.github ? (
+														<a
+															href={project.github}
+															target="_blank"
+															rel="noreferrer"
+															className={projectLinkClassName}
+														>
+															<GitBranch className="size-4" />
+															GitHub
+														</a>
+													) : (
+														<span aria-hidden="true" />
+													)}
+													{project.site ? (
+														<a
+															href={project.site}
+															target="_blank"
+															rel="noreferrer"
+															className={projectLinkClassName}
+														>
+															<ExternalLink className="size-4" />
+															{ui.home.viewSite}
+														</a>
+													) : null}
+												</div>
+											</div>
+										</article>
+									);
+								})}
+							</div>
+						</section>
+
+						{otherProjects.length > 0 ? (
+							<section className="space-y-5">
+								<div className="flex items-end justify-between gap-4">
+									<div>
+										<h3 className="text-[1.2rem] font-semibold tracking-[-0.03em] text-foreground sm:text-[1.45rem]">
+											Outros projetos
+										</h3>
+										<p className="mt-1 text-[0.95rem] leading-6 tracking-[-0.01em] text-foreground/60">
+											Projetos fora da categoria musical.
+										</p>
 									</div>
-								</article>
-							);
-						})}
+									<span className="rounded-full border border-border bg-muted/40 px-3 py-1 text-[0.78rem] font-medium uppercase tracking-[0.14em] text-foreground/60">
+										{otherProjects.length} projetos
+									</span>
+								</div>
+
+								<div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
+									{otherProjects.map((project: FeaturedProject, index) => {
+										const Icon = projectIcons[project.icon];
+
+										return (
+											<article
+												key={project.name}
+												className="flex min-h-[320px] flex-col rounded-t-none rounded-b-[24px] border border-border bg-card/90 shadow-[0_1px_0_rgba(0,0,0,0.02)] backdrop-blur-sm"
+											>
+												{project.image ? (
+													<div
+														className={cn(
+															"relative aspect-square w-full shrink-0 overflow-hidden rounded-none bg-card",
+															!project.imageBackground &&
+																project.imageFit === "contain" &&
+																"bg-muted/45",
+														)}
+														style={
+															project.imageBackground
+																? { backgroundColor: project.imageBackground }
+																: undefined
+														}
+													>
+														<div
+															className={cn(
+																"absolute rounded-none",
+																project.imageFit === "contain"
+																	? "inset-[14%]"
+																	: "inset-0",
+															)}
+														>
+															<Link
+																href={project.site ?? project.github ?? "#"}
+																className="absolute inset-0"
+															>
+																<Image
+																	src={project.image}
+																	alt={project.imageAlt ?? project.name}
+																	fill
+																	sizes="(min-width: 1280px) 320px, (min-width: 640px) 50vw, 100vw"
+																	className={cn(
+																		"rounded-none",
+																		project.imageFit === "contain"
+																			? "object-contain"
+																			: "object-cover",
+																	)}
+																/>
+															</Link>
+														</div>
+													</div>
+												) : (
+													<div
+														className={cn(
+															"relative flex h-28 w-full shrink-0 items-center justify-center",
+															index % 4 === 0
+																? "bg-primary text-primary-foreground"
+																: index % 4 === 1
+																	? "bg-secondary text-secondary-foreground"
+																	: index % 4 === 2
+																		? "bg-accent text-accent-foreground"
+																		: "bg-muted text-foreground",
+														)}
+													>
+														<Icon className="size-8" />
+													</div>
+												)}
+
+												<div className="flex flex-1 flex-col p-5 sm:p-6">
+													<h4 className="text-[1.25rem] font-semibold tracking-[-0.04em] text-foreground sm:text-[1.35rem]">
+														{project.name}
+													</h4>
+													<p className="mt-3 text-[0.98rem] leading-[1.65] tracking-[-0.01em] text-foreground/64">
+														{project.description}
+													</p>
+													<div className="mt-6 flex flex-wrap gap-2">
+														{project.tags.map((tag, tagIndex) => (
+															<span
+																key={tag}
+																className={cn(
+																	"rounded-full border px-3 py-1 text-[0.85rem] font-medium tracking-[-0.01em]",
+																	skillTagTone[
+																		(index + tagIndex) % skillTagTone.length
+																	],
+																)}
+															>
+																{tag}
+															</span>
+														))}
+													</div>
+													<div className="mt-auto flex items-center justify-between gap-3 pt-7">
+														{project.github ? (
+															<a
+																href={project.github}
+																target="_blank"
+																rel="noreferrer"
+																className={projectLinkClassName}
+															>
+																<GitBranch className="size-4" />
+																GitHub
+															</a>
+														) : (
+															<span aria-hidden="true" />
+														)}
+														{project.site ? (
+															<a
+																href={project.site}
+																target="_blank"
+																rel="noreferrer"
+																className={projectLinkClassName}
+															>
+																<ExternalLink className="size-4" />
+																{ui.home.viewSite}
+															</a>
+														) : null}
+													</div>
+												</div>
+											</article>
+										);
+									})}
+								</div>
+							</section>
+						) : null}
 					</div>
 				</section>
-
 				<section className="pt-6">
 					<div className="flex flex-col gap-5 rounded-[24px] border border-border bg-card px-5 py-5 shadow-[0_1px_0_rgba(0,0,0,0.02)] md:flex-row md:items-center md:justify-between md:px-7">
 						<div className="flex items-start gap-4">

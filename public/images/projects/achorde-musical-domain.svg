@@ -1,0 +1,69 @@
+<svg
+	width="1254"
+	height="1254"
+	viewBox="0 0 1254 1254"
+	fill="none"
+	xmlns="http://www.w3.org/2000/svg"
+>
+	<rect width="1254" height="1254" rx="120" fill="#0B1020" />
+	<circle cx="380" cy="388" r="170" fill="#16213E" />
+	<circle cx="848" cy="384" r="170" fill="#1F2B4A" />
+	<path
+		d="M284 708C402 634 516 598 630 598C744 598 858 634 976 708"
+		stroke="#60A5FA"
+		stroke-width="18"
+		stroke-linecap="round"
+	/>
+	<path
+		d="M284 782C402 708 516 672 630 672C744 672 858 708 976 782"
+		stroke="#A78BFA"
+		stroke-width="18"
+		stroke-linecap="round"
+	/>
+	<rect
+		x="200"
+		y="820"
+		width="854"
+		height="172"
+		rx="48"
+		fill="#10192D"
+		stroke="#2A3B63"
+		stroke-width="10"
+	/>
+	<text
+		x="627"
+		y="522"
+		text-anchor="middle"
+		font-family="Inter, Arial, sans-serif"
+		font-size="120"
+		font-weight="800"
+		letter-spacing="2"
+		fill="#F8FAFC"
+	>
+		achorde
+	</text>
+	<text
+		x="627"
+		y="592"
+		text-anchor="middle"
+		font-family="Inter, Arial, sans-serif"
+		font-size="58"
+		font-weight="700"
+		letter-spacing="10"
+		fill="#93C5FD"
+	>
+		musical domain
+	</text>
+	<text
+		x="627"
+		y="890"
+		text-anchor="middle"
+		font-family="Inter, Arial, sans-serif"
+		font-size="44"
+		font-weight="600"
+		letter-spacing="4"
+		fill="#CBD5E1"
+	>
+		contratos · tabs · diagnósticos · voicings
+	</text>
+</svg>

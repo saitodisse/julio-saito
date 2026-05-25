@@ -35,6 +35,7 @@ export type FeaturedProject = {
 	github?: string;
 	site?: string;
 	icon: "leaf" | "music" | "handshake" | "terminal";
+	category?: "achorde" | "other";
 	tags: readonly string[];
 	image?: string;
 	imageAlt?: string;
@@ -43,6 +44,48 @@ export type FeaturedProject = {
 };
 
 export const featuredProjects = [
+	{
+		name: "svguitar-react",
+		description:
+			"Biblioteca React para renderização de diagramas de acordes em SVG, com API enxuta e foco em personalização.",
+		github: "https://github.com/saitodisse/svguitar-react",
+		site: "https://svguitar-react.vercel.app/",
+		icon: "music",
+		image: "/images/projects/svguitar-react.png",
+		category: "achorde",
+		imageAlt: "Diagrama de acordes em SVG do svguitar-react",
+		tags: [
+			"TypeScript",
+			"React",
+			"SVG",
+			"Música",
+			"Cifras",
+			"Acordes",
+			"Diagramas",
+			"Open Source",
+		],
+	},
+	{
+		name: "tab-renderer",
+		description:
+			"Biblioteca open source para parsing e renderização de cifras com core headless, adapter React e viewer estilizado.",
+		github: "https://github.com/saitodisse/tab-renderer",
+		site: "https://tab-renderer-react.vercel.app/",
+		icon: "music",
+		image: "/images/projects/tab-renderer.png",
+		category: "achorde",
+		imageAlt:
+			"Diagrama estilizado de cifra e acordes representando o tab-renderer",
+		tags: [
+			"TypeScript",
+			"React",
+			"SVG",
+			"Música",
+			"Cifras",
+			"Open Source",
+			"Storybook",
+		],
+	},
 	{
 		name: "Grana Clara",
 		description:
@@ -65,6 +108,30 @@ export const featuredProjects = [
 		],
 	},
 	{
+		name: "ac15",
+		description:
+			"Plataforma privada offline-first que integra contratos, parser, renderização, persistência e sync para o ecossistema musical.",
+		icon: "terminal",
+		image: "/images/projects/ac15.svg",
+		category: "achorde",
+		imageAlt:
+			"Composição quadrada do ac15 com camadas de produto, sync e base local",
+		site: "https://ac15.vercel.app/",
+		tags: ["Next.js", "React", "OfflineFirst", "Sync", "Arquitetura", "Música"],
+	},
+	{
+		name: "achorde-musical-domain",
+		description:
+			"Pacote público de contratos musicais compartilhados para cifras, tabs parseadas, diagnósticos e voicings.",
+		github: "https://github.com/saitodisse/achorde-musical-domain",
+		icon: "music",
+		image: "/images/projects/achorde-musical-domain.svg",
+		category: "achorde",
+		imageAlt:
+			"Arte quadrada do achorde-musical-domain com contratos musicais e linhas de abstração compartilhada",
+		tags: ["TypeScript", "Contratos", "Domínio", "Música", "Open Source"],
+	},
+	{
 		name: "matter-js-experiments",
 		description:
 			"Jogo e simulação física com Matter.js, interface em TypeScript para tipagem do motor e uma das minhas primeiras experiências com IA e agência de código.",
@@ -76,52 +143,7 @@ export const featuredProjects = [
 			"Logo do Matter.js Experiments com tipografia amarela sobre fundo azul escuro",
 		imageFit: "contain",
 		imageBackground: "#060a19",
-		tags: [
-			"Open Source",
-			"Jogo",
-			"Física",
-			"Matter.js",
-			"TypeScript",
-		],
-	},
-	{
-		name: "svguitar-react",
-		description:
-			"Biblioteca React para renderização de diagramas de acordes em SVG, com API enxuta e foco em personalização.",
-		github: "https://github.com/saitodisse/svguitar-react",
-		site: "https://svguitar-react.vercel.app/",
-		icon: "music",
-		image: "/images/projects/svguitar-react.png",
-		imageAlt: "Diagrama de acordes em SVG do svguitar-react",
-		tags: [
-			"TypeScript",
-			"React",
-			"SVG",
-			"Música",
-			"Cifras",
-			"Acordes",
-			"Diagramas",
-		],
-	},
-	{
-		name: "tab-renderer",
-		description:
-			"Biblioteca open source para parsing e renderização de cifras com core headless, adapter React e viewer estilizado.",
-		github: "https://github.com/saitodisse/tab-renderer",
-		site: "https://tab-renderer-react.vercel.app/",
-		icon: "music",
-		image: "/images/projects/tab-renderer.png",
-		imageAlt:
-			"Diagrama estilizado de cifra e acordes representando o tab-renderer",
-		tags: [
-			"TypeScript",
-			"React",
-			"SVG",
-			"Música",
-			"Cifras",
-			"Open Source",
-			"Storybook",
-		],
+		tags: ["Open Source", "Jogo", "Física", "Matter.js", "TypeScript"],
 	},
 	{
 		name: "SoM&A Deals",
@@ -153,6 +175,7 @@ export const featuredProjects = [
 		site: "https://achordex.vercel.app/",
 		icon: "terminal",
 		image: "/images/projects/achordex.png",
+		category: "achorde",
 		imageAlt:
 			"Visual do Achorde com cifras, repertório e interface de leitura musical",
 		tags: [
