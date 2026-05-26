@@ -55,6 +55,7 @@ src/
     ui/button.tsx         Botão compartilhado
   resources/
     site-content.ts       Conteúdo profissional reutilizado pelas páginas
+    i18n/ui.ts            Textos de interface com contrato tipado
   lib/
     utils.ts              Utilitários compartilhados
 
@@ -73,6 +74,7 @@ docs/
 ## Conteúdo
 
 O conteúdo editável do site fica principalmente em `src/resources/site-content.ts`.
+Os textos da interface ficam em `src/resources/i18n/ui.ts`, com um contrato tipado que faz o TypeScript falhar quando faltar qualquer chave em PT ou EN.
 
 Use esse arquivo para alterar:
 
@@ -84,6 +86,7 @@ Use esse arquivo para alterar:
 - formação;
 - grupos de competências;
 - links de contato.
+- textos da interface e labels da navegação.
 
 A navegação interna preserva `?locale=pt|en&theme=light|dark` ao trocar entre `Home`, `Work` e `Currículo`.
 
