@@ -9,7 +9,7 @@ export const person = {
 	location: "Ubatuba, São Paulo, Brazil",
 	email: "saitodisse@gmail.com",
 	github: "https://github.com/saitodisse",
-	linkedin: "https://www.linkedin.com/in/julio-makdisse-saito-868707a",
+	linkedin: "https://www.linkedin.com/in/julio-saito",
 	languages: [
 		{ name: "Portuguese", level: "Native" },
 		{ name: "English", level: "Professional working proficiency" },

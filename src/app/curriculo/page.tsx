@@ -69,7 +69,7 @@ export default function CurriculoPage() {
 
 					<div className="mt-7 flex flex-col gap-3 sm:flex-row sm:gap-4">
 						<a
-							href="/curriculo.pdf"
+							href="/2026-06-11__cv.pdf"
 							className={cn(
 								buttonVariants({ size: "lg" }),
 								"h-14 w-full justify-center rounded-xl px-6 text-[1rem] font-medium shadow-[0_12px_30px_rgba(175,144,11,0.18)] transition-transform hover:-translate-y-0.5 sm:w-auto",

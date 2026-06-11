@@ -36,7 +36,7 @@ export function SiteHeader({ activePath }: SiteHeaderProps) {
           <div className="flex items-center gap-2">
             <ThemeToggle />
             <Link
-              href="/curriculo.pdf"
+              href="/2026-06-11__cv.pdf"
               className={cn(
                 buttonVariants({ variant: "outline", size: "lg" }),
                 "h-10 rounded-full border-border bg-card px-4 text-[0.9rem] font-medium text-foreground/90 shadow-[0_1px_0_rgba(0,0,0,0.02)] transition-transform hover:-translate-y-px hover:bg-muted sm:h-11 sm:px-5 sm:text-[0.95rem]",
