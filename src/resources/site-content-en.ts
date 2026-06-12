@@ -48,7 +48,7 @@ export const featuredProjects = [
 		name: "svguitar-react",
 		description:
 			"React library for rendering chord diagrams in SVG, with a lean API and a focus on customization.",
-		github: "https://github.com/saitodisse/svguitar-react",
+		github: "https://github.com/saitodisse/achorde/tree/main/packages/svguitar-react",
 		site: "https://svguitar-react.vercel.app/",
 		icon: "music",
 		image: "/images/projects/svguitar-react.png",
@@ -69,7 +69,7 @@ export const featuredProjects = [
 		name: "tab-renderer",
 		description:
 			"Open source library for parsing and rendering chord sheets with a headless core, React adapter, and styled viewer.",
-		github: "https://github.com/saitodisse/tab-renderer",
+		github: "https://github.com/saitodisse/achorde/tree/main/packages/tab-renderer",
 		site: "https://tab-renderer-react.vercel.app/",
 		icon: "music",
 		image: "/images/projects/tab-renderer.png",
@@ -111,7 +111,7 @@ export const featuredProjects = [
 		name: "achorde-musical-domain",
 		description:
 			"Public package of shared musical contracts for chord sheets, parsed tabs, diagnostics, and voicings.",
-		github: "https://github.com/saitodisse/achorde-musical-domain",
+		github: "https://github.com/saitodisse/achorde/tree/main/packages/musical-domain",
 		icon: "music",
 		image: "/images/projects/achorde-musical-domain.svg",
 		category: "achorde",

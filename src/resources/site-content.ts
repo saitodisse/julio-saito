@@ -48,7 +48,7 @@ export const featuredProjects = [
 		name: "svguitar-react",
 		description:
 			"Biblioteca React para renderização de diagramas de acordes em SVG, com API enxuta e foco em personalização.",
-		github: "https://github.com/saitodisse/svguitar-react",
+		github: "https://github.com/saitodisse/achorde/tree/main/packages/svguitar-react",
 		site: "https://svguitar-react.vercel.app/",
 		icon: "music",
 		image: "/images/projects/svguitar-react.png",
@@ -69,7 +69,7 @@ export const featuredProjects = [
 		name: "tab-renderer",
 		description:
 			"Biblioteca open source para parsing e renderização de cifras com core headless, adapter React e viewer estilizado.",
-		github: "https://github.com/saitodisse/tab-renderer",
+		github: "https://github.com/saitodisse/achorde/tree/main/packages/tab-renderer",
 		site: "https://tab-renderer-react.vercel.app/",
 		icon: "music",
 		image: "/images/projects/tab-renderer.png",
@@ -111,7 +111,7 @@ export const featuredProjects = [
 		name: "achorde-musical-domain",
 		description:
 			"Pacote público de contratos musicais compartilhados para cifras, tabs parseadas, diagnósticos e voicings.",
-		github: "https://github.com/saitodisse/achorde-musical-domain",
+		github: "https://github.com/saitodisse/achorde/tree/main/packages/musical-domain",
 		icon: "music",
 		image: "/images/projects/achorde-musical-domain.svg",
 		category: "achorde",
