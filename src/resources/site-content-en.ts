@@ -5,28 +5,30 @@ export const publicName = "Julio Saito";
 export const person = {
 	fullName: "Julio Makdisse Saito",
 	firstName: "Julio",
-	role: "Senior Software Engineer & Solutions Architect",
+	role: "Senior Software Engineer",
 	location: "Ubatuba, São Paulo, Brazil",
 	email: "saitodisse@gmail.com",
+	phone: "+55 11 96569-7834",
 	github: "https://github.com/saitodisse",
 	linkedin: "https://www.linkedin.com/in/julio-saito",
 	languages: [
 		{ name: "Portuguese", level: "Native" },
-		{ name: "English", level: "Professional working proficiency" },
+		{ name: "English", level: "Full professional proficiency" },
+		{ name: "Spanish", level: "Limited working proficiency" },
 	],
 } as const;
 
-export const professionalSummary = `I am a senior software engineer with more than 20 years of experience building digital products, predictable architectures, and technical solutions for real business problems.
+export const professionalSummary = `Senior Software Engineer with 20+ years of experience building complex web platforms, cloud-based systems, and business-critical software. Specialized in TypeScript, Node.js, React, Next.js, cloud architectures, and modern full-stack development.
 
-My work goes beyond coding: I help clarify the right problem, propose viable paths, organize execution, and turn ideas into reliable systems. I use TypeScript, React, Node.js, cloud, and AI agents to accelerate development without giving up on tests, quality, or scalability.
+I combine strong software engineering fundamentals with advanced AI-assisted development practices. My current focus is orchestrating AI agents throughout the software development lifecycle — research, specification, implementation, testing, refactoring, documentation, and validation.
 
-I have strong experience orchestrating coding LLMs, technical workflows, and teams/tools to turn complex problems into clear, sustainable, and well-documented deliveries.`;
+I work with a methodical approach based on Spec-Driven Development, TDD, automated testing, clear technical context, and architectural decision-making. I use AI agents to accelerate delivery while maintaining engineering ownership, ensuring robust, maintainable software aligned with business goals.`;
 
 export const credentials = [
 	{ label: "Experience", value: "20+ years" },
-	{ label: "Stack", value: "TypeScript, React, Next.js" },
-	{ label: "Focus", value: "Architecture, TDD, cloud" },
-	{ label: "Interest", value: "Applied AI and open source" },
+	{ label: "Stack", value: "TypeScript, Node.js, React" },
+	{ label: "Focus", value: "SDD, TDD, cloud architecture" },
+	{ label: "Interest", value: "AI agent orchestration" },
 ] as const;
 
 export type FeaturedProject = {
@@ -34,6 +36,9 @@ export type FeaturedProject = {
 	description: string;
 	github?: string;
 	site?: string;
+	siteLabel?: string;
+	internalSite?: boolean;
+	detailPath?: string;
 	icon: "leaf" | "music" | "handshake" | "terminal";
 	category?: "achorde" | "other";
 	tags: readonly string[];
@@ -41,17 +46,138 @@ export type FeaturedProject = {
 	imageAlt?: string;
 	imageFit?: "cover" | "contain";
 	imageBackground?: string;
+	gallery?: readonly { src: string; alt: string }[];
 };
 
-export const featuredProjects = [
+const achordeProducts = [
+	{
+		name: "AC15",
+		detailPath: "/projetos/ac15",
+		description:
+			"Private offline-first app for reading chord charts, organizing repertoire, creating diagrams, and keeping musical work available locally.",
+		site: "https://ac15.vercel.app/",
+		icon: "terminal",
+		image: "/images/projects/achorde/ac15.png",
+		imageAlt:
+			"A librarian beetle among chord sheets and instruments, representing AC15",
+		tags: ["Next.js", "React", "OfflineFirst", "Music"],
+	},
+	{
+		name: "Artist Portal",
+		detailPath: "/projetos/portal-do-artista",
+		description:
+			"A public foundation for artists to present repertoire and identity in their own portal, with a chord-chart catalog ready for compatible readers.",
+		github: "https://github.com/saitodisse/artist-portal-base",
+		site: "https://saitodisse.github.io/artist-portal-base/",
+		icon: "music",
+		image: "/images/projects/achorde/portal-do-artista.png",
+		imageAlt:
+			"A curator beetle opening a path between musical creation and its audience",
+		tags: ["Astro", "React", "Catalog", "Music"],
+	},
+	{
+		name: "Achorde",
+		detailPath: "/achorde",
+		description:
+			"A musical ecosystem with two applications — AC15 and Artist Portal — plus four core packages for domain, chord charts, diagrams, and voicings.",
+		site: "/achorde#pacotes",
+		siteLabel: "View packages",
+		internalSite: true,
+		icon: "music",
+		gallery: [
+			{
+				src: "/images/projects/achorde/musical-domain.png",
+				alt: "An archivist ant representing musical-domain",
+			},
+			{
+				src: "/images/projects/achorde/tab-renderer.png",
+				alt: "A typographer wasp representing tab-renderer",
+			},
+			{
+				src: "/images/projects/achorde/svguitar-react.png",
+				alt: "A weaving spider representing svguitar-react",
+			},
+			{
+				src: "/images/projects/achorde/interactive-fretboard.png",
+				alt: "A praying mantis representing interactive-fretboard",
+			},
+		],
+		tags: ["TypeScript", "React", "Open Source", "Music"],
+	},
+] as const satisfies readonly FeaturedProject[];
+
+export const achordeHomeProjects = [achordeProducts[2]] as const;
+
+export const achordeProjects = [
+	achordeProducts[0],
+	achordeProducts[1],
+	{
+		name: "@achorde/musical-domain",
+		detailPath: "/projetos/musical-domain",
+		description:
+			"Headless contracts and helpers for chords, parsed chord charts, diagnostics, and shared voicings.",
+		github:
+			"https://github.com/saitodisse/achorde/tree/main/packages/musical-domain",
+		site: "https://achorde-musical-domain.vercel.app/",
+		icon: "music",
+		image: "/images/projects/achorde/musical-domain.png",
+		imageAlt: "An archivist ant representing musical-domain shared contracts",
+		tags: ["TypeScript", "Contracts", "Domain", "Music", "Open Source"],
+	},
+	{
+		name: "@achorde/tab-renderer",
+		detailPath: "/projetos/tab-renderer",
+		description:
+			"Library for parsing and rendering chord charts with a headless core, React adapter, and styled viewer.",
+		github:
+			"https://github.com/saitodisse/achorde/tree/main/packages/tab-renderer",
+		site: "https://tab-renderer-react.vercel.app/",
+		icon: "music",
+		image: "/images/projects/achorde/tab-renderer.png",
+		imageAlt:
+			"A typographer wasp among text and chords, representing tab-renderer",
+		tags: ["TypeScript", "React", "Chord Sheets", "Open Source"],
+	},
+	{
+		name: "@achorde/svguitar-react",
+		detailPath: "/projetos/svguitar-react",
+		description:
+			"React library for rendering fretted-instrument diagrams in SVG from structured voicings.",
+		github:
+			"https://github.com/saitodisse/achorde/tree/main/packages/svguitar-react",
+		site: "https://svguitar-react.vercel.app/",
+		icon: "music",
+		image: "/images/projects/achorde/svguitar-react.png",
+		imageAlt:
+			"A weaving spider turning a musical structure into an SVG diagram",
+		tags: ["TypeScript", "React", "SVG", "Chords", "Open Source"],
+	},
+	{
+		name: "@achorde/interactive-fretboard",
+		detailPath: "/projetos/interactive-fretboard",
+		description:
+			"React fretted-fingerboard editor for creating and changing voicings with mouse, touch, or pen.",
+		github:
+			"https://github.com/saitodisse/achorde/tree/main/packages/interactive-fretboard",
+		site: "https://interactive-fretboard.vercel.app/",
+		icon: "music",
+		image: "/images/projects/achorde/interactive-fretboard.png",
+		imageAlt:
+			"A praying mantis using an instrument fingerboard to edit voicings",
+		tags: ["TypeScript", "React", "Pointer", "Voicings", "Open Source"],
+	},
+] as const satisfies readonly FeaturedProject[];
+
+const legacyProjects = [
 	{
 		name: "svguitar-react",
 		description:
 			"React library for rendering chord diagrams in SVG, with a lean API and a focus on customization.",
-		github: "https://github.com/saitodisse/achorde/tree/main/packages/svguitar-react",
+		github:
+			"https://github.com/saitodisse/achorde/tree/main/packages/svguitar-react",
 		site: "https://svguitar-react.vercel.app/",
 		icon: "music",
-		image: "/images/projects/svguitar-react.png",
+		image: "/images/projects/achorde/svguitar-react.png",
 		category: "achorde",
 		imageAlt: "SVG chord diagram from svguitar-react",
 		tags: [
@@ -69,13 +195,13 @@ export const featuredProjects = [
 		name: "tab-renderer",
 		description:
 			"Open source library for parsing and rendering chord sheets with a headless core, React adapter, and styled viewer.",
-		github: "https://github.com/saitodisse/achorde/tree/main/packages/tab-renderer",
+		github:
+			"https://github.com/saitodisse/achorde/tree/main/packages/tab-renderer",
 		site: "https://tab-renderer-react.vercel.app/",
 		icon: "music",
-		image: "/images/projects/tab-renderer.png",
+		image: "/images/projects/achorde/tab-renderer.png",
 		category: "achorde",
-		imageAlt:
-			"Stylized chord sheet diagram representing tab-renderer",
+		imageAlt: "Stylized chord sheet diagram representing tab-renderer",
 		tags: [
 			"TypeScript",
 			"React",
@@ -88,6 +214,7 @@ export const featuredProjects = [
 	},
 	{
 		name: "Grana Clara",
+		detailPath: "/projetos/grana-clara",
 		description:
 			"Offline-first app to import, categorize, and analyze Nubank statements with local privacy.",
 		github: "https://github.com/saitodisse/grana-clara",
@@ -111,9 +238,10 @@ export const featuredProjects = [
 		name: "achorde-musical-domain",
 		description:
 			"Public package of shared musical contracts for chord sheets, parsed tabs, diagnostics, and voicings.",
-		github: "https://github.com/saitodisse/achorde/tree/main/packages/musical-domain",
+		github:
+			"https://github.com/saitodisse/achorde/tree/main/packages/musical-domain",
 		icon: "music",
-		image: "/images/projects/achorde-musical-domain.svg",
+		image: "/images/projects/achorde/musical-domain.png",
 		category: "achorde",
 		imageAlt:
 			"Square artwork for achorde-musical-domain with musical contracts and shared abstraction lines",
@@ -121,6 +249,7 @@ export const featuredProjects = [
 	},
 	{
 		name: "matter-js-experiments",
+		detailPath: "/projetos/matter-js-experiments",
 		description:
 			"Physics game and simulation built with Matter.js, with a TypeScript typing layer for the engine and one of my first experiences with AI and coding agents.",
 		github: "https://github.com/saitodisse/matter-js-experiments",
@@ -135,11 +264,12 @@ export const featuredProjects = [
 	},
 	{
 		name: "SoM&A Deals",
+		detailPath: "/projetos/soma-deals",
 		description:
 			"Digital M&A platform for SMBs, connecting analysis, commercial relationships, and negotiation flow.",
 		site: "https://www.somadeals.com/",
 		icon: "handshake",
-		image: "/images/projects/soma-deals.webp",
+		image: "/images/projects/soma-deals.png",
 		imageAlt: "Soma Deals logo with handshake symbol and green typography",
 		imageFit: "contain",
 		imageBackground: "#ffffff",
@@ -156,33 +286,25 @@ export const featuredProjects = [
 		],
 	},
 	{
-		name: "Achorde",
+		name: "interactive-fretboard",
 		description:
-			"App to manage, search, and visualize chord charts, with repertoire organization and reading modes.",
-		site: "https://achordex.vercel.app/",
-		icon: "terminal",
-		image: "/images/projects/achordex.png",
+			"React fretted-fingerboard editor for creating and changing voicings with mouse, touch, or pen.",
+		github:
+			"https://github.com/saitodisse/achorde/tree/main/packages/interactive-fretboard",
+		site: "https://interactive-fretboard.vercel.app/",
+		icon: "music",
+		image: "/images/projects/achorde/interactive-fretboard.png",
 		category: "achorde",
 		imageAlt:
-			"Achorde interface with chord charts, repertoire, and musical reading UI",
-		tags: [
-			"Next.js",
-			"Convex",
-			"Search",
-			"Music",
-			"Chord Sheet",
-			"Playlists",
-			"Presentation",
-			"Screen",
-			"Sync",
-		],
+			"A praying mantis using an instrument fingerboard to edit voicings",
+		tags: ["TypeScript", "React", "Pointer", "Voicings", "Open Source"],
 	},
 	{
 		name: "ac15",
 		description:
 			"Private offline-first platform that integrates contracts, parsing, rendering, persistence, and sync for the musical ecosystem.",
 		icon: "terminal",
-		image: "/images/projects/ac15.svg",
+		image: "/images/projects/achorde/ac15.png",
 		category: "achorde",
 		imageAlt:
 			"Square composition for ac15 with product layers, sync, and a local-first base",
@@ -191,6 +313,7 @@ export const featuredProjects = [
 	},
 	{
 		name: "BOM Recipe Calculator",
+		detailPath: "/projetos/bom-recipe-calculator",
 		description:
 			"BOM calculator for nested recipes, with cost and weight calculations across multi-level ingredient trees.",
 		github: "https://github.com/saitodisse/bom-recipe-calculator",
@@ -212,19 +335,29 @@ export const featuredProjects = [
 	},
 ] as const satisfies readonly FeaturedProject[];
 
+export const featuredProjects = legacyProjects.filter(
+	(project) => !("category" in project && project.category === "achorde"),
+);
+
+export const projectDetails: readonly FeaturedProject[] = [
+	...achordeProjects,
+	...featuredProjects,
+];
+
 export const experiences = [
 	{
 		company: "Soma Deals",
 		companyLinkedin: "https://br.linkedin.com/company/soma-deals",
 		role: "Senior Software Engineer",
-		period: "Aug 2025 - Present",
-		location: "São Paulo, Brazil · Remote",
+		period: "Aug 2025 - May 2026",
+		location: "São Paulo, Brazil",
 		summary:
-			"Development of a digital M&A platform for SMBs, covering front-end, back-end, and AWS infrastructure.",
+			"Full-stack engineering on a digital M&A platform for small and medium-sized businesses, contributing to tools that support company buying and selling workflows.",
 		bullets: [
-			"Built features in Next.js and TypeScript to support the platform's commercial and operational flow.",
-			"Kept the technical base aligned with a simple experience for business owners and industry professionals.",
-			"Participated in infrastructure and continuous delivery decisions with a focus on security and predictability.",
+			"Developed front-end features using Next.js, React, and TypeScript, with a focus on usability, maintainability, and business-oriented flows.",
+			"Built a dynamic multi-phase document search system that chained new searches from data extracted in earlier results, running automatically with placeholders and persisted state, without human intervention or code changes.",
+			"Managed AWS infrastructure and cloud services to improve reliability, security, and scalability.",
+			"Collaborated on product and technical decisions, helping transform complex M&A processes into intuitive digital workflows.",
 		],
 	},
 	{
@@ -232,81 +365,86 @@ export const experiences = [
 		companyLinkedin: "https://br.linkedin.com/company/linx-commerce",
 		role: "Solutions Architect",
 		period: "Dec 2021 - Jun 2024",
-		location: "Brazil",
+		location: "São Paulo, Brazil",
 		summary:
-			"Technical leadership of a WhatsApp customer service system and the product's architectural evolution.",
+			"Led the development of an innovative WhatsApp-based customer service and commerce system, integrating product listings, virtual cart flows, and dynamic conversation experiences.",
 		bullets: [
-			"Led and coordinated a team of up to four developers, also acting as Product Owner and Scrum Master.",
-			"Developed conversation flows, product lists, and a virtual cart using the official WhatsApp API.",
-			"Migrated operations to Vercel with AWS Cloud Functions and PostgreSQL on Google Cloud to balance scale and cost.",
-			"Organized CI/CD, deployment automation, and TDD practices, reducing complexity without slowing delivery.",
+			"Acted across multiple roles, including Senior Developer, Product Owner, and Scrum Master, aligning technical execution, product requirements, and team delivery.",
+			"Simplified system architecture to make the codebase easier to understand, maintain, and evolve by other developers.",
+			"Migrated parts of the architecture from Kubernetes to serverless solutions using Vercel and AWS Cloud Functions, reducing operational complexity and improving scalability.",
+			"Optimized PostgreSQL usage on Google Cloud, supporting better performance and reliability for commerce-related workloads.",
 		],
 	},
 	{
 		company: "Semantix",
 		companyLinkedin: "https://www.linkedin.com/company/semantix",
-		role: "Web Developer",
+		role: "Senior Web Developer",
 		period: "Nov 2020 - Dec 2021",
-		location: "Brazil",
+		location: "São Paulo, Brazil",
 		summary:
-			"Delivery of web products for live commerce and conversational automation, plus parallel open source work.",
+			"Delivered live-shopping and intelligent-chat features combining digital commerce, conversational automation, and web applications.",
 		bullets: [
-			"Worked on live-shopping and intelligent-chat projects, combining video, chat, cart, and Dialogflow bots.",
-			"Created open source Next.js templates to accelerate adoption of a consistent technical base.",
-			"Practiced unit and integration testing in deliveries with strong product-engineering integration.",
+			"Implemented features using VTEX and Dialogflow to support digital commerce and customer engagement solutions.",
+			"Developed and maintained web applications with Next.js, improving website functionality, user experience, and integration capabilities.",
+			"Collaborated on open-source initiatives and reusable front-end components to support faster development and better maintainability.",
+			"Worked closely with product and engineering teams to deliver features aligned with business goals and customer needs.",
 		],
 	},
 	{
 		company: "Latife Gastronomia Árabe",
-		role: "CTO / Programmer",
+		role: "CTO",
 		period: "Feb 2017 - Nov 2020",
-		location: "Brazil",
+		location: "Greater São Paulo Area, Brazil",
 		summary:
-			"Sole owner of the family business technology operation, from management to deployment.",
+			"Managed end-to-end IT operations for a family-owned food business, covering software development, infrastructure, tools, and internal processes.",
 		bullets: [
-			"Centralized technical operations and product decisions in a lean-resource context.",
-			"Used Trello, GitHub, AWS, Heroku, Google Cloud, and Vercel to keep operations stable and easy to evolve.",
-			"Worked with TypeScript, Hasura, PostgreSQL, and Next.js to deliver automation and direct interfaces.",
+			"Built and maintained web systems using TypeScript, Next.js, Hasura, and related technologies to support business operations.",
+			"Organized project workflows using Trello and GitHub Projects, improving visibility, prioritization, and execution.",
+			"Maintained cloud infrastructure across AWS, Heroku, Google Cloud, and Vercel, selecting the most appropriate platform according to cost, simplicity, and operational needs.",
+			"Supported the business with practical software solutions, process improvements, and technical decision-making.",
 		],
 	},
 	{
-		company: "Azuki",
+		company: "Azuki (azukiapp.com)",
 		companyLinkedin: "https://www.linkedin.com/company/azuki-azukiapp-com-/",
-		role: "Developer",
+		role: "Software Engineer",
 		period: "Oct 2014 - Nov 2016",
-		location: "Brazil",
+		location: "São Paulo, Brazil",
 		summary:
-			"Major contribution to AZK, an open source tool for orchestrating development environments.",
+			"Contributed to the development and strategic evolution of AZK, an open-source CLI tool designed to automate development environment setup and management.",
 		bullets: [
-			"Was one of the main contributors to AZK, working on development, community support, and project management.",
-			"Worked with TDD practices and collaboration flows typical of a high-impact open source project.",
-			"Helped consolidate a solution that predated docker-compose for technical teams.",
+			"Built core features using Node.js, helping developers create reproducible local environments before Docker Compose became widely adopted.",
+			"Supported the open-source community by helping users understand, adopt, and contribute to the project.",
+			"Applied TDD practices to improve reliability, maintainability, and confidence in the tool's behavior.",
+			"Worked with APIs, containerization concepts, Docker, developer tooling, and open-source project management.",
 		],
 	},
 	{
 		company: "Integgro Tecnologia da Informação",
-		role: "Developer",
+		role: "Web Developer",
 		period: "2013",
-		location: "Brazil",
+		location: "São Paulo Area, Brazil",
 		summary:
-			"Work on projects with ASP.NET MVC and JavaScript, including a CI base still in use.",
+			"Web development work with ASP.NET MVC and JavaScript, including continuous integration automation.",
 		bullets: [
-			"Developed applications in ASP.NET MVC and JavaScript with a focus on consistent delivery.",
-			"Structured a CI server that remained in use after I left the company.",
+			"Developed web applications using ASP.NET MVC and JavaScript.",
+			"Implemented a continuous integration server that continued running smoothly after delivery.",
 		],
 	},
 	{
 		company: "Grupo SHC",
 		companyLinkedin: "https://www.linkedin.com/company/grupo-shc",
-		role: "Developer & Instructor",
+		role: "Programmer and Technical Instructor",
 		period: "Mar 2006 - Sep 2012",
-		location: "Brazil",
+		location: "Greater São Paulo Area, Brazil",
 		summary:
-			"Technical architecture of Apollo Web, team training, and technology decisions in a large company project.",
+			"Acted as technical architect and developer for Apollo Web, one of Grupo SHC's largest internal software projects for vehicle sales and after-sales operations.",
 		bullets: [
-			"Acted as technical architect of Apollo Web, the group's largest software project.",
-			"Led technical choices, training, and CI/CD practice setup.",
-			"Worked with ASP.NET, SQL Server, NHibernate, SAP, and open source tools.",
+			"Defined technologies, development practices, and architectural patterns used by the team throughout the project.",
+			"Developed and maintained the application using ASP.NET, SQL Server, NHibernate, SAP integrations, and Castle Windsor.",
+			"Applied object-oriented design and DDD-inspired layered architecture to improve maintainability and separation of concerns.",
+			"Implemented automated tests using NUnit, Moq, and Selenium, plus continuous integration with TeamCity, Rake, and Albacore.",
+			"Created technical training, internal wiki/blog documentation, and SAP integrations using ERPConnect from Theobald Software.",
 		],
 	},
 	{
@@ -316,22 +454,25 @@ export const experiences = [
 		period: "May 2005 - Feb 2006",
 		location: "Brazil",
 		summary:
-			"Projects for Santander Banespa with systems analysis, web development, and technical collaboration.",
+			"Worked on Santander Banespa projects involving web development, system analysis, database migration, and internal tooling.",
 		bullets: [
-			"Participated in systems analysis and web development in Visual Basic 6 and Oracle.",
-			"Provided technical leadership in a large corporate context.",
+			"Developed applications using ASP, Visual Basic 6, Oracle packages, and supporting technologies.",
+			"Led web development activities and communicated directly with the client to clarify requirements and support delivery.",
+			"Created automation macros to speed up repetitive development and maintenance tasks.",
+			"Worked on secure password registration workflows involving anti-trojan and encryption-related requirements.",
 		],
 	},
 	{
 		company: "GEMPI",
-		role: "Developer",
+		role: "Junior Developer",
 		period: "Aug 2003 - Apr 2005",
 		location: "Brazil",
 		summary:
-			"First professional deliveries on projects for Embratel and Telemar.",
+			"Worked on Embratel and Telemar projects involving web development, Oracle packages, and data migration support.",
 		bullets: [
-			"Worked on project management, database migration, and web development.",
-			"Delivered routines with Oracle and integration with operational needs of the time.",
+			"Created technical and functional specifications for database migration processes.",
+			"Developed applications using Visual Basic 6, ASP, and Oracle.",
+			"Supported project management activities and collaborated with teams on enterprise telecom systems.",
 		],
 	},
 ] as const;
@@ -351,6 +492,12 @@ export const contactLinks = [
 		value: person.email,
 		href: `mailto:${person.email}`,
 		icon: "mail",
+	},
+	{
+		label: "Phone",
+		value: person.phone,
+		href: "tel:+5511965697834",
+		icon: "phone",
 	},
 	{
 		label: "LinkedIn",

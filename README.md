@@ -40,8 +40,10 @@ As preferências de tema e idioma são persistidas no `localStorage` do navegado
 src/
   app/
     page.tsx              Home
+    achorde/page.tsx      Ecossistema Achorde
     work/page.tsx         Trajetória profissional
     curriculo/page.tsx    Currículo, contatos e download do PDF
+    projetos/[slug]/      Páginas individuais dos projetos
     layout.tsx            Metadados e estrutura global
     globals.css           Tokens visuais e estilos globais
   components/
@@ -88,7 +90,7 @@ Use esse arquivo para alterar:
 - links de contato.
 - textos da interface e labels da navegação.
 
-A navegação interna preserva `?locale=pt|en&theme=light|dark` ao trocar entre `Home`, `Work` e `Currículo`.
+A navegação interna preserva `?locale=pt|en&theme=light|dark` ao trocar entre `Home`, `Work`, `Currículo`, Achorde e páginas individuais de projetos.
 
 Evite duplicar arrays de conteúdo diretamente nas páginas. As rotas devem consumir o módulo de conteúdo para manter home, work e currículo consistentes.
 

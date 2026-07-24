@@ -6,6 +6,7 @@ import {
 	FileText,
 	GitBranch,
 	Mail,
+	Phone,
 	Link2,
 	MapPin,
 	Sparkles,
@@ -22,6 +23,7 @@ import { cn } from "@/lib/utils";
 
 const contactIcons = {
 	mail: Mail,
+	phone: Phone,
 	linkedin: Link2,
 	github: GitBranch,
 	map: MapPin,
@@ -31,9 +33,11 @@ const featuredSkills = new Set([
 	"TypeScript",
 	"React",
 	"Next.js",
+	"shadcn/ui",
 	"Node.js",
 	"PostgreSQL",
 	"System Design",
+	"Software Systems Engineering",
 	"Spec-Driven Development",
 	"LLM Orchestration",
 	"AI Coding Agents",
@@ -69,7 +73,7 @@ export default function CurriculoPage() {
 
 					<div className="mt-7 flex flex-col gap-3 sm:flex-row sm:gap-4">
 						<a
-							href="/2026-06-11__cv.pdf"
+							href="/curriculo.pdf"
 							className={cn(
 								buttonVariants({ size: "lg" }),
 								"h-14 w-full justify-center rounded-xl px-6 text-[1rem] font-medium shadow-[0_12px_30px_rgba(175,144,11,0.18)] transition-transform hover:-translate-y-0.5 sm:w-auto",

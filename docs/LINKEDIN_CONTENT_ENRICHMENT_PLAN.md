@@ -88,7 +88,7 @@ Adicionar seção ou chips:
 
 Substituir os links genéricos da Home por projetos reais:
 
-- Achorde: `https://achorde.com/`
+- Achorde: `https://github.com/saitodisse/achorde`
 - SVGuitar React: `https://svguitar-react.vercel.app/`
 - SVGuitar React Storybook: `https://storybook-svguitar-react.vercel.app/?path=/docs/components-chorddiagram--docs`
 - Matter.js Experiments: `https://saitodisse.github.io/matter-js-experiments/`
