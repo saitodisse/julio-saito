@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -8,16 +8,11 @@ import {
 	GitBranch,
 	Handshake,
 	Leaf,
+	MousePointerClick,
 	Music4,
 	Terminal,
 } from "lucide-react";
 
-import {
-	Dialog,
-	DialogClose,
-	DialogContent,
-	DialogTitle,
-} from "@/components/ui/dialog";
 import { useSiteHref } from "@/lib/site-routing";
 import { getSkillTagTone, orderProjectTags } from "@/lib/tag-tones";
 import { cn } from "@/lib/utils";
@@ -37,60 +32,111 @@ type ProjectCardProps = {
 	project: FeaturedProject;
 	index: number;
 	viewSiteLabel: string;
+	viewAllProjectsLabel: string;
+	imageActionLabel: string;
 	expandImageLabel: string;
-	closePreviewLabel: string;
 };
 
 export function ProjectCard({
 	project,
 	index,
 	viewSiteLabel,
+	viewAllProjectsLabel,
+	imageActionLabel,
 	expandImageLabel,
-	closePreviewLabel,
 }: ProjectCardProps) {
-	const [isPreviewOpen, setIsPreviewOpen] = useState(false);
+	const [galleryIndex, setGalleryIndex] = useState(0);
 	const href = useSiteHref();
 	const Icon = projectIcons[project.icon];
 	const siteHref =
 		project.site && (project.internalSite ? href(project.site) : project.site);
 	const detailHref = project.detailPath && href(project.detailPath);
+	const imageHref = detailHref ?? siteHref;
+	const galleryImage = project.gallery?.[galleryIndex];
+	const isCollection = Boolean(project.gallery?.length);
+
+	useEffect(() => {
+		const gallery = project.gallery;
+
+		if (gallery?.length) {
+			const timeout = window.setTimeout(() => {
+				setGalleryIndex(Math.floor(Math.random() * gallery.length));
+			}, 0);
+
+			return () => window.clearTimeout(timeout);
+		}
+	}, [project.gallery]);
+
+	const imageClassName =
+		"group relative block aspect-[3/2] w-full shrink-0 overflow-hidden bg-card text-left outline-offset-[-4px] focus-visible:outline-2 focus-visible:outline-primary";
+	const imageHint = (
+		<span className="absolute inset-x-3 bottom-3 flex items-center justify-center gap-2 rounded-full bg-background/88 px-3 py-2 text-center text-[0.78rem] font-medium text-foreground opacity-0 shadow-sm backdrop-blur-sm transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100">
+			<MousePointerClick className="size-3.5" />
+			{imageActionLabel}
+		</span>
+	);
 
 	return (
 		<article className="flex min-h-[320px] flex-col overflow-hidden rounded-b-[24px] rounded-t-none border border-border bg-card/90 shadow-[0_1px_0_rgba(0,0,0,0.02)] backdrop-blur-sm">
-			{project.gallery ? (
-				<button
-					type="button"
-					onClick={() => setIsPreviewOpen(true)}
+			{galleryImage && detailHref ? (
+				<Link
+					href={detailHref}
 					aria-label={`${expandImageLabel}: ${project.name}`}
-					className="group grid aspect-[3/2] w-full grid-cols-2 overflow-hidden bg-muted/45 text-left outline-offset-[-4px] focus-visible:outline-2 focus-visible:outline-primary"
+					className={`${imageClassName} cursor-pointer`}
 				>
-					{project.gallery.map((image) => (
+					<Image
+						src={galleryImage.src}
+						alt={galleryImage.alt}
+						fill
+						sizes="(min-width: 1280px) 320px, (min-width: 640px) 50vw, 100vw"
+						className="object-cover transition-transform duration-300 group-hover:scale-[1.025]"
+					/>
+					{imageHint}
+				</Link>
+			) : project.image && imageHref ? (
+				project.internalSite || detailHref ? (
+					<Link
+						href={imageHref}
+						aria-label={`${expandImageLabel}: ${project.name}`}
+						className={`${imageClassName} cursor-pointer`}
+					>
 						<Image
-							key={image.src}
-							src={image.src}
-							alt={image.alt}
-							width={768}
-							height={512}
+							src={project.image}
+							alt={project.imageAlt ?? project.name}
+							fill
 							sizes="(min-width: 1280px) 320px, (min-width: 640px) 50vw, 100vw"
-							className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.025]"
+							className="object-cover transition-transform duration-300 group-hover:scale-[1.025]"
 						/>
-					))}
-				</button>
+						{imageHint}
+					</Link>
+				) : (
+					<a
+						href={imageHref}
+						target="_blank"
+						rel="noreferrer"
+						aria-label={`${expandImageLabel}: ${project.name}`}
+						className={`${imageClassName} cursor-pointer`}
+					>
+						<Image
+							src={project.image}
+							alt={project.imageAlt ?? project.name}
+							fill
+							sizes="(min-width: 1280px) 320px, (min-width: 640px) 50vw, 100vw"
+							className="object-cover transition-transform duration-300 group-hover:scale-[1.025]"
+						/>
+						{imageHint}
+					</a>
+				)
 			) : project.image ? (
-				<button
-					type="button"
-					onClick={() => setIsPreviewOpen(true)}
-					aria-label={`${expandImageLabel}: ${project.name}`}
-					className="group relative aspect-[3/2] w-full shrink-0 overflow-hidden bg-card text-left outline-offset-[-4px] focus-visible:outline-2 focus-visible:outline-primary"
-				>
+				<div className="relative aspect-[3/2] w-full shrink-0 overflow-hidden bg-card">
 					<Image
 						src={project.image}
 						alt={project.imageAlt ?? project.name}
 						fill
 						sizes="(min-width: 1280px) 320px, (min-width: 640px) 50vw, 100vw"
-						className="object-cover transition-transform duration-300 group-hover:scale-[1.025]"
+						className="object-cover"
 					/>
-				</button>
+				</div>
 			) : (
 				<div className="flex h-28 w-full shrink-0 items-center justify-center bg-muted text-foreground">
 					<Icon className="size-8" />
@@ -131,7 +177,12 @@ export function ProjectCard({
 					) : (
 						<span aria-hidden="true" />
 					)}
-					{siteHref ? (
+					{isCollection && detailHref ? (
+						<Link href={detailHref} className={projectLinkClassName}>
+							<ExternalLink className="size-4" />
+							{viewAllProjectsLabel}
+						</Link>
+					) : siteHref ? (
 						project.internalSite ? (
 							<Link href={siteHref} className={projectLinkClassName}>
 								<ExternalLink className="size-4" />
@@ -151,92 +202,6 @@ export function ProjectCard({
 					) : null}
 				</div>
 			</div>
-
-			<Dialog open={isPreviewOpen} onOpenChange={setIsPreviewOpen}>
-				<DialogContent
-					showCloseButton={false}
-					className="flex h-[calc(100dvh-2rem)] w-[calc(100vw-2rem)] max-w-[900px] flex-col gap-0 overflow-hidden rounded-[24px] border-border bg-card p-0 shadow-2xl sm:max-w-[900px]"
-				>
-					<div className="flex items-start justify-between gap-4 border-b border-border px-5 py-4 sm:px-6">
-						<div className="min-w-0">
-							<DialogTitle className="text-[3.3rem] tracking-[-0.03em]">
-								{project.name}
-							</DialogTitle>
-							<p className="mt-3 max-w-3xl text-[1.35rem] leading-[1.2] text-foreground/62">
-								{project.description}
-							</p>
-						</div>
-						<DialogClose className="rounded-full border border-border px-3 py-1.5 text-[0.85rem] font-medium text-foreground/72 transition-colors hover:bg-muted hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
-							{closePreviewLabel}
-						</DialogClose>
-					</div>
-					{project.gallery ? (
-						<div className="min-h-0 flex-1 p-4 sm:p-6">
-							{detailHref ? (
-								<Link
-									href={detailHref}
-									aria-label={`${project.name}: ${expandImageLabel}`}
-									className="grid h-full grid-cols-2 grid-rows-2 overflow-hidden rounded-xl bg-muted/45 outline-offset-4 focus-visible:outline-2 focus-visible:outline-primary"
-								>
-									{project.gallery.map((image) => (
-										<Image
-											key={image.src}
-											src={image.src}
-											alt={image.alt}
-											width={1536}
-											height={1024}
-											sizes="50vw"
-											className="h-full w-full object-contain"
-										/>
-									))}
-								</Link>
-							) : (
-								<div className="grid h-full grid-cols-2 grid-rows-2 overflow-hidden rounded-xl bg-muted/45">
-									{project.gallery.map((image) => (
-										<Image
-											key={image.src}
-											src={image.src}
-											alt={image.alt}
-											width={1536}
-											height={1024}
-											sizes="50vw"
-											className="h-full w-full object-contain"
-										/>
-									))}
-								</div>
-							)}
-						</div>
-					) : project.image ? (
-						<div className="min-h-0 flex-1 p-4 sm:p-6">
-							{detailHref ? (
-								<Link
-									href={detailHref}
-									aria-label={`${project.name}: ${expandImageLabel}`}
-									className="relative block h-full overflow-hidden rounded-xl bg-muted/45 outline-offset-4 focus-visible:outline-2 focus-visible:outline-primary"
-								>
-									<Image
-										src={project.image}
-										alt={project.imageAlt ?? project.name}
-										fill
-										sizes="900px"
-										className="object-contain"
-									/>
-								</Link>
-							) : (
-								<div className="relative h-full overflow-hidden rounded-xl bg-muted/45">
-									<Image
-										src={project.image}
-										alt={project.imageAlt ?? project.name}
-										fill
-										sizes="900px"
-										className="object-contain"
-									/>
-								</div>
-							)}
-						</div>
-					) : null}
-				</DialogContent>
-			</Dialog>
 		</article>
 	);
 }

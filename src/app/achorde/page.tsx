@@ -1,7 +1,8 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, ExternalLink, GitBranch } from "lucide-react";
 
 import { useLocale } from "@/components/locale-provider";
 import { PageShell } from "@/components/page-shell";
@@ -9,6 +10,7 @@ import { ProjectCard } from "@/components/project-card";
 import { SiteHeader } from "@/components/site-header";
 import { buttonVariants } from "@/components/ui/button";
 import { useSiteHref } from "@/lib/site-routing";
+import { getSkillTagTone, orderProjectTags } from "@/lib/tag-tones";
 import { cn } from "@/lib/utils";
 
 export default function AchordePage() {
@@ -54,8 +56,9 @@ export default function AchordePage() {
 								project={project}
 								index={index}
 								viewSiteLabel={ui.home.viewSite}
+								viewAllProjectsLabel={ui.home.viewAllProjects}
+								imageActionLabel={ui.home.imageActionLabel}
 								expandImageLabel={ui.home.expandImage}
-								closePreviewLabel={ui.home.closePreview}
 							/>
 						))}
 					</div>
@@ -71,16 +74,84 @@ export default function AchordePage() {
 					<p className="mt-2 max-w-2xl text-[0.98rem] leading-7 text-foreground/62">
 						{ui.achorde.packagesSummary}
 					</p>
-					<div className="mt-8 grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
+					<div className="mt-8 border-t border-border">
 						{packages.map((project, index) => (
-							<ProjectCard
+							<article
 								key={project.name}
-								project={project}
-								index={index + 2}
-								viewSiteLabel={ui.home.viewSite}
-								expandImageLabel={ui.home.expandImage}
-								closePreviewLabel={ui.home.closePreview}
-							/>
+								className="grid gap-6 border-b border-border py-12 sm:py-16 md:grid-cols-[minmax(0,1fr)_minmax(11rem,0.32fr)] md:gap-12"
+							>
+								<div>
+									<h3 className="text-balance text-[clamp(1.8rem,4vw,3.1rem)] font-semibold leading-[0.98] tracking-[-0.055em] text-foreground">
+										{project.name.replace(/^@achorde\//, "")}
+									</h3>
+									<p className="mt-4 max-w-2xl text-[0.98rem] leading-7 tracking-[-0.01em] text-foreground/62">
+										{project.description}
+									</p>
+									<div className="mt-5 flex flex-wrap gap-2">
+										{orderProjectTags(project.tags).map((tag, tagIndex) => (
+											<span
+												key={tag}
+												className={cn(
+													"rounded-full border px-3 py-1 text-[0.82rem] font-medium tracking-[-0.01em]",
+													getSkillTagTone(tag, index + tagIndex + 2),
+												)}
+											>
+												{tag}
+											</span>
+										))}
+									</div>
+								</div>
+								<div className="flex flex-col items-start gap-3 md:pt-2">
+									{project.detailPath ? (
+										<Link
+											href={href(project.detailPath)}
+											className="inline-flex items-center gap-2 text-[0.98rem] font-medium text-foreground transition-colors hover:text-primary"
+										>
+											<ExternalLink className="size-4" />
+											{ui.project.viewDetailsLabel}
+										</Link>
+									) : null}
+									{project.github ? (
+										<a
+											href={project.github}
+											target="_blank"
+											rel="noreferrer"
+											className="inline-flex items-center gap-2 text-[0.98rem] font-medium text-foreground transition-colors hover:text-primary"
+										>
+											<GitBranch className="size-4" />
+											GitHub
+										</a>
+									) : null}
+									{project.site ? (
+										<a
+											href={project.site}
+											target="_blank"
+											rel="noreferrer"
+											className="inline-flex items-center gap-2 text-[0.98rem] font-medium text-foreground/70 transition-colors hover:text-foreground"
+										>
+											<ExternalLink className="size-4" />
+											{ui.home.viewSite}
+										</a>
+									) : null}
+								</div>
+								{project.image && project.detailPath ? (
+									<div className="relative col-span-full aspect-[16/8] w-full overflow-hidden rounded-[20px] border border-border bg-card">
+										<Link
+											href={href(project.detailPath)}
+											aria-label={`${ui.project.viewDetailsLabel}: ${project.name}`}
+											className="group block size-full outline-offset-[-4px] focus-visible:outline-2 focus-visible:outline-primary"
+										>
+											<Image
+												src={project.image}
+												alt={project.imageAlt}
+												fill
+												sizes="(min-width: 1280px) 1184px, (min-width: 1024px) calc(100vw - 96px), 100vw"
+												className="object-cover transition-transform duration-300 group-hover:scale-[1.015]"
+											/>
+										</Link>
+									</div>
+								) : null}
+							</article>
 						))}
 					</div>
 				</section>

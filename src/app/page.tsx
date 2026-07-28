@@ -71,16 +71,16 @@ export default function Home() {
 								LinkedIn
 							</a>
 						</div>
-						<div className="mt-8 grid gap-3 sm:mt-10 sm:grid-cols-2 xl:grid-cols-4">
+						<div className="mt-8 grid gap-3 sm:mt-10 sm:grid-cols-2">
 							{credentials.map((item) => (
 								<div
 									key={item.label}
-									className="rounded-[18px] border border-border bg-card px-4 py-4 shadow-[0_1px_0_rgba(0,0,0,0.02)]"
+									className="min-w-0 rounded-[18px] border border-border bg-card px-4 py-4 shadow-[0_1px_0_rgba(0,0,0,0.02)]"
 								>
 									<p className="text-[0.78rem] font-medium uppercase tracking-[0.18em] text-foreground/42">
 										{item.label}
 									</p>
-									<p className="mt-2 text-[0.98rem] font-medium tracking-[-0.02em] text-foreground">
+									<p className="mt-2 break-words text-balance text-[0.92rem] font-medium leading-6 tracking-[-0.02em] text-foreground">
 										{item.value}
 									</p>
 								</div>
@@ -122,8 +122,9 @@ export default function Home() {
 									project={project}
 									index={index}
 									viewSiteLabel={ui.home.viewSite}
+									viewAllProjectsLabel={ui.home.viewAllProjects}
+									imageActionLabel={ui.home.imageActionLabel}
 									expandImageLabel={ui.home.expandImage}
-									closePreviewLabel={ui.home.closePreview}
 								/>
 							))}
 						</div>

@@ -18,17 +18,14 @@ export const person = {
 	],
 } as const;
 
-export const professionalSummary = `Sou engenheiro de software sênior com mais de 20 anos de experiência criando plataformas web complexas, sistemas em cloud e software crítico para negócios. Minha especialidade combina TypeScript, Node.js, React, Next.js, arquiteturas cloud e desenvolvimento full-stack moderno.
-
-Combino fundamentos sólidos de engenharia de software com práticas avançadas de desenvolvimento assistido por IA. Meu foco atual é orquestrar agentes de IA ao longo do ciclo de desenvolvimento — pesquisa, especificação, implementação, testes, refatoração, documentação e validação.
-
-Trabalho com uma abordagem metódica baseada em Spec-Driven Development, TDD, testes automatizados, contexto técnico claro e decisões arquiteturais conscientes. Uso agentes de IA para acelerar entregas sem abrir mão da responsabilidade técnica, garantindo software robusto, sustentável e alinhado aos objetivos de negócio.`;
+export const professionalSummary =
+	"Transformo problemas de negócio em produtos digitais confiáveis, combinando arquitetura, TypeScript, React, Node.js, Next.js, PostgreSQL e cloud. Atuo de ponta a ponta: da modelagem e integração à produção e evolução contínua. Meu foco atual é IA aplicada com responsabilidade — orquestrar agentes para acelerar especificação, implementação, testes e documentação, preservando decisões técnicas, qualidade e controle do produto.";
 
 export const credentials = [
 	{ label: "Experiência", value: "20+ anos" },
-	{ label: "Stack", value: "TypeScript, Node.js, React" },
-	{ label: "Foco", value: "SDD, TDD e arquitetura cloud" },
-	{ label: "Interesse", value: "Orquestração de agentes de IA" },
+	{ label: "Especialidade", value: "TypeScript, React e Node.js" },
+	{ label: "Atuação", value: "Produto, arquitetura e cloud" },
+	{ label: "Foco atual", value: "IA aplicada com governança" },
 ] as const;
 
 export type FeaturedProject = {
@@ -47,6 +44,11 @@ export type FeaturedProject = {
 	imageFit?: "cover" | "contain";
 	imageBackground?: string;
 	gallery?: readonly { src: string; alt: string }[];
+	details?: {
+		features: readonly { title: string; description: string }[];
+		installation?: { title?: string; code: string; language: string };
+		usage?: { title?: string; code: string; language: string };
+	};
 };
 
 const achordeProducts = [
@@ -60,7 +62,56 @@ const achordeProducts = [
 		image: "/images/projects/achorde/ac15.png",
 		imageAlt:
 			"Besouro bibliotecário entre cifras e instrumentos, representando o AC15",
-		tags: ["Next.js", "React", "OfflineFirst", "Música"],
+		tags: [
+			"Next.js",
+			"React",
+			"OfflineFirst",
+			"Música",
+			"Cifras",
+			"Repertório",
+			"Catálogo local",
+			"Diagramas",
+		],
+		details: {
+			features: [
+				{
+					title: "Catálogo disponível no dispositivo",
+					description:
+						"Baixa e mantém um catálogo musical local para que a consulta não dependa de uma conexão ativa.",
+				},
+				{
+					title: "Leitura de cifras com controle de tom",
+					description:
+						"Organiza cifras por artista e permite ajustar tom e tamanho de fonte durante a leitura.",
+				},
+				{
+					title: "Biblioteca de acordes e diagramas",
+					description:
+						"Reúne referências de acordes e seus diagramas para apoiar estudo e execução do repertório.",
+				},
+				{
+					title: "Sincronização controlada",
+					description:
+						"Expõe o estado da sincronização e mantém o catálogo local como base de trabalho do músico.",
+				},
+			],
+			installation: {
+				title: "Acesso",
+				language: "text",
+				code: `Disponível para pessoas autorizadas em:
+https://ac15.vercel.app/
+
+Não exige instalação local.`,
+			},
+			usage: {
+				title: "Fluxo mais comum",
+				language: "text",
+				code: `1. Sincronize o catálogo quando houver conexão.
+2. Escolha uma música no repertório local.
+3. Ajuste o tom e a leitura da cifra.
+4. Consulte acordes e diagramas durante a execução.`,
+			},
+		},
 	},
 	{
 		name: "Portal do Artista",
@@ -73,7 +124,54 @@ const achordeProducts = [
 		image: "/images/projects/achorde/portal-do-artista.png",
 		imageAlt:
 			"Besouro curador conduzindo uma passagem entre a criação musical e o público",
-		tags: ["Astro", "React", "Catálogo", "Música"],
+		tags: [
+			"Astro",
+			"React",
+			"Catálogo",
+			"Música",
+			"Source catalog",
+			"Markdown",
+			"GitHub Pages",
+			"Estático",
+		],
+		details: {
+			features: [
+				{
+					title: "Portal público e legível",
+					description:
+						"Publica identidade, repertório e cifras de um artista em uma experiência estática pronta para o público.",
+				},
+				{
+					title: "Catálogo importável",
+					description:
+						"Gera um source catalog de leitura com manifesto, checksums e entidades para consumo por ferramentas compatíveis.",
+				},
+				{
+					title: "Conteúdo versionado em Markdown",
+					description:
+						"Modela artista, músicas, versões executáveis e cifras em arquivos simples de revisar no Git.",
+				},
+				{
+					title: "Base atualizável para novos artistas",
+					description:
+						"Permite criar um novo portal a partir da base e continuar recebendo melhorias por meio de um remoto upstream.",
+				},
+			],
+			installation: {
+				language: "bash",
+				code: `git clone https://github.com/saitodisse/artist-portal-base.git my-artist-portal
+cd my-artist-portal
+pnpm install
+pnpm portal:init --source-id my-artist --name "Meu Artista"`,
+			},
+			usage: {
+				language: "bash",
+				code: `# atualize o perfil e as cifras em catalog/
+pnpm build:catalog
+pnpm build
+pnpm test`,
+			},
+		},
 	},
 	{
 		name: "Achorde",
@@ -122,7 +220,52 @@ export const achordeProjects = [
 		icon: "music",
 		image: "/images/projects/achorde/musical-domain.png",
 		imageAlt: "Formiga arquivista representando os contratos do musical-domain",
-		tags: ["TypeScript", "Contratos", "Domínio", "Música", "Open Source"],
+		tags: [
+			"TypeScript",
+			"Contratos",
+			"Domínio",
+			"Música",
+			"Open Source",
+			"Headless",
+			"AST",
+			"Voicings",
+			"Diagnósticos",
+		],
+		details: {
+			features: [
+				{
+					title: "Contratos portáveis para música",
+					description:
+						"Define tipos estáveis para cifras, tabs parseadas, diagnósticos e voicings sem depender de React, SVG ou APIs do navegador.",
+				},
+				{
+					title: "AST e diagnósticos de parsing",
+					description:
+						"Fornece a estrutura de linhas e tokens para que parsers e renderizadores compartilhem uma interpretação explícita da cifra.",
+				},
+				{
+					title: "Voicings consistentes",
+					description:
+						"Padroniza coordenadas de cordas de grave para aguda e inclui seleção, ordenação e normalização de posições no braço.",
+				},
+				{
+					title: "Normalização de símbolos",
+					description:
+						"Normaliza rótulos de acordes e preserva metadados de grafia para reduzir ambiguidades entre consumidores.",
+				},
+			],
+			installation: {
+				language: "bash",
+				code: "pnpm add @achorde/musical-domain",
+			},
+			usage: {
+				language: "ts",
+				code: `import { normalizeChordSymbolLabel } from "@achorde/musical-domain";
+
+const chord = normalizeChordSymbolLabel("C♯maj7");
+// C#maj7`,
+			},
+		},
 	},
 	{
 		name: "@achorde/tab-renderer",
@@ -136,7 +279,51 @@ export const achordeProjects = [
 		image: "/images/projects/achorde/tab-renderer.png",
 		imageAlt:
 			"Vespa tipógrafa entre texto e acordes, representando o tab-renderer",
-		tags: ["TypeScript", "React", "Cifras", "Open Source"],
+		tags: [
+			"TypeScript",
+			"React",
+			"Cifras",
+			"Open Source",
+			"Parser",
+			"Transposição",
+			"AST",
+			"Viewer",
+			"Storybook",
+		],
+		details: {
+			features: [
+				{
+					title: "Core headless de cifras",
+					description:
+						"Faz parsing, transposição e preparação de barras sem impor uma interface visual ao consumidor.",
+				},
+				{
+					title: "AST com tokens semânticos",
+					description:
+						"Mantém seções, linhas, acordes, letras, marcações e espaços para renderizações e inspeções customizadas.",
+				},
+				{
+					title: "Viewer React componível",
+					description:
+						"Entrega um Tab estilizado e primitivas para montar interfaces próprias com acordes sobre as letras.",
+				},
+				{
+					title: "Estilo e modos de leitura configuráveis",
+					description:
+						"Permite ajustar tipografia, cores, tom, espaçamento, visualização de acordes e letras para cada produto.",
+				},
+			],
+			installation: {
+				language: "bash",
+				code: "pnpm add @achorde/tab-renderer @achorde/musical-domain",
+			},
+			usage: {
+				language: "tsx",
+				code: `import { Tab } from "@achorde/tab-renderer/react";
+
+<Tab body={body} style={{ displayMode: "both", transposeNumber: 0 }} />;`,
+			},
+		},
 	},
 	{
 		name: "@achorde/svguitar-react",
@@ -150,7 +337,51 @@ export const achordeProjects = [
 		image: "/images/projects/achorde/svguitar-react.png",
 		imageAlt:
 			"Aranha tecelã transformando uma estrutura musical em diagrama SVG",
-		tags: ["TypeScript", "React", "SVG", "Acordes", "Open Source"],
+		tags: [
+			"TypeScript",
+			"React",
+			"SVG",
+			"Acordes",
+			"Open Source",
+			"Diagramas",
+			"Layout",
+			"Responsivo",
+			"Storybook",
+		],
+		details: {
+			features: [
+				{
+					title: "Diagramas de acordes em SVG",
+					description:
+						"Transforma voicings estruturados em diagramas escaláveis para instrumentos trasteados.",
+				},
+				{
+					title: "Layouts para diferentes orientações",
+					description:
+						"Oferece visualizações horizontal ou vertical para destros e canhotos, com orientação consistente dos rótulos.",
+				},
+				{
+					title: "Customização e estratégia de layout",
+					description:
+						"Expõe cores, medidas, fontes e engines de layout intercambiáveis para adaptar o diagrama ao produto.",
+				},
+				{
+					title: "Enquadramento automático de posições altas",
+					description:
+						"Ajusta o primeiro traste visível quando as posições do acorde ultrapassam o intervalo padrão.",
+				},
+			],
+			installation: {
+				language: "bash",
+				code: "pnpm add @achorde/svguitar-react @achorde/musical-domain",
+			},
+			usage: {
+				language: "tsx",
+				code: `import { ChordDiagram } from "@achorde/svguitar-react";
+
+<ChordDiagram voicing={voicing} view="vertical-right" />;`,
+			},
+		},
 	},
 	{
 		name: "@achorde/interactive-fretboard",
@@ -164,7 +395,52 @@ export const achordeProjects = [
 		image: "/images/projects/achorde/interactive-fretboard.png",
 		imageAlt:
 			"Louva-a-deus usando um braço de instrumento para editar voicings",
-		tags: ["TypeScript", "React", "Pointer", "Voicings", "Open Source"],
+		tags: [
+			"TypeScript",
+			"React",
+			"Pointer",
+			"Voicings",
+			"Open Source",
+			"SVG",
+			"Mouse, toque e caneta",
+			"Detecção de acorde",
+			"Editor controlado",
+		],
+		details: {
+			features: [
+				{
+					title: "Edição direta no braço",
+					description:
+						"Permite criar e ajustar digitações em um braço SVG responsivo usando mouse, toque ou caneta.",
+				},
+				{
+					title: "Interação de ponteiro precisa",
+					description:
+						"Converte a posição do ponteiro para a geometria do SVG e mantém áreas de toque confiáveis em diferentes telas.",
+				},
+				{
+					title: "Controle de dedos e pestanas",
+					description:
+						"Usa ações de mouse para alternar dedos, aplicar um dedo fixo e representar pestanas na digitação.",
+				},
+				{
+					title: "Valor controlado e detecção opcional",
+					description:
+						"Trabalha com FrettedInstrumentVoicing controlado e pode informar o acorde detectado a cada alteração.",
+				},
+			],
+			installation: {
+				language: "bash",
+				code: "pnpm add @achorde/interactive-fretboard @achorde/musical-domain",
+			},
+			usage: {
+				language: "tsx",
+				code: `import "@achorde/interactive-fretboard/dist/interactive-fretboard.css";
+import { InteractiveFretboard } from "@achorde/interactive-fretboard";
+
+<InteractiveFretboard value={voicing} onChange={({ voicing }) => setVoicing(voicing)} />;`,
+			},
+		},
 	},
 ] as const satisfies readonly FeaturedProject[];
 
@@ -234,6 +510,43 @@ const legacyProjects = [
 			"Faturas",
 			"Gráficos",
 		],
+		details: {
+			features: [
+				{
+					title: "Dados financeiros mantidos no dispositivo",
+					description:
+						"Processa os arquivos no navegador e persiste as informações localmente, sem conta, banco de dados remoto ou integração bancária.",
+				},
+				{
+					title: "Importação de CSV do Nubank",
+					description:
+						"Lê faturas e extratos compatíveis, identifica lançamentos repetidos por uma hash determinística e permite importar lotes com segurança.",
+				},
+				{
+					title: "Categorização que combina regras e revisão humana",
+					description:
+						"Aplica palavras-chave configuráveis, preserva ajustes manuais por transação e oferece ações em lote para corrigir a classificação.",
+				},
+				{
+					title: "Análises e backup locais",
+					description:
+						"Cruza busca, período, categoria e itens ignorados com rankings e evolução mensal, além de exportar a configuração em JSON.",
+				},
+			],
+			installation: {
+				title: "Instalação local",
+				language: "bash",
+				code: "pnpm install\npnpm dev",
+			},
+			usage: {
+				title: "Fluxo mais comum",
+				language: "text",
+				code: `1. Exporte a fatura ou o extrato do Nubank em CSV.
+2. Importe o arquivo no Grana Clara.
+3. Revise as categorias sugeridas e corrija o que for necessário.
+4. Use filtros e gráficos para acompanhar os gastos.`,
+			},
+		},
 	},
 	{
 		name: "achorde-musical-domain",
@@ -262,6 +575,43 @@ const legacyProjects = [
 		imageFit: "contain",
 		imageBackground: "#060a19",
 		tags: ["Open Source", "Jogo", "Física", "Matter.js", "TypeScript"],
+		details: {
+			features: [
+				{
+					title: "Simulação física interativa",
+					description:
+						"Usa o Matter.js para simular uma piscina de bolas com corpos, colisões e comportamento físico em tempo real.",
+				},
+				{
+					title: "Criação de bolas pelo ponteiro",
+					description:
+						"Permite criar uma bola com um clique ou várias de uma vez ao combinar Ctrl e o botão esquerdo do mouse.",
+				},
+				{
+					title: "Modo de depuração",
+					description:
+						"Expõe uma alternância de debug para observar com mais clareza o comportamento do motor durante os experimentos.",
+				},
+				{
+					title: "Cenário responsivo",
+					description:
+						"Adapta a simulação ao tamanho da janela para preservar a experiência de interação em diferentes telas.",
+				},
+			],
+			installation: {
+				title: "Instalação local",
+				language: "bash",
+				code: "npm install\nnpm run dev",
+			},
+			usage: {
+				title: "Como experimentar",
+				language: "text",
+				code: `1. Abra a simulação no navegador.
+2. Clique no cenário para criar uma bola.
+3. Use Ctrl + clique esquerdo para criar várias bolas.
+4. Ative o modo de debug para observar a física.`,
+			},
+		},
 	},
 	{
 		name: "SoM&A Deals",
@@ -286,6 +636,46 @@ const legacyProjects = [
 			"Franquias",
 			"Negociações",
 		],
+		details: {
+			features: [
+				{
+					title: "Oportunidades para compra, venda e investimento",
+					description:
+						"Conecta empresas e franquias a pessoas interessadas em vender, comprar ou investir com informações para apoiar a decisão.",
+				},
+				{
+					title: "Matchmaking com IA",
+					description:
+						"Apoia a descoberta de oportunidades e relações comerciais mais aderentes aos objetivos de cada participante.",
+				},
+				{
+					title: "Deal Room para a negociação",
+					description:
+						"Organiza uma etapa dedicada para conduzir a negociação de uma oportunidade com mais contexto e segurança.",
+				},
+				{
+					title: "Jornadas para PMEs e franquias",
+					description:
+						"Atende quem quer vender, comprar, investir, expandir uma franqueadora ou começar um negócio com inteligência de mercado.",
+				},
+			],
+			installation: {
+				title: "Acesso à plataforma",
+				language: "text",
+				code: `Acesse:
+https://app.somadeals.com/
+
+Crie uma conta ou entre para usar a plataforma.`,
+			},
+			usage: {
+				title: "Fluxo mais comum",
+				language: "text",
+				code: `1. Escolha se quer vender, comprar, investir ou expandir.
+2. Complete as informações da sua empresa ou do objetivo de negócio.
+3. Explore as oportunidades e conexões indicadas.
+4. Conduza a negociação pelo fluxo apropriado.`,
+			},
+		},
 	},
 
 	{
@@ -337,6 +727,46 @@ const legacyProjects = [
 			"Open Source",
 			"Árvore de Produtos",
 		],
+		details: {
+			features: [
+				{
+					title: "Cálculo de custos e pesos em árvores aninhadas",
+					description:
+						"Calcula os materiais necessários para receitas complexas em vários níveis, acumulando custo e peso de cada ingrediente.",
+				},
+				{
+					title: "Unidades e relações recursivas",
+					description:
+						"Trabalha com unidades como KG e UN e resolve relações entre produtos, subprodutos, matérias-primas e embalagens.",
+				},
+				{
+					title: "API funcional e tipada",
+					description:
+						"Oferece uma abordagem sem efeitos colaterais, suporte completo a TypeScript e compatibilidade com Deno e JSR.",
+				},
+				{
+					title: "Planejamento de produção",
+					description:
+						"O builder de árvore de materiais e o plano de produção ajudam a calcular necessidades para quantidades e datas planejadas.",
+				},
+			],
+			installation: {
+				language: "bash",
+				code: "deno add jsr:@saitodisse/bom-recipe-calculator",
+			},
+			usage: {
+				language: "ts",
+				code: `import { MaterialsTreeBuilder } from "jsr:@saitodisse/bom-recipe-calculator";
+
+const tree = new MaterialsTreeBuilder({
+  productsList: products,
+  productCode: "bread4pack",
+  initialQuantity: 1,
+}).build();
+
+console.log(tree.toHumanReadable());`,
+			},
+		},
 	},
 ] as const satisfies readonly FeaturedProject[];
 

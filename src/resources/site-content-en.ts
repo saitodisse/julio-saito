@@ -18,17 +18,14 @@ export const person = {
 	],
 } as const;
 
-export const professionalSummary = `Senior Software Engineer with 20+ years of experience building complex web platforms, cloud-based systems, and business-critical software. Specialized in TypeScript, Node.js, React, Next.js, cloud architectures, and modern full-stack development.
-
-I combine strong software engineering fundamentals with advanced AI-assisted development practices. My current focus is orchestrating AI agents throughout the software development lifecycle — research, specification, implementation, testing, refactoring, documentation, and validation.
-
-I work with a methodical approach based on Spec-Driven Development, TDD, automated testing, clear technical context, and architectural decision-making. I use AI agents to accelerate delivery while maintaining engineering ownership, ensuring robust, maintainable software aligned with business goals.`;
+export const professionalSummary =
+	"I turn business problems into reliable digital products by combining architecture, TypeScript, React, Node.js, Next.js, PostgreSQL, and cloud. I work end to end, from modeling and integration to production and continuous evolution. My current focus is responsible applied AI: orchestrating agents to accelerate specification, implementation, testing, and documentation while preserving technical decisions, quality, and product control.";
 
 export const credentials = [
 	{ label: "Experience", value: "20+ years" },
-	{ label: "Stack", value: "TypeScript, Node.js, React" },
-	{ label: "Focus", value: "SDD, TDD, cloud architecture" },
-	{ label: "Interest", value: "AI agent orchestration" },
+	{ label: "Specialty", value: "TypeScript, React, and Node.js" },
+	{ label: "Scope", value: "Product, architecture, and cloud" },
+	{ label: "Current focus", value: "Applied AI with governance" },
 ] as const;
 
 export type FeaturedProject = {
@@ -47,6 +44,11 @@ export type FeaturedProject = {
 	imageFit?: "cover" | "contain";
 	imageBackground?: string;
 	gallery?: readonly { src: string; alt: string }[];
+	details?: {
+		features: readonly { title: string; description: string }[];
+		installation?: { title?: string; code: string; language: string };
+		usage?: { title?: string; code: string; language: string };
+	};
 };
 
 const achordeProducts = [
@@ -60,7 +62,56 @@ const achordeProducts = [
 		image: "/images/projects/achorde/ac15.png",
 		imageAlt:
 			"A librarian beetle among chord sheets and instruments, representing AC15",
-		tags: ["Next.js", "React", "OfflineFirst", "Music"],
+		tags: [
+			"Next.js",
+			"React",
+			"OfflineFirst",
+			"Music",
+			"Chord charts",
+			"Repertoire",
+			"Local catalog",
+			"Diagrams",
+		],
+		details: {
+			features: [
+				{
+					title: "Catalog available on the device",
+					description:
+						"Downloads and keeps a local music catalog so consulting it does not depend on an active connection.",
+				},
+				{
+					title: "Chord-chart reading with key control",
+					description:
+						"Organizes charts by artist and lets musicians adjust key and type size while reading.",
+				},
+				{
+					title: "Chord library and diagrams",
+					description:
+						"Brings together chord references and their diagrams to support repertoire practice and performance.",
+				},
+				{
+					title: "Controlled synchronization",
+					description:
+						"Shows sync status and keeps the local catalog as the musician's working foundation.",
+				},
+			],
+			installation: {
+				title: "Access",
+				language: "text",
+				code: `Available to authorized people at:
+https://ac15.vercel.app/
+
+No local installation is required.`,
+			},
+			usage: {
+				title: "Common flow",
+				language: "text",
+				code: `1. Sync the catalog when a connection is available.
+2. Choose a song from the local repertoire.
+3. Adjust the key and chord-chart reading settings.
+4. Consult chords and diagrams during performance.`,
+			},
+		},
 	},
 	{
 		name: "Artist Portal",
@@ -73,7 +124,54 @@ const achordeProducts = [
 		image: "/images/projects/achorde/portal-do-artista.png",
 		imageAlt:
 			"A curator beetle opening a path between musical creation and its audience",
-		tags: ["Astro", "React", "Catalog", "Music"],
+		tags: [
+			"Astro",
+			"React",
+			"Catalog",
+			"Music",
+			"Source catalog",
+			"Markdown",
+			"GitHub Pages",
+			"Static site",
+		],
+		details: {
+			features: [
+				{
+					title: "Public, readable portal",
+					description:
+						"Publishes an artist's identity, repertoire, and chord charts in a static experience ready for the public.",
+				},
+				{
+					title: "Importable catalog",
+					description:
+						"Generates a read-only source catalog with a manifest, checksums, and entities for compatible tools.",
+				},
+				{
+					title: "Markdown content under version control",
+					description:
+						"Models artists, songs, playable versions, and chord charts as straightforward files to review in Git.",
+				},
+				{
+					title: "Updateable foundation for artists",
+					description:
+						"Creates a new portal from the base while preserving a path to receive improvements through an upstream remote.",
+				},
+			],
+			installation: {
+				language: "bash",
+				code: `git clone https://github.com/saitodisse/artist-portal-base.git my-artist-portal
+cd my-artist-portal
+pnpm install
+pnpm portal:init --source-id my-artist --name "My Artist"`,
+			},
+			usage: {
+				language: "bash",
+				code: `# update the profile and chord charts in catalog/
+pnpm build:catalog
+pnpm build
+pnpm test`,
+			},
+		},
 	},
 	{
 		name: "Achorde",
@@ -122,7 +220,52 @@ export const achordeProjects = [
 		icon: "music",
 		image: "/images/projects/achorde/musical-domain.png",
 		imageAlt: "An archivist ant representing musical-domain shared contracts",
-		tags: ["TypeScript", "Contracts", "Domain", "Music", "Open Source"],
+		tags: [
+			"TypeScript",
+			"Contracts",
+			"Domain",
+			"Music",
+			"Open Source",
+			"Headless",
+			"AST",
+			"Voicings",
+			"Diagnostics",
+		],
+		details: {
+			features: [
+				{
+					title: "Portable music contracts",
+					description:
+						"Defines stable types for chord charts, parsed tabs, diagnostics, and voicings without depending on React, SVG, or browser APIs.",
+				},
+				{
+					title: "AST and parsing diagnostics",
+					description:
+						"Provides line and token structures so parsers and renderers share an explicit interpretation of a chord chart.",
+				},
+				{
+					title: "Consistent voicings",
+					description:
+						"Standardizes low-to-high string coordinates and includes selection, ranking, and fingerboard-position normalization.",
+				},
+				{
+					title: "Symbol normalization",
+					description:
+						"Normalizes chord labels and preserves spelling metadata to reduce ambiguity across consumers.",
+				},
+			],
+			installation: {
+				language: "bash",
+				code: "pnpm add @achorde/musical-domain",
+			},
+			usage: {
+				language: "ts",
+				code: `import { normalizeChordSymbolLabel } from "@achorde/musical-domain";
+
+const chord = normalizeChordSymbolLabel("C♯maj7");
+// C#maj7`,
+			},
+		},
 	},
 	{
 		name: "@achorde/tab-renderer",
@@ -136,7 +279,51 @@ export const achordeProjects = [
 		image: "/images/projects/achorde/tab-renderer.png",
 		imageAlt:
 			"A typographer wasp among text and chords, representing tab-renderer",
-		tags: ["TypeScript", "React", "Chord Sheets", "Open Source"],
+		tags: [
+			"TypeScript",
+			"React",
+			"Chord Sheets",
+			"Open Source",
+			"Parser",
+			"Transposition",
+			"AST",
+			"Viewer",
+			"Storybook",
+		],
+		details: {
+			features: [
+				{
+					title: "Headless chord-chart core",
+					description:
+						"Handles parsing, transposition, and bar preparation without imposing a visual interface on consumers.",
+				},
+				{
+					title: "AST with semantic tokens",
+					description:
+						"Keeps sections, lines, chords, lyrics, decorations, and spaces available for custom renderers and inspection.",
+				},
+				{
+					title: "Composable React viewer",
+					description:
+						"Delivers a styled Tab plus primitives for composing interfaces with chords positioned above lyrics.",
+				},
+				{
+					title: "Configurable styling and reading modes",
+					description:
+						"Lets each product adjust typography, colors, key, spacing, and chord/lyric visibility.",
+				},
+			],
+			installation: {
+				language: "bash",
+				code: "pnpm add @achorde/tab-renderer @achorde/musical-domain",
+			},
+			usage: {
+				language: "tsx",
+				code: `import { Tab } from "@achorde/tab-renderer/react";
+
+<Tab body={body} style={{ displayMode: "both", transposeNumber: 0 }} />;`,
+			},
+		},
 	},
 	{
 		name: "@achorde/svguitar-react",
@@ -150,7 +337,51 @@ export const achordeProjects = [
 		image: "/images/projects/achorde/svguitar-react.png",
 		imageAlt:
 			"A weaving spider turning a musical structure into an SVG diagram",
-		tags: ["TypeScript", "React", "SVG", "Chords", "Open Source"],
+		tags: [
+			"TypeScript",
+			"React",
+			"SVG",
+			"Chords",
+			"Open Source",
+			"Diagrams",
+			"Layout",
+			"Responsive",
+			"Storybook",
+		],
+		details: {
+			features: [
+				{
+					title: "SVG chord diagrams",
+					description:
+						"Turns structured voicings into scalable diagrams for fretted instruments.",
+				},
+				{
+					title: "Layouts for different orientations",
+					description:
+						"Provides horizontal or vertical views for right- and left-handed players, with consistent label orientation.",
+				},
+				{
+					title: "Custom styling and layout strategy",
+					description:
+						"Exposes colors, dimensions, fonts, and swappable layout engines to fit a diagram to the product.",
+				},
+				{
+					title: "Automatic high-position framing",
+					description:
+						"Adjusts the first visible fret when chord positions exceed the standard range.",
+				},
+			],
+			installation: {
+				language: "bash",
+				code: "pnpm add @achorde/svguitar-react @achorde/musical-domain",
+			},
+			usage: {
+				language: "tsx",
+				code: `import { ChordDiagram } from "@achorde/svguitar-react";
+
+<ChordDiagram voicing={voicing} view="vertical-right" />;`,
+			},
+		},
 	},
 	{
 		name: "@achorde/interactive-fretboard",
@@ -164,7 +395,52 @@ export const achordeProjects = [
 		image: "/images/projects/achorde/interactive-fretboard.png",
 		imageAlt:
 			"A praying mantis using an instrument fingerboard to edit voicings",
-		tags: ["TypeScript", "React", "Pointer", "Voicings", "Open Source"],
+		tags: [
+			"TypeScript",
+			"React",
+			"Pointer",
+			"Voicings",
+			"Open Source",
+			"SVG",
+			"Mouse, touch, and pen",
+			"Chord detection",
+			"Controlled editor",
+		],
+		details: {
+			features: [
+				{
+					title: "Direct fingerboard editing",
+					description:
+						"Creates and changes fingerings on a responsive SVG neck with mouse, touch, or pen.",
+				},
+				{
+					title: "Precise pointer interaction",
+					description:
+						"Maps pointer positions to SVG geometry and keeps touch targets reliable across screen sizes.",
+				},
+				{
+					title: "Finger and barre controls",
+					description:
+						"Uses mouse actions to cycle fingers, apply a sticky finger, and represent barres in a fingering.",
+				},
+				{
+					title: "Controlled value with optional detection",
+					description:
+						"Works with a controlled FrettedInstrumentVoicing and can report the detected chord on each change.",
+				},
+			],
+			installation: {
+				language: "bash",
+				code: "pnpm add @achorde/interactive-fretboard @achorde/musical-domain",
+			},
+			usage: {
+				language: "tsx",
+				code: `import "@achorde/interactive-fretboard/dist/interactive-fretboard.css";
+import { InteractiveFretboard } from "@achorde/interactive-fretboard";
+
+<InteractiveFretboard value={voicing} onChange={({ voicing }) => setVoicing(voicing)} />;`,
+			},
+		},
 	},
 ] as const satisfies readonly FeaturedProject[];
 
@@ -233,6 +509,43 @@ const legacyProjects = [
 			"Bills",
 			"Charts",
 		],
+		details: {
+			features: [
+				{
+					title: "Financial data kept on the device",
+					description:
+						"Processes files in the browser and persists information locally, without an account, remote database, or banking integration.",
+				},
+				{
+					title: "Nubank CSV import",
+					description:
+						"Reads compatible statements and credit-card bills, identifies duplicate entries with a deterministic hash, and safely supports batch imports.",
+				},
+				{
+					title: "Categorization that combines rules and human review",
+					description:
+						"Applies configurable keywords, preserves manual transaction adjustments, and provides bulk actions for correcting classifications.",
+				},
+				{
+					title: "Local analytics and backups",
+					description:
+						"Combines search, period, category, and hidden-item filters with rankings and monthly trends, while exporting configuration as JSON.",
+				},
+			],
+			installation: {
+				title: "Local installation",
+				language: "bash",
+				code: "pnpm install\npnpm dev",
+			},
+			usage: {
+				title: "Common flow",
+				language: "text",
+				code: `1. Export a Nubank bill or statement as CSV.
+2. Import the file into Grana Clara.
+3. Review suggested categories and correct them when needed.
+4. Use filters and charts to review your spending.`,
+			},
+		},
 	},
 	{
 		name: "achorde-musical-domain",
@@ -261,6 +574,43 @@ const legacyProjects = [
 		imageFit: "contain",
 		imageBackground: "#060a19",
 		tags: ["Open Source", "Game", "Physics", "Matter.js", "TypeScript"],
+		details: {
+			features: [
+				{
+					title: "Interactive physics simulation",
+					description:
+						"Uses Matter.js to simulate a ball pool with bodies, collisions, and real-time physical behavior.",
+				},
+				{
+					title: "Pointer-based ball creation",
+					description:
+						"Creates one ball with a click or many at once by combining Ctrl with the left mouse button.",
+				},
+				{
+					title: "Debug mode",
+					description:
+						"Provides a debug toggle to make the engine's behavior clearer while running experiments.",
+				},
+				{
+					title: "Responsive scene",
+					description:
+						"Adapts the simulation to the window size to preserve the interactive experience across screen sizes.",
+				},
+			],
+			installation: {
+				title: "Local installation",
+				language: "bash",
+				code: "npm install\nnpm run dev",
+			},
+			usage: {
+				title: "How to explore it",
+				language: "text",
+				code: `1. Open the simulation in a browser.
+2. Click the scene to create a ball.
+3. Use Ctrl + left click to create several balls.
+4. Enable debug mode to inspect the physics.`,
+			},
+		},
 	},
 	{
 		name: "SoM&A Deals",
@@ -284,6 +634,46 @@ const legacyProjects = [
 			"Franchises",
 			"Negotiations",
 		],
+		details: {
+			features: [
+				{
+					title: "Opportunities to buy, sell, and invest",
+					description:
+						"Connects companies and franchises with people looking to sell, buy, or invest, supplying information that supports decisions.",
+				},
+				{
+					title: "AI matchmaking",
+					description:
+						"Supports the discovery of opportunities and commercial relationships that better fit each participant's goals.",
+				},
+				{
+					title: "Deal Room for negotiations",
+					description:
+						"Organizes a dedicated stage for conducting an opportunity's negotiation with more context and security.",
+				},
+				{
+					title: "Journeys for SMBs and franchises",
+					description:
+						"Serves people looking to sell, buy, invest, expand a franchise network, or start a business with market intelligence.",
+				},
+			],
+			installation: {
+				title: "Platform access",
+				language: "text",
+				code: `Visit:
+https://app.somadeals.com/
+
+Create an account or sign in to use the platform.`,
+			},
+			usage: {
+				title: "Common flow",
+				language: "text",
+				code: `1. Choose whether you want to sell, buy, invest, or expand.
+2. Complete information about your company or business goal.
+3. Explore the suggested opportunities and connections.
+4. Conduct the negotiation through the appropriate flow.`,
+			},
+		},
 	},
 	{
 		name: "interactive-fretboard",
@@ -332,6 +722,46 @@ const legacyProjects = [
 			"Open Source",
 			"Product Tree",
 		],
+		details: {
+			features: [
+				{
+					title: "Cost and weight calculations in nested trees",
+					description:
+						"Calculates materials needed for complex recipes across multiple levels, accumulating each ingredient's cost and weight.",
+				},
+				{
+					title: "Units and recursive relationships",
+					description:
+						"Works with units such as KG and UN and resolves relationships among products, subproducts, raw materials, and packaging.",
+				},
+				{
+					title: "Functional, typed API",
+					description:
+						"Provides a side-effect-free approach, full TypeScript support, and compatibility with Deno and JSR.",
+				},
+				{
+					title: "Production planning",
+					description:
+						"The materials-tree builder and production plan help calculate requirements for planned quantities and dates.",
+				},
+			],
+			installation: {
+				language: "bash",
+				code: "deno add jsr:@saitodisse/bom-recipe-calculator",
+			},
+			usage: {
+				language: "ts",
+				code: `import { MaterialsTreeBuilder } from "jsr:@saitodisse/bom-recipe-calculator";
+
+const tree = new MaterialsTreeBuilder({
+  productsList: products,
+  productCode: "bread4pack",
+  initialQuantity: 1,
+}).build();
+
+console.log(tree.toHumanReadable());`,
+			},
+		},
 	},
 ] as const satisfies readonly FeaturedProject[];
 

@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.3.0 - 2026-07-27
+
+- Reorganizada a apresentação profissional, a home e a trajetória para tornar a leitura mais clara em desktop e mobile.
+- Simplificada a vitrine de projetos: coleções exibem uma imagem aleatória por vez e os projetos individuais levam diretamente ao detalhe ou ao produto.
+- Transformada a área de pacotes do Achorde em uma listagem de open source com imagens, links e páginas de detalhe.
+- Adicionadas funcionalidades, instalação ou acesso e uso típico a todas as páginas internas de projeto, com exemplos de código destacados.
+- Adicionada visualização de imagens em tela cheia nas páginas de projeto e suporte a highlight Monokai para exemplos técnicos.
+
 ## 0.2.0 - 2026-07-24
 
 - Renovada a vitrine de projetos com o ecossistema Achorde, imagens atualizadas e a rota interna `/achorde`.

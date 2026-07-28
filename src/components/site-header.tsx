@@ -27,7 +27,7 @@ export function SiteHeader({ activePath }: SiteHeaderProps) {
 		<header className="sticky top-0 z-20 border-b border-border/70 bg-background/72 backdrop-blur-xl">
 			<div className="mx-auto flex w-full max-w-[1280px] flex-col gap-3 px-4 py-3 sm:px-6 lg:px-12">
 				<div className="flex items-center justify-between gap-3">
-					<Link href={href("/")} className="flex items-center">
+					<Link href={href("/")} className="flex shrink-0 items-center">
 						<span className="text-[0.98rem] font-medium tracking-[-0.03em] text-foreground sm:text-[1.05rem]">
 							{content.publicName}
 						</span>
@@ -39,23 +39,25 @@ export function SiteHeader({ activePath }: SiteHeaderProps) {
 							href={content.person.linkedin}
 							target="_blank"
 							rel="noreferrer"
+							aria-label="LinkedIn"
 							className={cn(
 								buttonVariants({ variant: "outline", size: "lg" }),
-								"h-10 rounded-full border-border bg-card px-4 text-[0.9rem] font-medium text-foreground/90 shadow-[0_1px_0_rgba(0,0,0,0.02)] transition-transform hover:-translate-y-px hover:bg-muted sm:h-11 sm:px-5 sm:text-[0.95rem]",
+								"size-10 rounded-full border-border bg-card p-0 text-[0.9rem] font-medium text-foreground/90 shadow-[0_1px_0_rgba(0,0,0,0.02)] transition-transform hover:-translate-y-px hover:bg-muted sm:h-11 sm:w-auto sm:px-5 sm:text-[0.95rem]",
 							)}
 						>
-							<Link2 className="mr-2 size-4" />
-							LinkedIn
+							<Link2 className="size-4 sm:mr-2" />
+							<span className="hidden sm:inline">LinkedIn</span>
 						</a>
 						<Link
 							href="/curriculo.pdf"
+							aria-label={ui.nav.downloadPdf}
 							className={cn(
 								buttonVariants({ variant: "outline", size: "lg" }),
-								"h-10 rounded-full border-border bg-card px-4 text-[0.9rem] font-medium text-foreground/90 shadow-[0_1px_0_rgba(0,0,0,0.02)] transition-transform hover:-translate-y-px hover:bg-muted sm:h-11 sm:px-5 sm:text-[0.95rem]",
+								"size-10 rounded-full border-border bg-card p-0 text-[0.9rem] font-medium text-foreground/90 shadow-[0_1px_0_rgba(0,0,0,0.02)] transition-transform hover:-translate-y-px hover:bg-muted sm:h-11 sm:w-auto sm:px-5 sm:text-[0.95rem]",
 							)}
 						>
-							<Download className="mr-2 size-4" />
-							{ui.nav.downloadPdf}
+							<Download className="size-4 sm:mr-2" />
+							<span className="hidden sm:inline">{ui.nav.downloadPdf}</span>
 						</Link>
 					</div>
 				</div>

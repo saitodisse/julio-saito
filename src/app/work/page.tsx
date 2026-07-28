@@ -33,17 +33,17 @@ export default function WorkPage() {
 						icon={BriefcaseBusiness}
 					/>
 
-					<div className="mt-8 grid gap-4 sm:mt-10">
+					<div className="mt-10 border-b border-border">
 						{experiences.map((experience, index) => (
 							<article
 								key={`${experience.company}-${experience.period}`}
-								className="grid gap-5 rounded-[24px] border border-border bg-card px-4 py-5 shadow-[0_1px_0_rgba(0,0,0,0.02)] sm:px-6 sm:py-6 lg:grid-cols-[240px_minmax(0,1fr)] lg:px-7"
+								className="grid gap-6 border-t border-border py-8 sm:py-10 lg:grid-cols-[215px_minmax(0,1fr)] lg:gap-10"
 							>
-								<div className="lg:border-r lg:border-border lg:pr-6">
-									<p className="text-[0.78rem] font-medium uppercase tracking-[0.18em] text-foreground/42">
+								<div className="lg:border-r lg:border-border lg:pr-8">
+									<p className="text-[0.76rem] font-semibold uppercase tracking-[0.18em] text-primary/82">
 										{experience.period}
 									</p>
-									<h2 className="mt-3 text-[1.16rem] font-semibold tracking-[-0.03em] text-foreground sm:text-[1.25rem]">
+									<h2 className="mt-4 text-[1.25rem] font-semibold tracking-[-0.04em] text-foreground sm:text-[1.4rem]">
 										{"companyLinkedin" in experience ? (
 											<a
 												href={experience.companyLinkedin}
@@ -57,24 +57,24 @@ export default function WorkPage() {
 											experience.company
 										)}
 									</h2>
-									<p className="mt-2 text-[0.96rem] font-medium tracking-[-0.02em] text-foreground/70 sm:text-[0.98rem]">
+									<p className="mt-2 text-[0.98rem] font-medium tracking-[-0.02em] text-foreground/76">
 										{experience.role}
 									</p>
-									<p className="mt-2 text-[0.9rem] leading-6 tracking-[-0.01em] text-foreground/54 sm:text-[0.92rem]">
+									<p className="mt-3 text-[0.9rem] leading-6 tracking-[-0.01em] text-foreground/52 sm:text-[0.92rem]">
 										{experience.location}
 									</p>
 								</div>
 
 								<div className="lg:pl-1">
-									<p className="text-[0.96rem] leading-7 tracking-[-0.01em] text-foreground/68 sm:text-[0.98rem]">
+									<p className="max-w-3xl text-[1rem] leading-7 tracking-[-0.01em] text-foreground/78 sm:text-[1.04rem]">
 										{experience.summary}
 									</p>
 
-									<ul className="mt-5 grid gap-3">
+									<ul className="mt-6 grid max-w-4xl gap-3.5">
 										{experience.bullets.map((bullet) => (
 											<li key={bullet} className="flex gap-3">
-												<CheckCircle2 className="mt-0.5 size-5 shrink-0 text-primary" />
-												<p className="text-[0.96rem] leading-7 tracking-[-0.01em] text-foreground/72 sm:text-[0.98rem]">
+												<CheckCircle2 className="mt-1 size-[1.1rem] shrink-0 text-primary" />
+												<p className="text-[0.96rem] leading-7 tracking-[-0.01em] text-foreground/70 sm:text-[0.98rem]">
 													{bullet}
 												</p>
 											</li>

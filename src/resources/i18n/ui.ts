@@ -37,9 +37,10 @@ type UiCopySchema = {
 		otherProjects: string;
 		outsideMusicProjects: string;
 		projectsLabel: string;
+		viewAllProjects: string;
 		viewSite: string;
+		imageActionLabel: string;
 		expandImage: string;
-		closePreview: string;
 		ctaTitle: string;
 		ctaBody: string;
 		viewWork: string;
@@ -58,6 +59,11 @@ type UiCopySchema = {
 		backLabel: string;
 		projectLinkLabel: string;
 		repositoryLinkLabel: string;
+		fullscreenImage: string;
+		featuresTitle: string;
+		installationTitle: string;
+		usageTitle: string;
+		viewDetailsLabel: string;
 	};
 	work: {
 		backLabel: string;
@@ -115,7 +121,7 @@ const ui = {
 			switchToEnglish: "Trocar para inglês",
 		},
 		home: {
-			heroTitle: "Engenheiro de software",
+			heroTitle: "Engenheiro de software sênior",
 			viewProjects: "Ver projetos",
 			viewResume: "Ver currículo",
 			featuredProjects: "Projetos em destaque",
@@ -123,9 +129,10 @@ const ui = {
 			otherProjects: "Outros projetos",
 			outsideMusicProjects: "Projetos fora da categoria musical.",
 			projectsLabel: "projetos",
+			viewAllProjects: "Ver todos os projetos",
 			viewSite: "Ver site",
-			expandImage: "Ampliar imagem do projeto",
-			closePreview: "Fechar",
+			imageActionLabel: "Clique na imagem para saber mais",
+			expandImage: "Abrir detalhes do projeto",
 			ctaTitle: "Quer ver a trajetória completa?",
 			ctaBody:
 				"A página de work concentra o histórico profissional, e o currículo traz os contatos e o PDF para download.",
@@ -139,7 +146,7 @@ const ui = {
 			summary:
 				"Produtos e bibliotecas que conectam leitura de cifras, criação de acordes e publicação de repertório.",
 			productsTitle: "Produtos",
-			packagesTitle: "Pacotes públicos",
+			packagesTitle: "Open source",
 			packagesSummary:
 				"Componentes open source para construir experiências musicais com contratos consistentes.",
 		},
@@ -147,13 +154,18 @@ const ui = {
 			backLabel: "Voltar para projetos",
 			projectLinkLabel: "Abrir projeto",
 			repositoryLinkLabel: "Abrir repositório",
+			fullscreenImage: "Ver imagem em tela cheia",
+			featuresTitle: "Principais funcionalidades",
+			installationTitle: "Instalação",
+			usageTitle: "Uso mais comum",
+			viewDetailsLabel: "Ver detalhes",
 		},
 		work: {
 			backLabel: "Voltar para Home",
 			eyebrow: "Work",
 			title: "Trajetória profissional",
 			summary:
-				"Trajetória profissional em ordem cronológica, com contexto de cada empresa, responsabilidades e principais entregas técnicas.",
+				"Uma trajetória em produtos digitais, sistemas de negócio e plataformas cloud, conectando arquitetura, entrega e evolução técnica.",
 			highlight: "Em destaque",
 			ctaTitle: "Quer ver o resumo curto?",
 			ctaBody:
@@ -165,7 +177,7 @@ const ui = {
 			eyebrow: "Currículo",
 			title: "Engenheiro de Software Sênior",
 			summary:
-				"Engenheiro de software sênior com 20+ anos de experiência criando plataformas web complexas, sistemas em cloud e software crítico para negócios, com foco atual em orquestração de agentes de IA, SDD, TDD e arquitetura confiável.",
+				"Engenheiro de software sênior que transforma problemas de negócio em produtos digitais confiáveis, combinando arquitetura, TypeScript, Node.js, React e IA aplicada com decisões técnicas, testes e documentação sob controle.",
 			skillsTitle: "Competências principais",
 			educationTitle: "Formação",
 			languagesTitle: "Idiomas",
@@ -206,7 +218,7 @@ const ui = {
 			switchToEnglish: "Switch to English",
 		},
 		home: {
-			heroTitle: "Software engineer",
+			heroTitle: "Senior software engineer",
 			viewProjects: "View projects",
 			viewResume: "View resume",
 			featuredProjects: "Featured projects",
@@ -214,9 +226,10 @@ const ui = {
 			otherProjects: "Other projects",
 			outsideMusicProjects: "Projects outside the music category.",
 			projectsLabel: "projects",
+			viewAllProjects: "View all projects",
 			viewSite: "Visit site",
-			expandImage: "Enlarge project image",
-			closePreview: "Close",
+			imageActionLabel: "Click the image to learn more",
+			expandImage: "Open project details",
 			ctaTitle: "Want the full career path?",
 			ctaBody:
 				"The work page gathers professional history, and the resume page brings contacts plus the PDF download.",
@@ -230,7 +243,7 @@ const ui = {
 			summary:
 				"Products and libraries that connect chord-chart reading, chord creation, and repertoire publishing.",
 			productsTitle: "Products",
-			packagesTitle: "Public packages",
+			packagesTitle: "Open source",
 			packagesSummary:
 				"Open-source components for building musical experiences with consistent contracts.",
 		},
@@ -238,13 +251,18 @@ const ui = {
 			backLabel: "Back to projects",
 			projectLinkLabel: "Open project",
 			repositoryLinkLabel: "Open repository",
+			fullscreenImage: "View image in full screen",
+			featuresTitle: "Key features",
+			installationTitle: "Installation",
+			usageTitle: "Common use",
+			viewDetailsLabel: "View details",
 		},
 		work: {
 			backLabel: "Back to Home",
 			eyebrow: "Work",
 			title: "Professional journey",
 			summary:
-				"Professional journey in chronological order, including context for each company, responsibilities, and key technical deliveries.",
+				"A career across digital products, business systems, and cloud platforms, connecting architecture, delivery, and technical evolution.",
 			highlight: "Featured",
 			ctaTitle: "Want the short summary?",
 			ctaBody:
@@ -256,7 +274,7 @@ const ui = {
 			eyebrow: "Resume",
 			title: "Senior Software Engineer",
 			summary:
-				"Senior software engineer with 20+ years of experience building complex web platforms, cloud-based systems, and business-critical software, currently focused on AI agent orchestration, SDD, TDD, and reliable architecture.",
+				"Senior software engineer who turns business problems into reliable digital products by combining architecture, TypeScript, Node.js, React, and applied AI with technical decisions, testing, and documentation under control.",
 			skillsTitle: "Core skills",
 			educationTitle: "Education",
 			languagesTitle: "Languages",
