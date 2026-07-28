@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.3.1 - 2026-07-28
+
+- Renomeada a seção de produtos do Achorde para Aplicativos, com a tradução equivalente em inglês.
+- Reorganizados AC15 e Portal do Artista em um card por linha, usando imagens maiores e mais nítidas em telas amplas.
+
 ## 0.3.0 - 2026-07-27
 
 - Reorganizada a apresentação profissional, a home e a trajetória para tornar a leitura mais clara em desktop e mobile.

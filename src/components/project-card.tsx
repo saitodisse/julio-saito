@@ -35,6 +35,7 @@ type ProjectCardProps = {
 	viewAllProjectsLabel: string;
 	imageActionLabel: string;
 	expandImageLabel: string;
+	imageSizes?: string;
 };
 
 export function ProjectCard({
@@ -44,6 +45,7 @@ export function ProjectCard({
 	viewAllProjectsLabel,
 	imageActionLabel,
 	expandImageLabel,
+	imageSizes = "(min-width: 1280px) 320px, (min-width: 640px) 50vw, 100vw",
 }: ProjectCardProps) {
 	const [galleryIndex, setGalleryIndex] = useState(0);
 	const href = useSiteHref();
@@ -88,7 +90,7 @@ export function ProjectCard({
 						src={galleryImage.src}
 						alt={galleryImage.alt}
 						fill
-						sizes="(min-width: 1280px) 320px, (min-width: 640px) 50vw, 100vw"
+						sizes={imageSizes}
 						className="object-cover transition-transform duration-300 group-hover:scale-[1.025]"
 					/>
 					{imageHint}
@@ -104,7 +106,7 @@ export function ProjectCard({
 							src={project.image}
 							alt={project.imageAlt ?? project.name}
 							fill
-							sizes="(min-width: 1280px) 320px, (min-width: 640px) 50vw, 100vw"
+							sizes={imageSizes}
 							className="object-cover transition-transform duration-300 group-hover:scale-[1.025]"
 						/>
 						{imageHint}
@@ -121,7 +123,7 @@ export function ProjectCard({
 							src={project.image}
 							alt={project.imageAlt ?? project.name}
 							fill
-							sizes="(min-width: 1280px) 320px, (min-width: 640px) 50vw, 100vw"
+							sizes={imageSizes}
 							className="object-cover transition-transform duration-300 group-hover:scale-[1.025]"
 						/>
 						{imageHint}
@@ -133,7 +135,7 @@ export function ProjectCard({
 						src={project.image}
 						alt={project.imageAlt ?? project.name}
 						fill
-						sizes="(min-width: 1280px) 320px, (min-width: 640px) 50vw, 100vw"
+						sizes={imageSizes}
 						className="object-cover"
 					/>
 				</div>

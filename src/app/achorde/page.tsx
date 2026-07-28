@@ -49,7 +49,7 @@ export default function AchordePage() {
 					<h2 className="text-[1.45rem] font-semibold tracking-[-0.04em] text-foreground sm:text-[1.85rem]">
 						{ui.achorde.productsTitle}
 					</h2>
-					<div className="mt-8 grid gap-5 md:grid-cols-2">
+					<div className="mt-8 grid gap-8">
 						{[ac15, artistPortal].map((project, index) => (
 							<ProjectCard
 								key={project.name}
@@ -59,6 +59,7 @@ export default function AchordePage() {
 								viewAllProjectsLabel={ui.home.viewAllProjects}
 								imageActionLabel={ui.home.imageActionLabel}
 								expandImageLabel={ui.home.expandImage}
+								imageSizes="(min-width: 1280px) 1184px, (min-width: 1024px) calc(100vw - 96px), (min-width: 640px) calc(100vw - 48px), 100vw"
 							/>
 						))}
 					</div>

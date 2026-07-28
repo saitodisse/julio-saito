@@ -145,7 +145,7 @@ const ui = {
 			title: "Achorde",
 			summary:
 				"Produtos e bibliotecas que conectam leitura de cifras, criação de acordes e publicação de repertório.",
-			productsTitle: "Produtos",
+			productsTitle: "Aplicativos",
 			packagesTitle: "Open source",
 			packagesSummary:
 				"Componentes open source para construir experiências musicais com contratos consistentes.",
@@ -242,7 +242,7 @@ const ui = {
 			title: "Achorde",
 			summary:
 				"Products and libraries that connect chord-chart reading, chord creation, and repertoire publishing.",
-			productsTitle: "Products",
+			productsTitle: "Applications",
 			packagesTitle: "Open source",
 			packagesSummary:
 				"Open-source components for building musical experiences with consistent contracts.",
