@@ -707,6 +707,126 @@ Crie uma conta ou entre para usar a plataforma.`,
 	},
 
 	{
+		name: "Add-ons App POC",
+		detailPath: "/projetos/addons-app-poc",
+		description:
+			"Prova de conceito para um host extensível que descobre add-ons independentes por manifesto, com contratos tipados, prioridade e fallback.",
+		github: "https://github.com/saitodisse/addons-app-poc",
+		icon: "terminal",
+		image: "/images/projects/addons-app-poc.png",
+		imageAlt:
+			"Hub de add-ons conectado a módulos independentes por um manifesto, com rota alternativa de fallback",
+		tags: [
+			"React",
+			"TypeScript",
+			"Node.js",
+			"HTTP",
+			"Plug-ins",
+			"Manifestos",
+			"Fallback",
+			"Open Source",
+		],
+		details: {
+			features: [
+				{
+					title: "Add-ons descobertos por manifesto",
+					description:
+						"O host conhece os contratos do protocolo, enquanto cada extensão publica seu próprio manifesto e implementação em um endereço independente.",
+				},
+				{
+					title: "Módulos locais e serviços HTTP",
+					description:
+						"Demonstra add-ons JavaScript carregados em processo e servidores HTTP que oferecem catálogos, buscas e textos pelo mesmo protocolo.",
+				},
+				{
+					title: "Prioridade e fallback explícitos",
+					description:
+						"Quando mais de uma extensão oferece o mesmo serviço, o runtime ordena os provedores e tenta o próximo se a implementação prioritária falhar.",
+				},
+				{
+					title: "Instalação revisável e persistente",
+					description:
+						"A pessoa informa a URL do manifesto, revisa o contrato antes de instalar e mantém escolhas, extensões desativadas e aceitação após recarregar a página.",
+				},
+			],
+			installation: {
+				title: "Execução local",
+				language: "bash",
+				code: "git clone https://github.com/saitodisse/addons-app-poc.git\ncd addons-app-poc\npnpm install\npnpm dev",
+			},
+			usage: {
+				title: "Como explorar a POC",
+				language: "text",
+				code: `1. Abra o host em http://localhost:5280.
+2. Em Configurações, informe ou escolha uma URL de manifest.json.
+3. Revise e aceite o contrato do add-on.
+4. Abra a rota adicionada na barra lateral.
+5. Desative ou remova a extensão para conferir a persistência e o runtime.`,
+			},
+		},
+	},
+	{
+		name: "Lista de Materiais",
+		detailPath: "/projetos/lista-de-materiais",
+		description:
+			"PWA local-first para cadastrar Produtos, compor Receitas e gerar Listas de Materiais com BOM aninhada, custos e materiais consolidados.",
+		github: "https://github.com/saitodisse/lista-de-materiais",
+		site: "https://listademateriais.vercel.app/",
+		icon: "leaf",
+		image: "/images/projects/lista-de-materiais.png",
+		imageAlt:
+			"Prancheta com árvore de materiais, ingredientes e embalagem, representando receitas e listas de materiais",
+		tags: [
+			"React",
+			"TypeScript",
+			"PWA",
+			"OfflineFirst",
+			"BOM",
+			"Receitas",
+			"IndexedDB",
+			"Vite",
+			"Open Source",
+		],
+		details: {
+			features: [
+				{
+					title: "Receitas em árvores sem ciclos",
+					description:
+						"Modela produtos, componentes e quantidades, bloqueando autorreferência, repetições e ciclos para que cada Receita continue calculável.",
+				},
+				{
+					title: "Lista de materiais consolidada",
+					description:
+						"Transforma produtos desejados em uma árvore BOM expansível e soma os materiais terminais necessários para produzir cada item.",
+				},
+				{
+					title: "Dados que ficam no aparelho",
+					description:
+						"Armazena o catálogo no IndexedDB do navegador, sem conta, backend ou sincronização, e permanece disponível offline depois da primeira abertura.",
+				},
+				{
+					title: "Cópia JSON sob controle da pessoa",
+					description:
+						"Exporta e importa Produtos, Receitas e Listas localmente, validando os dados e pedindo confirmação antes de substituir o catálogo.",
+				},
+			],
+			installation: {
+				title: "Acesso",
+				language: "text",
+				code: "Disponível em:\nhttps://listademateriais.vercel.app/\n\nNão exige conta ou instalação local.",
+			},
+			usage: {
+				title: "Fluxo mais comum",
+				language: "text",
+				code: `1. Cadastre matérias-primas, embalagens e Produtos sem Receita.
+2. Cadastre semiacabados e Produtos finais com seus componentes.
+3. Crie uma Lista de Materiais com as quantidades desejadas.
+4. Consulte os materiais terminais, custos e a árvore BOM.
+5. Exporte um JSON para guardar uma cópia do catálogo.`,
+			},
+		},
+	},
+	{
 		name: "BOM Recipe Calculator",
 		detailPath: "/projetos/bom-recipe-calculator",
 		description:

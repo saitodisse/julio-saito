@@ -702,6 +702,126 @@ Create an account or sign in to use the platform.`,
 		tags: ["Next.js", "React", "OfflineFirst", "Sync", "Architecture", "Music"],
 	},
 	{
+		name: "Add-ons App POC",
+		detailPath: "/projetos/addons-app-poc",
+		description:
+			"Proof of concept for an extensible host that discovers independent add-ons through manifests, with typed contracts, priority, and fallback.",
+		github: "https://github.com/saitodisse/addons-app-poc",
+		icon: "terminal",
+		image: "/images/projects/addons-app-poc.png",
+		imageAlt:
+			"Add-on hub connected to independent modules through a manifest, with an alternate fallback route",
+		tags: [
+			"React",
+			"TypeScript",
+			"Node.js",
+			"HTTP",
+			"Plug-ins",
+			"Manifests",
+			"Fallback",
+			"Open Source",
+		],
+		details: {
+			features: [
+				{
+					title: "Add-ons discovered through manifests",
+					description:
+						"The host knows the protocol contracts while every extension publishes its own manifest and implementation at an independent address.",
+				},
+				{
+					title: "In-process modules and HTTP services",
+					description:
+						"Demonstrates JavaScript add-ons loaded in process and HTTP servers that offer catalogs, search, and text through the same protocol.",
+				},
+				{
+					title: "Explicit priority and fallback",
+					description:
+						"When more than one extension offers the same service, the runtime orders providers and tries the next one if the priority implementation fails.",
+				},
+				{
+					title: "Reviewable and persistent installation",
+					description:
+						"The user provides a manifest URL, reviews the contract before installing it, and keeps choices, disabled extensions, and acceptance after reloading the page.",
+				},
+			],
+			installation: {
+				title: "Run locally",
+				language: "bash",
+				code: "git clone https://github.com/saitodisse/addons-app-poc.git\ncd addons-app-poc\npnpm install\npnpm dev",
+			},
+			usage: {
+				title: "How to explore the POC",
+				code: `1. Open the host at http://localhost:5280.
+2. In Settings, enter or choose a manifest.json URL.
+3. Review and accept the add-on contract.
+4. Open the route added to the sidebar.
+5. Disable or remove the extension to verify persistence and the runtime.`,
+				language: "text",
+			},
+		},
+	},
+	{
+		name: "Materials List",
+		detailPath: "/projetos/lista-de-materiais",
+		description:
+			"Local-first PWA for registering Products, composing Recipes, and creating Materials Lists with nested BOMs, costs, and consolidated materials.",
+		github: "https://github.com/saitodisse/lista-de-materiais",
+		site: "https://listademateriais.vercel.app/",
+		icon: "leaf",
+		image: "/images/projects/lista-de-materiais.png",
+		imageAlt:
+			"Clipboard with a materials tree, ingredients, and packaging, representing recipes and materials lists",
+		tags: [
+			"React",
+			"TypeScript",
+			"PWA",
+			"OfflineFirst",
+			"BOM",
+			"Recipes",
+			"IndexedDB",
+			"Vite",
+			"Open Source",
+		],
+		details: {
+			features: [
+				{
+					title: "Tree-shaped recipes without cycles",
+					description:
+						"Models products, components, and quantities while blocking self-references, duplicates, and cycles so every Recipe remains calculable.",
+				},
+				{
+					title: "Consolidated materials list",
+					description:
+						"Turns desired products into an expandable BOM tree and totals the terminal materials required to make every item.",
+				},
+				{
+					title: "Data stays on the device",
+					description:
+						"Stores the catalog in the browser's IndexedDB, with no account, backend, or syncing, and works offline after the first visit.",
+				},
+				{
+					title: "A JSON copy under the user's control",
+					description:
+						"Exports and imports Products, Recipes, and Lists locally, validates the data, and asks for confirmation before replacing the catalog.",
+				},
+			],
+			installation: {
+				title: "Access",
+				language: "text",
+				code: "Available at:\nhttps://listademateriais.vercel.app/\n\nNo account or local installation is required.",
+			},
+			usage: {
+				title: "Typical workflow",
+				language: "text",
+				code: `1. Register raw materials, packaging, and Products without a Recipe.
+2. Register semi-finished and final Products with their components.
+3. Create a Materials List with the desired quantities.
+4. Review terminal materials, costs, and the BOM tree.
+5. Export JSON to keep a copy of the catalog.`,
+			},
+		},
+	},
+	{
 		name: "BOM Recipe Calculator",
 		detailPath: "/projetos/bom-recipe-calculator",
 		description:

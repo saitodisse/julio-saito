@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.4.0 - 2026-08-25
+
+- Adicionados à vitrine e às páginas detalhadas os projetos Lista de Materiais e Add-ons App POC, com conteúdos em português e inglês, links públicos e fluxos de uso.
+- Criadas artes originais para representar o catálogo local de materiais e a arquitetura extensível baseada em manifestos, módulos e fallback.
+
 ## 0.3.1 - 2026-07-28
 
 - Renomeada a seção de produtos do Achorde para Aplicativos, com a tradução equivalente em inglês.
